@@ -6,22 +6,13 @@ public class InputCourse2Text : MonoBehaviour
 {
     public TMP_InputField EmotionInputField;
     public string EmotionText;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public Course2TextCommunication _Course2TextCommunication;
+    
     public void UpdateEmotionText()
     {
         EmotionText = EmotionInputField.text;
         Debug.Log("InputCourse2Text : " + EmotionText);
-        // FIXME  : AI 통신 코드 추가
+        _Course2TextCommunication.StartCommuteCourse2Text();
         
     }
 }
