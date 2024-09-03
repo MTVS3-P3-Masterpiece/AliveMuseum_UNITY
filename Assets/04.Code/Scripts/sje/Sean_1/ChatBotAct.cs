@@ -5,7 +5,6 @@ using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 
-// 안내원 말할 때 애니메이션 구현
 // SimpleCharacterController 
 public class ChatBotAct : MonoBehaviour
 {
@@ -26,6 +25,8 @@ public class ChatBotAct : MonoBehaviour
 
 
     [SerializeField]
+    private float smoothTime = 0.3f; 
+    private Vector3 velocity = Vector3.zero;  
 
     IEnumerator CheckAndWarp()
     {
@@ -45,10 +46,11 @@ public class ChatBotAct : MonoBehaviour
     {
      
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = 15f;
-        agent.acceleration = 10f; 
-        agent.stoppingDistance = 5f; 
-
+        agent.speed = 10f;  
+        agent.acceleration = 15f;  
+        agent.angularSpeed = 120f;  
+        agent.stoppingDistance = 3f;  
+        
         if (player == null)
         {
             player = GameObject.FindWithTag("Player");
@@ -70,19 +72,22 @@ public class ChatBotAct : MonoBehaviour
                 playerScript.enabled = false;
                 chatOpen = true;
                 followPlayer = true;  
+                interaction.SetActive(false);
             }
         }
 
         if (followPlayer && player != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer > 20f)
+            if (distanceToPlayer > agent.stoppingDistance) 
             {
-                agent.Warp(player.transform.position);
+                Vector3 targetPosition = player.transform.position;  
+                Vector3 newPosition = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+                transform.position = newPosition; 
             }
             else
             {
-                agent.SetDestination(player.transform.position);
+                agent.ResetPath(); 
             }
         }
 
@@ -115,50 +120,5 @@ public class ChatBotAct : MonoBehaviour
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
