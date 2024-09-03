@@ -21,6 +21,7 @@ public class CameraMove : MonoBehaviour
     
     public Transform objectTofollowBoat;                                            // 카메라가 따라갈 보트 오브젝트 Transform
     public Transform objectTofollowUser;
+    public Transform curObjectTofollow;
     public Transform realCamera;                                                // 실제 카메라 Transform
     
     void Start()
@@ -32,8 +33,14 @@ public class CameraMove : MonoBehaviour
         dirNormalized = realCamera.position.normalized;
         finalDistance = realCamera.localPosition.magnitude;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
+        
+        // 반대설정
+        // Cursor.lockState = CursorLockMode.None;
+        // Cursor.visible = true;
+    
+        curObjectTofollow = objectTofollowUser;
     } 
     void Update()
     {
@@ -48,7 +55,7 @@ public class CameraMove : MonoBehaviour
     void LateUpdate()
     {
         /* 카메라 위치 계산 및 이동 */
-        transform.position = Vector3.MoveTowards(transform.position, objectTofollowUser.position, followSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, curObjectTofollow.position, followSpeed);
         finalDir = dirNormalized;
         // RaycastHit hit;
         // if (Physics.Linecast(transform.position, finalDir, out hit))    // 장애물 겹칠 시 카메라 위치 조정
@@ -60,6 +67,16 @@ public class CameraMove : MonoBehaviour
         //      finalDistance = maxDistance;
         // }
         //realCamera.localPosition = Vector3.Lerp(realCamera.localPosition, dirNormalized*finalDistance, Time.deltaTime*smoothness);
-        realCamera.localPosition = objectTofollowUser.position;
+        realCamera.localPosition = curObjectTofollow.position;
+    }
+
+    public void SetCurObjectToFollowUser()
+    {
+        curObjectTofollow = objectTofollowUser;
+    }
+
+    public void SetCurObjectToFollowBoat()
+    {
+        curObjectTofollow = objectTofollowBoat;
     }
 }

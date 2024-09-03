@@ -14,23 +14,13 @@ public class MoveBoatCurve : MonoBehaviour
     private int speed = 1;
     private Vector3 direction;
     private Transform curTarget;
-    IEnumerator Start()
+    private Coroutine moveCo;
+    public void StartMoveBoatCourse1()
     {
-        // curTarget = targetPositions[0];
-        // Sequence mySequence = DOTween.Sequence();
-        // Sequence mySequence2 = DOTween.Sequence();
-        // mySequence
-        //     .Append(transform.DOMoveX(targetPositions[0].position.x, 5).SetEase(Ease.OutQuad))
-        //     .Join(transform.DOMoveZ(targetPositions[0].position.z, 5).SetEase(Ease.InQuad))
-        //     .OnComplete(() =>
-        //     {
-        //         curTarget = targetPositions[1];
-        //         mySequence2
-        //             .Append(transform.DOMoveX(targetPositions[1].position.x, 5).SetEase(Ease.InQuad))
-        //             .Join(transform.DOMoveZ(targetPositions[1].position.z, 5).SetEase(Ease.OutQuad));
-        //     });
-        // yield return null;
-        
+        moveCo = StartCoroutine(MoveBoatCourse1());
+    }
+    IEnumerator MoveBoatCourse1()
+    {
         // 목표 위치 배열 생성
         Vector3[] waypoints = new Vector3[targetPositions1.Count];
         for (int i = 0; i < targetPositions1.Count; i++)
@@ -56,16 +46,4 @@ public class MoveBoatCurve : MonoBehaviour
             });
         yield return null;
     }
-
-    // public void Update()
-    // {
-    //     direction = curTarget.position - transform.position;
-    //
-    //     if (direction.magnitude > 0.1f)
-    //     {
-    //         Quaternion targetRotation = Quaternion.LookRotation(direction);
-    //
-    //         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
-    //     }
-    // }
 }
