@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using Unity.Mathematics.Geometry;
 using UnityEngine;
 
@@ -73,6 +74,7 @@ public class CameraMove : MonoBehaviour
     public void SetCurObjectToFollowUser()
     {
         curObjectTofollow = objectTofollowUser;
+        realCamera.transform.rotation = objectTofollowUser.transform.rotation;
     }
 
     public void SetCurObjectToFollowBoat()

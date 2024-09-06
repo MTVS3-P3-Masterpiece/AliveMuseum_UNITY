@@ -14,11 +14,23 @@ public class MoveBoatCurve : MonoBehaviour
     private Coroutine moveCo;
     public Canvas Course2InputCanvas;
     public bool isResponseComplete = false;
-
+    public bool isBoatMoving = false;
+    public Camera mainCamera;
+    
     public void Start()
     {
         Course2InputCanvas.enabled = false;
+        mainCamera = Camera.main;
     }
+    
+    public void Update()
+    {
+        if (isBoatMoving)
+        {
+            mainCamera.transform.rotation = transform.rotation;
+        }
+    }
+    
     public void StartMoveBoatCourse1()
     {
         moveCo = StartCoroutine(MoveBoatCourse1()); 
@@ -33,10 +45,12 @@ public class MoveBoatCurve : MonoBehaviour
         }
 
         // 경로를 따라 이동하며 동시에 회전
+        isBoatMoving = true;
         transform.DOPath(waypoints, 10, PathType.CubicBezier)
             .SetEase(Ease.OutQuad)
             .SetLookAt(0.01f).OnComplete(() =>
             {
+                isBoatMoving = false;
                 Debug.Log("MoveBoatCurve : OnComplete");
                 //FIXME : AI 통신 추가
                 Course2InputCanvas.enabled = true;
@@ -54,9 +68,10 @@ public class MoveBoatCurve : MonoBehaviour
         }
 
         yield return new WaitUntil(() => isResponseComplete);
+        isBoatMoving = true;
         transform.DOPath(waypoints, 10, PathType.CubicBezier)
             .SetEase(Ease.OutQuad)
-            .SetLookAt(0.01f);
+            .SetLookAt(0.01f).OnComplete(() => isBoatMoving = false);
         // 이동 경로를 따라 자동으로 회전
     }
 }

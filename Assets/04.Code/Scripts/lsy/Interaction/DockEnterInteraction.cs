@@ -5,6 +5,9 @@ public class DockEnterInteraction : MonoBehaviour, IInteractable
     private CameraMove _cameraMove;
     private UserMove _userMove;
     public MoveBoatCurve _moveBoatCurve;
+    public GameObject parentObjectBoat;
+    public GameObject childObjectUser;
+    
     public void Start()
     {
         _cameraMove = Camera.main.GetComponent<CameraMove>();
@@ -13,6 +16,12 @@ public class DockEnterInteraction : MonoBehaviour, IInteractable
     }
     public void Interact()
     {
+        childObjectUser.transform.SetParent(parentObjectBoat.transform);
+        
+        childObjectUser.transform.localPosition = Vector3.zero;
+        childObjectUser.transform.localRotation = Quaternion.identity;
+        childObjectUser.transform.localScale = Vector3.one;
+        
         Debug.Log("DockInteraction : active");
         _cameraMove.SetCurObjectToFollowBoat();
         _userMove.enabled = false;
