@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class DownloadManager
+public class DownloadManager_Sample
 {
     public static IEnumerator DownloadTexture(string url, Action<Texture2D> onComplete,
         IProgress<float> progress = null)

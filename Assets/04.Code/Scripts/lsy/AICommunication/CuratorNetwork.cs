@@ -10,6 +10,8 @@ public class CuratorNetwork : MonoBehaviour
 
     public CuratorRequestData curatorRequestData;
     public CuratorResponseData curatorResponseData;
+
+    public string msg;
     
     private void Start()
     {
@@ -18,15 +20,15 @@ public class CuratorNetwork : MonoBehaviour
         curatorResponseData = new CuratorResponseData();
     }
     
-    // public void getCuratorResult()
-    // {
-    //     StartCoroutine(reqCurator());
-    // }
+    public void getCuratorResult()
+    {
+        StartCoroutine(reqCurator());
+    }
     
     public IEnumerator reqCurator()
     {
         List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
-        formData.Add(new MultipartFormDataSection("chat", curatorRequestData.chat));
+        formData.Add(new MultipartFormDataSection("chat", msg));
         /* for real */
         using UnityWebRequest req = UnityWebRequest.Post(
             networkData.baseUrl+networkData.curatorAPI, formData);
@@ -35,6 +37,7 @@ public class CuratorNetwork : MonoBehaviour
         //    networkData.tempBaseUrl+networkData.curatorAPI, formData);
         yield return req.SendWebRequest();
         byte[] bytes = req.downloadHandler.data;
+        Debug.Log("CuratorNetowrk : " + bytes);
         curatorResponseData.chatResult = Encoding.UTF8.GetString(bytes);
         Debug.Log("CuratorNetwork : response - "+ curatorResponseData.chatResult);
     }

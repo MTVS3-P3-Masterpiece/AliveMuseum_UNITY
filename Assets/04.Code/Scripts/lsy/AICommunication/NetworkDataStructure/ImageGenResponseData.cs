@@ -1,4 +1,7 @@
-﻿public class ImageGenResponseData
+﻿using Newtonsoft.Json;
+
+public class ImageGenResponseData
 {
-    public string[] generatedImagesPath;
+    [JsonProperty("generated_images")]
+    public string[] generated_images;
 }
