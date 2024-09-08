@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/01.Level/Scenes/TestScene/kbs/Ph.TestField.unity
+    guid: 172c5eda6838bf244865bd4f51b31892
+  - enabled: 1
+    path: Assets/01.Level/Scenes/TestScene/kbs/WrestlingSceneTest.unity
+    guid: b1e6d1d4a4cacd34c9bb00846a151e21
+  - enabled: 1
     path: Assets/01.Level/Scenes/1.StartOutdoorScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/01.Level/Scenes/TestScene/kbs/TurnCombatTestField.unity
+    guid: cdc8eccee3440b24799e6b9b234833cd
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
