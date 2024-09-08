@@ -1108,6 +1108,25 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &354703104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5397605017283862436, guid: 6ac2107ec6c344f4e9cbf0eb2114916c, type: 3}
+  m_PrefabInstance: {fileID: 353941097367644218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &354703110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354703104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4504f8e75129e0c4aa43a055a4909b8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputField: {fileID: 1016430268}
+  displayField: {fileID: 831545392}
 --- !u!1 &362272301 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3570069727663045838, guid: 6ac2107ec6c344f4e9cbf0eb2114916c, type: 3}
@@ -3597,6 +3616,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &831545392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3219855575273069618, guid: 6ac2107ec6c344f4e9cbf0eb2114916c, type: 3}
+  m_PrefabInstance: {fileID: 353941097367644218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3646,6 +3676,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &950391232 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4387035749709843367, guid: f0c804fb55c34bf48919fbe6ea435b41, type: 3}
+  m_PrefabInstance: {fileID: 6073843470447089724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &965542632
 Mesh:
   m_ObjectHideFlags: 0
@@ -4306,6 +4341,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1016430268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2698144044823951490, guid: 6ac2107ec6c344f4e9cbf0eb2114916c, type: 3}
+  m_PrefabInstance: {fileID: 353941097367644218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1017676790
 Mesh:
   m_ObjectHideFlags: 0
@@ -9130,6 +9176,72 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &2147305131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2147305132}
+  - component: {fileID: 2147305133}
+  - component: {fileID: 2147305134}
+  m_Layer: 0
+  m_Name: MoveToBoatScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2147305132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147305131}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.26, y: 3.09, z: 17.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 950391232}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2147305133
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147305131}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2147305134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147305131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c41c40563adecf43906e31e19871650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &353941097367644218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9222,14 +9334,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChatBotCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5707473226827886266, guid: 6ac2107ec6c344f4e9cbf0eb2114916c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 354703110}
+    - target: {fileID: 5707473226827886266, guid: 6ac2107ec6c344f4e9cbf0eb2114916c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartSendChat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707473226827886266, guid: 6ac2107ec6c344f4e9cbf0eb2114916c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChatToCurator_Museum, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6001289724066285037, guid: 6ac2107ec6c344f4e9cbf0eb2114916c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 513883885}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8641389919205111747, guid: 6ac2107ec6c344f4e9cbf0eb2114916c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5397605017283862436, guid: 6ac2107ec6c344f4e9cbf0eb2114916c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 354703110}
   m_SourcePrefab: {fileID: 100100000, guid: 6ac2107ec6c344f4e9cbf0eb2114916c, type: 3}
 --- !u!1001 &2048326391081041509
 PrefabInstance:
@@ -10357,7 +10485,10 @@ PrefabInstance:
       objectReference: {fileID: 1535797432}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4387035749709843367, guid: f0c804fb55c34bf48919fbe6ea435b41, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2147305132}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2361371025192098184, guid: f0c804fb55c34bf48919fbe6ea435b41, type: 3}
       insertIndex: -1

@@ -2361,11 +2361,26 @@ PrefabInstance:
       propertyPath: moveBoatCurve
       value: 
       objectReference: {fileID: 1441863381}
+    - target: {fileID: 8397970087425822254, guid: dff215afddf20bb4b91542c81258aa59, type: 3}
+      propertyPath: downloadTexture
+      value: 
+      objectReference: {fileID: 5702028894301296685}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dff215afddf20bb4b91542c81258aa59, type: 3}
+--- !u!114 &5702028894301296685 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1014747245835964261, guid: dff215afddf20bb4b91542c81258aa59, type: 3}
+  m_PrefabInstance: {fileID: 5702028894301296684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8732eeb807cb7c48861733c6be5a3ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5779089884675325947
 PrefabInstance:
   m_ObjectHideFlags: 0

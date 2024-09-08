@@ -31,7 +31,7 @@ public class GetImagePathNetwork : MonoBehaviour
     
     public IEnumerator ReqImage()
     {
-        UnityWebRequest req = new UnityWebRequest(NetworkData.tempBaseUrl+NetworkData.genImageAPI, "POST");
+        UnityWebRequest req = new UnityWebRequest(NetworkData.baseUrl+NetworkData.genImageAPI, "POST");
         req.uploadHandler = new UploadHandlerRaw(new byte[0]); // 빈 배열로 본문 설정
         req.downloadHandler = new DownloadHandlerBuffer();
         // List<IMultipartFormSection> formData = new List<IMultipartFormSection>();

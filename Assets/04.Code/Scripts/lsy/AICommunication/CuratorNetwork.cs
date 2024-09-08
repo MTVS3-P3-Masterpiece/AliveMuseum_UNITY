@@ -33,7 +33,7 @@ public class CuratorNetwork : MonoBehaviour
         formData.Add(new MultipartFormDataSection("chat", curatorRequestData.chat));
         /* for real */
         using UnityWebRequest req = UnityWebRequest.Post(
-            NetworkData.tempBaseUrl+NetworkData.curatorAPI, formData);
+            NetworkData.baseUrl+NetworkData.curatorAPI, formData);
         /* for test */
         // using UnityWebRequest req = UnityWebRequest.Post(
         //     NetworkData.tempBaseUrl+NetworkData.curatorAPI, formData);
