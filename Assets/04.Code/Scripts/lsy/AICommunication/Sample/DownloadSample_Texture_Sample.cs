@@ -16,7 +16,7 @@ public class DownloadSample_Texture_Sample : MonoBehaviour
     //private TMP_Text _text;
 
     public GetImagePathNetwork getImagePathNetwork;
-    public NetworkData networkData;
+    //public NetworkData networkData;
     public int curIndex;
     
     //public string url;
@@ -26,13 +26,13 @@ public class DownloadSample_Texture_Sample : MonoBehaviour
     {
         _image = GetComponent<Image>();
         //_text = GetComponent<TMP_Text>();
-        networkData = new NetworkData();
+        //networkData = new NetworkData();
     }
 
     public void StartDownload()
     {
         //StartCoroutine(UpdateTextureProcess(url));
-        StartCoroutine(UpdateTextureProcess(networkData.baseUrl + networkData.downloadImageAPI +
+        StartCoroutine(UpdateTextureProcess(NetworkData.baseUrl + NetworkData.downloadImageAPI +
                                             getImagePathNetwork.imageGenResponseData.generated_images[curIndex]));
 
     }

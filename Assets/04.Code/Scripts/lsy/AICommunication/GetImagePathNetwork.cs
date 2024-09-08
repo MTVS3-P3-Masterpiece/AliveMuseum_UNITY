@@ -9,13 +9,13 @@ using UnityEngine;
 
 public class GetImagePathNetwork : MonoBehaviour
 {
-    private NetworkData networkData;
+    //private NetworkData networkData;
 
     public ImageGenResponseData imageGenResponseData;
 
     private void Start()
     {
-        networkData = new NetworkData();
+        //networkData = new NetworkData();
         imageGenResponseData = new ImageGenResponseData();
     }
 
@@ -26,7 +26,7 @@ public class GetImagePathNetwork : MonoBehaviour
     
     public IEnumerator ReqImage()
     {
-        UnityWebRequest req = new UnityWebRequest(networkData.baseUrl+networkData.genImageAPI, "POST");
+        UnityWebRequest req = new UnityWebRequest(NetworkData.baseUrl+NetworkData.genImageAPI, "POST");
         req.uploadHandler = new UploadHandlerRaw(new byte[0]); // 빈 배열로 본문 설정
         req.downloadHandler = new DownloadHandlerBuffer();
         // List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
