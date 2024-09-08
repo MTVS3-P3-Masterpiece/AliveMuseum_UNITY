@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+using UnityEngine.Networking;
+
+public class CuratorNetwork_Sample : MonoBehaviour
+{
+    //private NetworkData networkData;
+
+    public CuratorRequestData curatorRequestData;
+    public CuratorResponseData curatorResponseData;
+
+    public string msg;
+    
+    private void Start()
+    {
+        //networkData = new NetworkData();
+        curatorRequestData = new CuratorRequestData();
+        curatorResponseData = new CuratorResponseData();
+    }
+    
+    public void getCuratorResult()
+    {
+        StartCoroutine(reqCurator());
+    }
+    
+    public IEnumerator reqCurator()
+    {
+        List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
+        formData.Add(new MultipartFormDataSection("chat", msg));
+        /* for real */
+        using UnityWebRequest req = UnityWebRequest.Post(
+            NetworkData.baseUrl+NetworkData.curatorAPI, formData);
+        /* for test */
+        //using UnityWebRequest req = UnityWebRequest.Post(
+        //    networkData.tempBaseUrl+networkData.curatorAPI, formData);
+        yield return req.SendWebRequest();
+        byte[] bytes = req.downloadHandler.data;
+        Debug.Log("CuratorNetowrk : " + bytes);
+        curatorResponseData.chatResult = Encoding.UTF8.GetString(bytes);
+        Debug.Log("CuratorNetwork : response - "+ curatorResponseData.chatResult);
+    }
+
+    public void SetCuratorRequestData(string text)
+    {
+        curatorRequestData.chat = text;
+    }
+}
