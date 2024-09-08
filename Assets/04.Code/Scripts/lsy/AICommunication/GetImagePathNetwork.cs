@@ -12,11 +12,16 @@ public class GetImagePathNetwork : MonoBehaviour
     //private NetworkData networkData;
 
     public ImageGenResponseData imageGenResponseData;
+    public DownloadSample_Texture downloadTexture;
 
-    private void Start()
+    private IEnumerator Start()
     {
         //networkData = new NetworkData();
         imageGenResponseData = new ImageGenResponseData();
+        //SendReqImagePath();
+        yield return StartCoroutine(ReqImage());
+        yield return StartCoroutine(downloadTexture.UpdateTextureProcess());
+
     }
 
     public void SendReqImagePath()
@@ -26,7 +31,7 @@ public class GetImagePathNetwork : MonoBehaviour
     
     public IEnumerator ReqImage()
     {
-        UnityWebRequest req = new UnityWebRequest(NetworkData.baseUrl+NetworkData.genImageAPI, "POST");
+        UnityWebRequest req = new UnityWebRequest(NetworkData.tempBaseUrl+NetworkData.genImageAPI, "POST");
         req.uploadHandler = new UploadHandlerRaw(new byte[0]); // 빈 배열로 본문 설정
         req.downloadHandler = new DownloadHandlerBuffer();
         // List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
