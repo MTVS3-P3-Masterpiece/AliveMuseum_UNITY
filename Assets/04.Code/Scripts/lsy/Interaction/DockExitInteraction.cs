@@ -17,8 +17,9 @@ public class DockExitInteraction : MonoBehaviour, IInteractable
     {
         moveBoatCurve.isBoatMoving = false;
         childObjectUser.transform.SetParent(parentObject.transform);
+        //childObjectUser.transform.position = Vector3.zero;
         
-        childObjectUser.transform.localPosition = Vector3.zero;
+        //childObjectUser.transform.localPosition = Vector3.zero;
         childObjectUser.transform.localRotation = Quaternion.identity;
         childObjectUser.transform.localScale = Vector3.one;
         
