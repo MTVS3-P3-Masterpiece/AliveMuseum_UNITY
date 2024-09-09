@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class DontDestroySingleton : MonoBehaviour
+public class CameraSingleton : MonoBehaviour
 {
-    public static DontDestroySingleton instance = null;
+    public static CameraSingleton instance = null;
     
     private void Awake()
     {

@@ -15,7 +15,9 @@ public class PlayerMove : MonoBehaviour
     private int maxHp = 20;
     public Slider hpSlider;
     public GameObject hitEffect; 
-    private Animator anim; 
+    private Animator anim;
+    public Transform cameraTransform;
+    
     
     void Start()
     {
@@ -25,7 +27,9 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        Cursor.lockState = CursorLockMode.Confined; 
+        CameraPosition();
+        
+       
                 
         float h = Input.GetAxis("Horizontal");  
         float v = Input.GetAxis("Vertical");   
@@ -33,7 +37,7 @@ public class PlayerMove : MonoBehaviour
    
         Vector3 dir = new Vector3(h, 0, v);
         dir = dir.normalized;
-        dir = Camera.main.transform.TransformDirection(dir);
+        dir = cameraTransform.TransformDirection(dir);
         
         yVelocity += gravity * Time.deltaTime;
         dir.y = yVelocity;
@@ -79,5 +83,12 @@ public class PlayerMove : MonoBehaviour
         hitEffect.SetActive(false);
         
     }
+
+    private void CameraPosition()
+    {
+        Vector3 cameraPosition = cameraTransform.localPosition;
+        cameraTransform.localPosition = cameraPosition;
+    }
+    
     
 }

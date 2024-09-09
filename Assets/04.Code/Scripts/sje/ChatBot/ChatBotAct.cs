@@ -58,7 +58,7 @@ public class ChatBotAct : MonoBehaviour
         
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<PlayerMove>();
-        camRotate = Camera.main.GetComponent<CamRotate>();
+      //  camRotate = Camera.main.GetComponent<CamRotate>();
     }
 
 
