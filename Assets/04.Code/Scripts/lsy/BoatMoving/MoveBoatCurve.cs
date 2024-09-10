@@ -17,6 +17,8 @@ public class MoveBoatCurve : MonoBehaviour
     public bool isResponseComplete = false;
     public bool isBoatMoving = false;
     public Camera mainCamera;
+
+    public GameObject imagesObject;
     
     public void Start()
     {
@@ -51,6 +53,7 @@ public class MoveBoatCurve : MonoBehaviour
             .SetEase(Ease.OutQuad)
             .SetLookAt(0.01f).OnComplete(() =>
             {
+                imagesObject.SetActive(false);
                 isBoatMoving = false;
                 Debug.Log("MoveBoatCurve : OnComplete");
                 //FIXME : AI 통신 추가

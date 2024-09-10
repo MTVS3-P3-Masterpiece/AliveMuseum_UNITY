@@ -1722,6 +1722,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2070791848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6837655893387924249, guid: 419c782b1ef6c8e48902da067d6ed063, type: 3}
+  m_PrefabInstance: {fileID: 7316929956977883458}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2091134250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,6 +2156,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2203355519952040705, guid: d9e732e027ce0de4db4bdcd23332e33a, type: 3}
+      propertyPath: imagesObject
+      value: 
+      objectReference: {fileID: 2070791848}
     - target: {fileID: 2203355519952040705, guid: d9e732e027ce0de4db4bdcd23332e33a, type: 3}
       propertyPath: Course2InputCanvas
       value: 
