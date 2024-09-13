@@ -1,3 +1,5 @@
+using Fusion;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class CamRotate : MonoBehaviour
@@ -10,6 +12,7 @@ public class CamRotate : MonoBehaviour
     private float mouseSensitivity = 100f; // 마우스 감도 설정
     
     public Transform playerBody; // 플레이어의 몸체 Transform을 저장할 변수
+   // public CinemachineCamera playerCamera;
 
     private float _xRotation = 0f; 
     public float rotSpeed = 200f;
@@ -21,6 +24,17 @@ public class CamRotate : MonoBehaviour
         
         // 마우스 커서를 화면 중앙에 고정하고 숨김
         //Cursor.lockState = CursorLockMode.Locked;
+
+
+       /* if (!Object.HasInputAuthority)
+        {
+            playerCamera.gameObject.SetActive(false);
+        }
+        else
+        {
+            playerCamera.Follow = playerBody;
+            playerCamera.LookAt = playerBody;
+        } */
     }
 
     void Update()

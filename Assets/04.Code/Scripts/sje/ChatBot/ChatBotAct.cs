@@ -17,7 +17,7 @@ public class ChatBotAct : MonoBehaviour
     private bool followPlayer = false;  
     private bool isChatBotVisible = true; 
 
-    PlayerMove playerScript;
+    PlayerManager playerScript;
     GameObject player;  
     CamRotate camRotate;
     
@@ -57,7 +57,7 @@ public class ChatBotAct : MonoBehaviour
         }
         
         player = GameObject.Find("Player");
-        playerScript = player.GetComponent<PlayerMove>();
+        playerScript = player.GetComponent<PlayerManager>();
       //  camRotate = Camera.main.GetComponent<CamRotate>();
     }
 
