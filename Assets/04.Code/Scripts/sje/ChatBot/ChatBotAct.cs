@@ -73,6 +73,7 @@ public class ChatBotAct : MonoBehaviour
                 chatOpen = true;
                 followPlayer = true;  
                 interaction.SetActive(false);
+                camRotate.enabled = false;
             }
         }
 
@@ -96,6 +97,7 @@ public class ChatBotAct : MonoBehaviour
             ChatText.SetActive(false);
             playerScript.enabled = true;
             chatOpen = false;
+            camRotate.enabled = true;
         }
     }
     
