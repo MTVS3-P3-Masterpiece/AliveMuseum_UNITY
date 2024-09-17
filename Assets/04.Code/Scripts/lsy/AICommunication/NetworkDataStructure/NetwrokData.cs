@@ -5,5 +5,6 @@
     public static string curatorAPI = "/curator";
     public static string genImageAPI = "/images";
     public static string downloadImageAPI = "/download-image/";
+    public static string downloadRecordImageAPI = "/generate-image";
 }
 
