@@ -19,12 +19,17 @@ public class MoveToWrestlingScene : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        // if (other.gameObject.CompareTag("Player"))
+        // {
+        //     if (Input.GetKeyDown(KeyCode.E))
+        //     {
+        //         SceneManager.LoadScene("TurnCombatTestField");
+        //     }
+        // }
+        if (Input.GetKeyDown(KeyCode.Keypad1))
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                SceneManager.LoadScene("TurnCombatTestField");
-            }
+            SceneManager.LoadScene("TurnCombatTestField");
         }
     }
+    
 }

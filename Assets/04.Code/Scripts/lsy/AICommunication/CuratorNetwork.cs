@@ -21,13 +21,13 @@ public class CuratorNetwork : MonoBehaviour
         curatorResponseData = new CuratorResponseData();
     }
     
-    public void GetCuratorResult(Action<string> onComplete)
+    public void GetCuratorResult()
     {
-        StartCoroutine(ReqCurator(onComplete));
+        StartCoroutine(ReqCurator());
         //return curatorResponseData.chatResult;
     }
     
-    private IEnumerator ReqCurator(Action<string> onComplete)
+    public IEnumerator ReqCurator()
     {
         List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
         formData.Add(new MultipartFormDataSection("chat", curatorRequestData.chat));
@@ -42,7 +42,6 @@ public class CuratorNetwork : MonoBehaviour
         Debug.Log("CuratorNetowrk : " + bytes);
         curatorResponseData.chatResult = Encoding.UTF8.GetString(bytes);
         Debug.Log("CuratorNetwork : response - "+ curatorResponseData.chatResult);
-        onComplete?.Invoke(curatorResponseData.chatResult);
     }
 
     public void SetCuratorRequestData(string text)

@@ -4,11 +4,11 @@ using UnityEngine;
 public class Course2TextCommunication : MonoBehaviour
 {
     public MoveBoatCurve _MoveBoatCurve;
-    private CuratorNetwork_Sample _curatorNetworkSample;
+    private CuratorNetwork _curatorNetwork;
 
     private void Start()
     {
-        _curatorNetworkSample = FindObjectOfType<CuratorNetwork_Sample>();
+        _curatorNetwork = FindObjectOfType<CuratorNetwork>();
     }
     public void StartCommuteCourse2Text()
     {
@@ -18,7 +18,7 @@ public class Course2TextCommunication : MonoBehaviour
     {
         
         //FIXME : 실제 통신으로 변경 필요
-        yield return StartCoroutine(_curatorNetworkSample.reqCurator());
+        yield return StartCoroutine(_curatorNetwork.ReqCurator());
         //yield return new WaitForSeconds(3f);
         Debug.Log("Course2TextCommunication : Complete Communication");
         _MoveBoatCurve.isResponseComplete = true;

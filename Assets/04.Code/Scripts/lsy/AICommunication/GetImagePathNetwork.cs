@@ -12,11 +12,16 @@ public class GetImagePathNetwork : MonoBehaviour
     //private NetworkData networkData;
 
     public ImageGenResponseData imageGenResponseData;
+    public DownloadSample_Texture downloadTexture;
 
-    private void Start()
+    private IEnumerator Start()
     {
         //networkData = new NetworkData();
         imageGenResponseData = new ImageGenResponseData();
+        //SendReqImagePath();
+        yield return StartCoroutine(ReqImage());
+        yield return StartCoroutine(downloadTexture.UpdateTextureProcess());
+
     }
 
     public void SendReqImagePath()

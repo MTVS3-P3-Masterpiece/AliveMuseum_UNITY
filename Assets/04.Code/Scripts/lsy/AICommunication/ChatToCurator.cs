@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,10 +6,12 @@ using UnityEngine.UI;
 public class ChatToCurator : MonoBehaviour
 {
     public TMP_InputField inputField;
-    public Text displayField;
+    public TMP_Text displayField;
     //public string EmotionText;
     //public Course2TextCommunication _Course2TextCommunication;
     //public Canvas chatbotCanvas;
+    public GameObject chatbotCanvas;
+    public MoveBoatCurve moveBoatCurve;
 
     private CuratorNetwork _curatorNetwork;
 
@@ -21,17 +24,22 @@ public class ChatToCurator : MonoBehaviour
             Debug.LogError("InputCourse2Text : curatorNetwork is null");
         }
     }
-    
-    public void SendChat()
+
+    public void StartSendChat()
     {
+        StartCoroutine(SendChat());
+    }
+    
+    public IEnumerator SendChat()
+    {
+        chatbotCanvas.SetActive(false);
         //curaorCanvas.enabled = false;
         //EmotionText = EmotionInputField.text;
         _curatorNetwork.SetCuratorRequestData(inputField.text);
         Debug.Log("ChatToCurator : InputText - " + _curatorNetwork.curatorRequestData.chat);
-        _curatorNetwork.GetCuratorResult(result =>
-        {
-            Debug.Log("ChatToCurator : Response Text - " + _curatorNetwork.GetResponseText());
-            displayField.text = _curatorNetwork.GetResponseText();
-        });
+        yield return StartCoroutine(_curatorNetwork.ReqCurator());
+        Debug.Log("ChatToCurator : Response Text - " + _curatorNetwork.GetResponseText());
+        displayField.text = "감정 키워드 : "+_curatorNetwork.GetResponseText();
+        moveBoatCurve.isResponseComplete = true;
     }
 }
