@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MuseumManager : MonoBehaviour
@@ -47,5 +48,14 @@ public class MuseumManager : MonoBehaviour
         museumOption.SetActive(false);
         Time.timeScale = 1f;
         playerScript.enabled = true;
+        camRotate.enabled = true;
     }
+    
+    public void MoveToKorean()
+    {
+        SceneManager.LoadScene("3_Hall_Hangle");
+    }
+    
+    
+  
 }
