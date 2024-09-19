@@ -9,10 +9,12 @@ public class NoteManager : MonoBehaviour
     //[SerializeField] private GameObject goNote = null
     public NoteData[] noteData;
     private TimingManager theTimingManager;
+    private EffectManager theEffectManager;
     private int cnt = 0;
     void Start()
     {
         theTimingManager = GetComponent<TimingManager>();
+        theEffectManager = FindObjectOfType<EffectManager>();
         noteData = new NoteData[100];
 
         for (int i = 0; i < 100; i++)
@@ -43,6 +45,8 @@ public class NoteManager : MonoBehaviour
     {
         if (collision.CompareTag("Note"))
         {
+            if(collision.GetComponent<Note>().GetNoteFlag())
+                theEffectManager.JudgementEffect(4);
             theTimingManager.boxNoteList.Remove(collision.gameObject);
             ObjectPool.instance.noteQueue.Enqueue(collision.gameObject);
             collision.gameObject.SetActive(false);
