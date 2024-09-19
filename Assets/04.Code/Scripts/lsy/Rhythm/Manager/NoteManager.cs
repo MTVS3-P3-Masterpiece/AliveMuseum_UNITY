@@ -5,6 +5,7 @@ public class NoteManager : MonoBehaviour
     public int bpm = 0;
     private double currentTime = 0d;
 
+    public bool noteActive = true;
     [SerializeField] private Transform tfNoteAppear = null;
     //[SerializeField] private GameObject goNote = null
     public NoteData[] noteData;
@@ -27,17 +28,20 @@ public class NoteManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
-        if (currentTime >= 60d / bpm * noteData[cnt].beatUnit)
+        if (noteActive)
         {
-            GameObject t_note = ObjectPool.instance.noteQueue.Dequeue();
-            t_note.transform.position = tfNoteAppear.position;
-            t_note.SetActive(true);
-            //GameObject t_note = Instantiate(goNote, tfNoteAppear.position, Quaternion.identity);
-            //t_note.transform.SetParent(this.transform);
-            theTimingManager.boxNoteList.Add(t_note);
-            currentTime -= 60d / bpm * noteData[cnt].beatUnit;
-            cnt++;
+            currentTime += Time.deltaTime;
+            if (currentTime >= 60d / bpm * noteData[cnt].beatUnit)
+            {
+                GameObject t_note = ObjectPool.instance.noteQueue.Dequeue();
+                t_note.transform.position = tfNoteAppear.position;
+                t_note.SetActive(true);
+                //GameObject t_note = Instantiate(goNote, tfNoteAppear.position, Quaternion.identity);
+                //t_note.transform.SetParent(this.transform);
+                theTimingManager.boxNoteList.Add(t_note);
+                currentTime -= 60d / bpm * noteData[cnt].beatUnit;
+                cnt++;
+            }
         }
     }
 
@@ -51,6 +55,16 @@ public class NoteManager : MonoBehaviour
             ObjectPool.instance.noteQueue.Enqueue(collision.gameObject);
             collision.gameObject.SetActive(false);
             //Destroy(collision.gameObject);
+        }
+    }
+
+    public void RemoveNote()
+    {
+        noteActive = false;
+        for (int i = 0; i < theTimingManager.boxNoteList.Count; i++)
+        {
+            theTimingManager.boxNoteList[i].SetActive(false);
+            ObjectPool.instance.noteQueue.Enqueue(theTimingManager.boxNoteList[i]);
         }
     }
 }
