@@ -39,7 +39,8 @@ public class PlayerManager : NetworkBehaviour
             Instance = this;
             RpcSecNickName(CreateNickname.Value);
             camera = Camera.main;
-            camera.GetComponent<ThirdPersonCamera>().player = transform; 
+            //camera.GetComponent<ThirdPersonCamera>().player = transform; 
+            camera.GetComponent<FirstPersonCamera>().player =  transform;
         }
     }
 

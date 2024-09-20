@@ -11,7 +11,9 @@ using UnityEngine.UI;
 public class GameManager : SimulationBehaviour
 {
     public NetworkPrefabRef playerPrefab;
-
+    public Button manButton;
+    public Button womenButton;
+    public Image BG;
     private NetworkObject _spawnedPlayer;
 
     public static GameManager Instance;
@@ -23,18 +25,22 @@ public class GameManager : SimulationBehaviour
         Instance = this;
     }
     
-    void Start()
+    public void OnClickButton()
     {
         StartCoroutine(Process());
         
        //runnerController.Runner.Spawn(playerPrefab, new Vector3(0, 1, 0), quaternion.identity);
 
        //StartCoroutine(SpawnPlayer(RunnerController.Runner));
+       womenButton.gameObject.SetActive(false);
+       manButton.gameObject.SetActive(false);
+       BG.gameObject.SetActive(false);
+       
     }
 
     private IEnumerator Process()
     {
-        var op = RunnerController.Runner.SpawnAsync(playerPrefab);
+        var op = RunnerController.Runner.SpawnAsync(playerPrefab, new Vector3(4, 1, 4));
         yield return new WaitUntil(() => op.Status == NetworkSpawnStatus.Spawned);
         _spawnedPlayer = op.Object;
         _spawnedPlayer.name = $"Player : {_spawnedPlayer.Id}"; // 하이라이키상의 player이름 변경

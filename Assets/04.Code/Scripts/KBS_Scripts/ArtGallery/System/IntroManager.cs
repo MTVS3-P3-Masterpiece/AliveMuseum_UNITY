@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoBehaviour
 {
-    private const string MainSceneName = "2.MuseumScene";
+    private const string MainSceneName = "Alpha_Museum";
     
     public GameObject runnerPrefab;
     public TMP_InputField roomNumberInputField;
