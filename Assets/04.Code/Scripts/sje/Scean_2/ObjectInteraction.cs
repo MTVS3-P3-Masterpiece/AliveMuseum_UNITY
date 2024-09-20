@@ -31,7 +31,7 @@ public class ObjectInteraction : MonoBehaviour
             materials[i].DisableKeyword("_ALPHATEST_ON");
             materials[i].EnableKeyword("_ALPHABLEND_ON");
             materials[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
-            materials[i].renderQueue = 3000;
+            materials[i].renderQueue = 2000;
         }
         
     }

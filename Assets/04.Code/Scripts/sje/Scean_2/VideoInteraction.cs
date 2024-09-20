@@ -17,10 +17,15 @@ public class VideoInteraction : MonoBehaviour
     public KeyCode interactionKey = KeyCode.E;   
 
     private bool[] isVideoPlaying; 
+    private Light[] sceneLights;   // 씬의 모든 조명
 
     void Start()
     {
         isVideoPlaying = new bool[cubeVideoPairs.Length];
+
+        // 씬에 있는 모든 Light 컴포넌트를 찾음
+        sceneLights = FindObjectsOfType<Light>();
+
         for (int i = 0; i < cubeVideoPairs.Length; i++)
         {
             foreach (VideoPlayer videoPlayer in cubeVideoPairs[i].videoPlayers)
@@ -42,6 +47,7 @@ public class VideoInteraction : MonoBehaviour
                 if (!isVideoPlaying[i])
                 {
                     StartCoroutine(PlayVideosWithDelay(cubeVideoPairs[i].videoPlayers, cubeVideoPairs[i].delay));
+                    TurnOffLights();  // 비디오 재생 시 조명 끄기
                     isVideoPlaying[i] = true;
                 }
                 else
@@ -50,6 +56,7 @@ public class VideoInteraction : MonoBehaviour
                     {
                         videoPlayer.Stop();
                     }
+                    TurnOnLights();  // 비디오 중지 시 조명 켜기
                     isVideoPlaying[i] = false;
                 }
             }
@@ -65,39 +72,22 @@ public class VideoInteraction : MonoBehaviour
             videoPlayer.Play();
         }
     }
+
+    // 씬의 모든 조명을 끄는 함수
+    private void TurnOffLights()
+    {
+        foreach (Light light in sceneLights)
+        {
+            light.enabled = false;
+        }
+    }
+
+    // 씬의 모든 조명을 켜는 함수
+    private void TurnOnLights()
+    {
+        foreach (Light light in sceneLights)
+        {
+            light.enabled = true;
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
