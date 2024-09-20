@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;  
 
@@ -16,6 +17,9 @@ public class Door : MonoBehaviour
 
     // 애니메이터 변수
     private Animator anim;
+    public Collider physicalCollider;  
+    
+    public float delayTime = 3.0f;  
     
     
     void Start()
@@ -34,11 +38,35 @@ public class Door : MonoBehaviour
         
         if (other.gameObject.CompareTag("Player"))
         {
-            // 애니메이션 트리거 실행
+     
             if (anim != null)
             {
                 anim.SetTrigger("OpenDoor");
+                //physicalCollider.enabled = false;
+                
+                StartCoroutine(DisableColliderWithDelay());
+                
             }
         }
     }
+    
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            anim.SetBool("OpenDoor", false);
+            physicalCollider.enabled = true;  
+            
+        }
+    }
+    private IEnumerator DisableColliderWithDelay()
+    {
+        yield return new WaitForSeconds(delayTime);  
+        physicalCollider.enabled = false; 
+    }
+    
+    
+    
+    
 }
