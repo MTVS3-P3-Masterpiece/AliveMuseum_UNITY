@@ -40,7 +40,7 @@ public class GameManager : SimulationBehaviour
 
     private IEnumerator Process()
     {
-        var op = RunnerController.Runner.SpawnAsync(playerPrefab, new Vector3(4, 1, 4));
+        var op = RunnerController.Runner.SpawnAsync(playerPrefab, new Vector3(4, 1, 4), Quaternion.identity, null);
         yield return new WaitUntil(() => op.Status == NetworkSpawnStatus.Spawned);
         _spawnedPlayer = op.Object;
         _spawnedPlayer.name = $"Player : {_spawnedPlayer.Id}"; // 하이라이키상의 player이름 변경

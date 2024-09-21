@@ -7,13 +7,19 @@ public class PlayerMovement : NetworkBehaviour
     private bool _jumpPressed;
 
     private CharacterController _controller;
+    private NetworkCharacterController nCC;
 
     public float PlayerSpeed = 2f;
+    public float turnSpeed;
+    private Vector3 _movement;
+    private Quaternion _rotation;
+    public float rotationSpeed = 700f;
 
     public float JumpForce = 5f;
     public float GravityValue = -9.81f;
 
     public Camera Camera;
+    private Animator animator;
 
     private void Awake()
     {
@@ -39,7 +45,6 @@ public class PlayerMovement : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        // Only move own player and not every other player. Each player controls its own player object.
         if (HasStateAuthority == false)
         {
             return;
@@ -50,21 +55,38 @@ public class PlayerMovement : NetworkBehaviour
             _velocity = new Vector3(0, -1, 0);
         }
 
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+
+        float mouseX = Input.GetAxis("Mouse X") * rotationSpeed * Runner.DeltaTime;
+        transform.Rotate(0, mouseX, 0);
+        
+
         Quaternion cameraRotationY = Quaternion.Euler(0, Camera.transform.rotation.eulerAngles.y, 0);
-        Vector3 move = cameraRotationY * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * PlayerSpeed;
+        Vector3 move = cameraRotationY * new Vector3(h, 0, v) * Runner.DeltaTime * PlayerSpeed;
+        
+        nCC.Move(move + _velocity * Runner.DeltaTime);
+        
         
         _velocity.y += GravityValue * Runner.DeltaTime;
         if (_jumpPressed && _controller.isGrounded)
         {
             _velocity.y += JumpForce;
         }
-        _controller.Move(move + _velocity * Runner.DeltaTime);
+        
 
-        if (move != Vector3.zero)
+       /* if (move != Vector3.zero)
         {
-            gameObject.transform.forward = move;
-        }
+           transform.rotation = Quaternion.Euler(0, Camera.transform.rotation.eulerAngles.y,0);
+        } */
+       
+      /* if (moveDirection.magnitude > 0)
+       {
+           // 이동 방향으로 캐릭터 회전, 카메라의 방향을 반영
+           Quaternion targetRotation = Quaternion.LookRotation(cameraRotationY * moveDirection);
+           transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Runner.DeltaTime * 10f);  // 회전을 부드럽게
+       }
 
-        _jumpPressed = false;
+        _jumpPressed = false; */
     }
 }
