@@ -1,4 +1,98 @@
-﻿using UnityEngine;
+﻿// using UnityEngine;
+// using UnityEngine.Rendering;
+// using UnityEngine.Rendering.Universal;
+//
+// public class Water_Volume : ScriptableRendererFeature
+// {
+//     class CustomRenderPass : ScriptableRenderPass
+//     {
+//         public RenderTargetIdentifier source;
+//
+//         private Material _material;
+//
+//         private RenderTargetHandle tempRenderTarget;
+//         private RenderTargetHandle tempRenderTarget2;
+//
+//         public CustomRenderPass(Material mat)
+//         {
+//             _material = mat;
+//
+//             tempRenderTarget.Init("_TemporaryColourTexture");
+//             tempRenderTarget2.Init("_TemporaryDepthTexture");
+//         }
+//
+//         // This method is called before executing the render pass.
+//         // It can be used to configure render targets and their clear state. Also to create temporary render target textures.
+//         // When empty this render pass will render to the active camera render target.
+//         // You should never call CommandBuffer.SetRenderTarget. Instead call <c>ConfigureTarget</c> and <c>ConfigureClear</c>.
+//         // The render pipeline will ensure target setup and clearing happens in an performance manner.
+//         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
+//         {
+//
+//         }
+//
+//         // Here you can implement the rendering logic.
+//         // Use <c>ScriptableRenderContext</c> to issue drawing commands or execute command buffers
+//         // https://docs.unity3d.com/ScriptReference/Rendering.ScriptableRenderContext.html
+//         // You don't have to call ScriptableRenderContext.submit, the render pipeline will call it at specific points in the pipeline.
+//         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
+//         {
+//             if(renderingData.cameraData.cameraType != CameraType.Reflection)
+//             {
+//                 CommandBuffer commandBuffer = CommandBufferPool.Get();
+//
+//                 commandBuffer.GetTemporaryRT(tempRenderTarget.id, renderingData.cameraData.cameraTargetDescriptor);
+//                 Blit(commandBuffer, source, tempRenderTarget.Identifier(), _material);
+//                 Blit(commandBuffer, tempRenderTarget.Identifier(), source);
+//
+//                 context.ExecuteCommandBuffer(commandBuffer);
+//                 CommandBufferPool.Release(commandBuffer);
+//             }
+//         }
+//
+//         /// Cleanup any allocated resources that were created during the execution of this render pass.
+//         public override void FrameCleanup(CommandBuffer cmd)
+//         {
+//         }
+//     }
+//
+//     [System.Serializable]
+//     public class _Settings
+//     {
+//         //[HideInInspector]
+//         public Material material = null;
+//         public RenderPassEvent renderPass = RenderPassEvent.AfterRenderingSkybox;
+//     }
+//
+//     public _Settings settings = new _Settings();
+//
+//     CustomRenderPass m_ScriptablePass;
+//
+//     public override void Create()
+//     {
+//         if(settings.material == null)
+//         {
+//             settings.material = (Material)Resources.Load("Water_Volume");
+//         }
+//
+//         m_ScriptablePass = new CustomRenderPass(settings.material);
+//
+//         // Configures where the render pass should be injected.
+//         //m_ScriptablePass.renderPassEvent = RenderPassEvent.AfterRenderingOpaques;
+//         m_ScriptablePass.renderPassEvent = settings.renderPass;
+//     }
+//
+//     // Here you can inject one or multiple render passes in the renderer.
+//     // This method is called when setting up the renderer once per-camera.
+//     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
+//     {       
+//         m_ScriptablePass.source = renderer.cameraColorTarget;
+//         renderer.EnqueuePass(m_ScriptablePass);
+//     }
+// }
+//
+//
+using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -6,60 +100,59 @@ public class Water_Volume : ScriptableRendererFeature
 {
     class CustomRenderPass : ScriptableRenderPass
     {
-        public RenderTargetIdentifier source;
+        public RTHandle source;
 
         private Material _material;
 
-        private RenderTargetHandle tempRenderTarget;
-        private RenderTargetHandle tempRenderTarget2;
+        private RTHandle tempRenderTarget;
+        private RTHandle tempRenderTarget2;
 
         public CustomRenderPass(Material mat)
         {
             _material = mat;
 
-            tempRenderTarget.Init("_TemporaryColourTexture");
-            tempRenderTarget2.Init("_TemporaryDepthTexture");
+            // RTHandle 초기화
+            tempRenderTarget = RTHandles.Alloc("_TemporaryColourTexture");
+            tempRenderTarget2 = RTHandles.Alloc("_TemporaryDepthTexture");
         }
 
-        // This method is called before executing the render pass.
-        // It can be used to configure render targets and their clear state. Also to create temporary render target textures.
-        // When empty this render pass will render to the active camera render target.
-        // You should never call CommandBuffer.SetRenderTarget. Instead call <c>ConfigureTarget</c> and <c>ConfigureClear</c>.
-        // The render pipeline will ensure target setup and clearing happens in an performance manner.
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
         {
-
+            // Configure 메서드에서 필요한 렌더 타겟 구성
         }
 
-        // Here you can implement the rendering logic.
-        // Use <c>ScriptableRenderContext</c> to issue drawing commands or execute command buffers
-        // https://docs.unity3d.com/ScriptReference/Rendering.ScriptableRenderContext.html
-        // You don't have to call ScriptableRenderContext.submit, the render pipeline will call it at specific points in the pipeline.
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
-            if(renderingData.cameraData.cameraType != CameraType.Reflection)
+            if (renderingData.cameraData.cameraType != CameraType.Reflection)
             {
                 CommandBuffer commandBuffer = CommandBufferPool.Get();
 
-                commandBuffer.GetTemporaryRT(tempRenderTarget.id, renderingData.cameraData.cameraTargetDescriptor);
-                Blit(commandBuffer, source, tempRenderTarget.Identifier(), _material);
-                Blit(commandBuffer, tempRenderTarget.Identifier(), source);
+                // RTHandle을 사용하여 Blit 처리
+                RenderTextureDescriptor cameraTextureDescriptor = renderingData.cameraData.cameraTargetDescriptor;
+                
+                // 임시 RTHandle 할당
+                RenderingUtils.ReAllocateIfNeeded(ref tempRenderTarget, cameraTextureDescriptor);
+                
+                // Blit 사용 시 source와 destination 모두 RTHandle을 사용
+                Blitter.BlitCameraTexture(commandBuffer, source, tempRenderTarget, _material, 0);
+                Blitter.BlitCameraTexture(commandBuffer, tempRenderTarget, source, _material, 0);
 
                 context.ExecuteCommandBuffer(commandBuffer);
                 CommandBufferPool.Release(commandBuffer);
             }
         }
 
-        /// Cleanup any allocated resources that were created during the execution of this render pass.
         public override void FrameCleanup(CommandBuffer cmd)
         {
+            // 필요한 경우 리소스 해제
+            tempRenderTarget.Release();
+            tempRenderTarget2.Release();
         }
     }
 
     [System.Serializable]
     public class _Settings
     {
-        //[HideInInspector]
         public Material material = null;
         public RenderPassEvent renderPass = RenderPassEvent.AfterRenderingSkybox;
     }
@@ -70,25 +163,19 @@ public class Water_Volume : ScriptableRendererFeature
 
     public override void Create()
     {
-        if(settings.material == null)
+        if (settings.material == null)
         {
             settings.material = (Material)Resources.Load("Water_Volume");
         }
 
         m_ScriptablePass = new CustomRenderPass(settings.material);
-
-        // Configures where the render pass should be injected.
-        //m_ScriptablePass.renderPassEvent = RenderPassEvent.AfterRenderingOpaques;
         m_ScriptablePass.renderPassEvent = settings.renderPass;
     }
 
-    // Here you can inject one or multiple render passes in the renderer.
-    // This method is called when setting up the renderer once per-camera.
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
-    {       
-        m_ScriptablePass.source = renderer.cameraColorTarget;
+    {
+        // RTHandle로 cameraColorTarget을 할당
+        m_ScriptablePass.source = renderer.cameraColorTargetHandle;
         renderer.EnqueuePass(m_ScriptablePass);
     }
 }
-
-

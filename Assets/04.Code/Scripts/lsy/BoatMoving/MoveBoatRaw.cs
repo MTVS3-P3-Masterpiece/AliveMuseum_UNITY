@@ -6,20 +6,20 @@ using UnityEngine;
 public class MoveBoatRaw : MonoBehaviour
 {
 
-    public List<Transform> targetPositions1 = new List<Transform>();
-    public List<Transform> targetPositions2 = new List<Transform>();
-    private int speed = 1;
+    // public List<Transform> targetPositions1 = new List<Transform>();
+    // public List<Transform> targetPositions2 = new List<Transform>();
+    private int speed = 4;
     private Vector3 direction;
     private Transform curTarget;
     private Coroutine moveCo;
     
-    public GameObject Course2InputCanvas;
-    public bool isResponseComplete = false;
-    public bool isBoatMoving = false;
-    public Camera mainCamera;
-
-    public GameObject imagesObject;
-    
+    // public GameObject Course2InputCanvas;
+    // public bool isResponseComplete = false;
+    // public bool isBoatMoving = false;
+    // public Camera mainCamera;
+    //
+    // public GameObject imagesObject;
+   /* 
     public void Start()
     {
         //Course2InputCanvas.SetActive(true);
@@ -78,8 +78,8 @@ public class MoveBoatRaw : MonoBehaviour
             .SetLookAt(0.01f).OnComplete(() => isBoatMoving = false);
         // 이동 경로를 따라 자동으로 회전
     }
-    
-    private IEnumerator MoveBoatCurveRaw(List<Transform> positions)
+    */
+    public IEnumerator MoveBoatCurveRaw(List<Transform> positions)
     {
         // 목표 위치 배열 생성
         Vector3[] waypoints = new Vector3[positions.Count];
@@ -91,18 +91,18 @@ public class MoveBoatRaw : MonoBehaviour
         // 경로를 따라 이동하며 동시에 회전
         //isBoatMoving = true;
         
-        yield return transform.DOPath(waypoints, 10, PathType.CubicBezier)
+        yield return transform.DOPath(waypoints, 30, PathType.CubicBezier)
             .SetEase(Ease.OutQuad)
             .SetLookAt(0.01f)
             .WaitForCompletion();
     }
 
-    private IEnumerator MoveBoatStraightRaw(Transform targetPos)
+    public IEnumerator MoveBoatStraightRaw(Transform targetPos)
     {
         while (transform.position != targetPos.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos.position, speed * Time.deltaTime);
             yield return null;
         }
-00    }
+    }
 }
