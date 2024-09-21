@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -39,9 +40,19 @@ public class CuratorNetwork : MonoBehaviour
         //     NetworkData.tempBaseUrl+NetworkData.curatorAPI, formData);
         yield return req.SendWebRequest();
         byte[] bytes = req.downloadHandler.data;
+        Debug.Log("CuratorNetwork : "+ req.downloadHandler.text);
         Debug.Log("CuratorNetowrk : " + bytes);
-        curatorResponseData.chatResult = Encoding.UTF8.GetString(bytes);
+        string resultText = Encoding.UTF8.GetString(bytes);
         Debug.Log("CuratorNetwork : response - "+ curatorResponseData.chatResult);
+        try
+        {
+            curatorResponseData = JsonConvert.DeserializeObject<CuratorResponseData>(resultText);
+            Debug.Log("curatorResponseData : " + curatorResponseData.chatResult);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to parse response: " + e.Message);
+        }
     }
 
     public void SetCuratorRequestData(string text)

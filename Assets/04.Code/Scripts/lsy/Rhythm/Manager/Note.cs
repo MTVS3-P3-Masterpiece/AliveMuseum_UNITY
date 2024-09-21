@@ -7,9 +7,14 @@ public class Note : MonoBehaviour
 
     private Image noteImage;
 
-    void Start()
+    void OnEnable()
     {
-        noteImage = GetComponent<Image>();
+        if (noteImage == null)
+        {
+            noteImage = GetComponent<Image>();
+        }
+
+        noteImage.enabled = true;
     }
 
     
@@ -21,5 +26,10 @@ public class Note : MonoBehaviour
     public void HideNote()
     {
         noteImage.enabled = false;
+    }
+
+    public bool GetNoteFlag()
+    {
+        return noteImage.enabled;
     }
 }

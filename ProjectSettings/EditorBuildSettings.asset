@@ -12,7 +12,9 @@ EditorBuildSettings:
     path: Assets/Jaebin/Scenes/Museum/Alpha_Museum.unity
     guid: 4effa4f5947b92e45904d52c8fe3105d
   - enabled: 1
+
     path: Assets/01.Level/Scenes/ArtRoom/Prototype_ArtRoom_Wolhajeongin.unity
     guid: 51b56ee1d2f40574ea69603f1a1d5d9a
   m_configObjects: {}
+
   m_UseUCBPForAssetBundles: 0
