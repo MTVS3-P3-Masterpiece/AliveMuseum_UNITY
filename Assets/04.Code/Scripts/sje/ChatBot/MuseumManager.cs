@@ -19,15 +19,15 @@ public class MuseumManager : MonoBehaviour
     private GameObject player;
     public GameObject gameLabel;
     private Text gameText;
-    PlayerMove playerScript;
+    PlayerController playerScript;
     CamRotate camRotate;
    
     void Start()
     {
 
         player = GameObject.Find("Player");
-        playerScript = player.GetComponent<PlayerMove>();
-        camRotate = Camera.main.GetComponent<CamRotate>();
+        playerScript = player.GetComponent<PlayerController>();
+      //  camRotate = Camera.main.GetComponent<CamRotate>();
     }
     
     IEnumerator ReadyToStart()
