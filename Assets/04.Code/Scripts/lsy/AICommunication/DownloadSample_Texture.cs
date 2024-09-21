@@ -89,7 +89,7 @@ public class DownloadSample_Texture : MonoBehaviour
         {
             string url = NetworkData.baseUrl + NetworkData.downloadImageAPI +
                          getImagePathNetwork.imageGenResponseData.generated_images[i];
-            images[i].DOFade(0f, 0.1f);
+            images[i].DOFade(1f, 0.1f);
 
             var p = new Progress<float>(
                 v =>

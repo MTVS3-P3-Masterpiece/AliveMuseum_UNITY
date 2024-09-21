@@ -1,4 +1,7 @@
-﻿public class CuratorResponseData
+﻿using Newtonsoft.Json;
+
+public class CuratorResponseData
 {
+    [JsonProperty("result")]
     public string chatResult;
 }

@@ -49,7 +49,7 @@ public class MoveBoatCurve : MonoBehaviour
 
         // 경로를 따라 이동하며 동시에 회전
         isBoatMoving = true;
-        transform.DOPath(waypoints, 10, PathType.CubicBezier)
+        transform.DOPath(waypoints, 20, PathType.CubicBezier)
             .SetEase(Ease.OutQuad)
             .SetLookAt(0.01f).OnComplete(() =>
             {
