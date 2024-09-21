@@ -24,14 +24,15 @@ public class PlayerManager : NetworkBehaviour
     public Camera camera;
     public static PlayerManager Instance;
     public NetworkCharacterController nCC;
+    public Animator animator;
 
    
     
     void Awake()
     {
         cc = GetComponent<CharacterController>();
-        //anim = GetComponentInChildren<Animator>();
-        
+        animator = GetComponentInChildren<Animator>();
+
     }
 
     public override void Spawned()
@@ -70,12 +71,8 @@ public class PlayerManager : NetworkBehaviour
         
         nCC.Move(move);
 
-    }
-
-    private void CameraPosition()
-    {
-        Vector3 cameraPosition = cameraTransform.localPosition;
-        cameraTransform.localPosition = cameraPosition;
+       // animator.SetFloat("IsWalking" , dir.magnitude);
+        
     }
     
 }

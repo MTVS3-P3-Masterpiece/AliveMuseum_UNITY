@@ -2,7 +2,7 @@
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class Water_Volume : ScriptableRendererFeature
+/*public class Water_Volume : ScriptableRendererFeature
 {
     class CustomRenderPass : ScriptableRenderPass
     {
@@ -10,15 +10,15 @@ public class Water_Volume : ScriptableRendererFeature
 
         private Material _material;
 
-        private RenderTargetHandle tempRenderTarget;
-        private RenderTargetHandle tempRenderTarget2;
+      //  private RenderTargetHandle tempRenderTarget;
+      //  private RenderTargetHandle tempRenderTarget2;
 
         public CustomRenderPass(Material mat)
         {
             _material = mat;
 
-            tempRenderTarget.Init("_TemporaryColourTexture");
-            tempRenderTarget2.Init("_TemporaryDepthTexture");
+          //  tempRenderTarget.Init("_TemporaryColourTexture");
+           // tempRenderTarget2.Init("_TemporaryDepthTexture");
         }
 
         // This method is called before executing the render pass.
@@ -89,6 +89,6 @@ public class Water_Volume : ScriptableRendererFeature
         m_ScriptablePass.source = renderer.cameraColorTarget;
         renderer.EnqueuePass(m_ScriptablePass);
     }
-}
+} */
 
 
