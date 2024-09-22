@@ -5,81 +5,43 @@ using UnityEngine;
 
 public class MoveBoatRaw : MonoBehaviour
 {
-
-    // public List<Transform> targetPositions1 = new List<Transform>();
-    // public List<Transform> targetPositions2 = new List<Transform>();
     private int speed = 4;
     private Vector3 direction;
     private Transform curTarget;
     private Coroutine moveCo;
+    private CuratorNetwork _curatorNetwork;
 
     public GameObject boat;
-    // public GameObject Course2InputCanvas;
-    // public bool isResponseComplete = false;
-    // public bool isBoatMoving = false;
-    // public Camera mainCamera;
-    //
-    // public GameObject imagesObject;
-   /* 
-    public void Start()
-    {
-        //Course2InputCanvas.SetActive(true);
-        mainCamera = Camera.main;
-    }
+
+    public Transform targetPos1;
+    public List<Transform> targetPos2;
+    public List<Transform> targetPos3;
     
-    public void Update()
-    {
-        if (isBoatMoving)
-        {
-            mainCamera.transform.rotation = transform.rotation;
-        }
-    }
+    private Course2TextCommunication _course2TextCommunication;
+
+    public bool isComplete = false;
+
+    public Animator lotusAnim1;
+    public Animator lotusAnim2;
+    public Animator lotusAnim3;
+
+    public GameObject chatbotPanel;
     
-    public void StartMoveBoatCourse1()
+    public IEnumerator Start()
     {
-        moveCo = StartCoroutine(MoveBoatCourse1()); 
-    }
-    IEnumerator MoveBoatCourse1()
-    {
-        // 목표 위치 배열 생성
-        Vector3[] waypoints = new Vector3[targetPositions1.Count];
-        for (int i = 0; i < targetPositions1.Count; i++)
-        {
-            waypoints[i] = targetPositions1[i].position;
-        }
-
-        // 경로를 따라 이동하며 동시에 회전
-        isBoatMoving = true;
-        transform.DOPath(waypoints, 20, PathType.CubicBezier)
-            .SetEase(Ease.OutQuad)
-            .SetLookAt(0.01f).OnComplete(() =>
-            {
-                imagesObject.SetActive(false);
-                isBoatMoving = false;
-                Debug.Log("MoveBoatCurve : OnComplete");
-                //FIXME : AI 통신 추가
-                Course2InputCanvas.SetActive(true);
-                StartCoroutine(MoveBoatCourse2());
-            });
-        yield return null;
+        _course2TextCommunication = FindObjectOfType<Course2TextCommunication>();
+        _curatorNetwork = FindObjectOfType<CuratorNetwork>();
+        
+        yield return StartCoroutine(MoveBoatStraightRaw(targetPos1));
+        
+        //Course2 
+        chatbotPanel.SetActive(true);
+        yield return new WaitUntil(() => isComplete);
+        //yield return StartCoroutine(_course2TextCommunication.CommuteCourse2Text());
+        StartAnim();
+        yield return StartCoroutine(MoveBoatCurveRaw(targetPos2, targetPos3));
     }
 
-    IEnumerator MoveBoatCourse2()
-    {
-        Vector3[] waypoints = new Vector3[targetPositions1.Count];
-        for (int i = 0; i < targetPositions2.Count; i++)
-        {
-            waypoints[i] = targetPositions2[i].position;
-        }
-
-        yield return new WaitUntil(() => isResponseComplete);
-        isBoatMoving = true;
-        transform.DOPath(waypoints, 10, PathType.CubicBezier)
-            .SetEase(Ease.OutQuad)
-            .SetLookAt(0.01f).OnComplete(() => isBoatMoving = false);
-        // 이동 경로를 따라 자동으로 회전
-    }
-    */
     public IEnumerator MoveBoatCurveRaw(List<Transform> positions1, List<Transform> positions2)
     {
         // 목표 위치 배열 생성
@@ -115,5 +77,15 @@ public class MoveBoatRaw : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, targetPos.position, speed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    public void StartAnim()
+    {
+        //if (_curatorNetwork.curatorResponseData.chatResult == "긍정")
+        //{
+            lotusAnim1.SetBool("Blooming", true);
+            lotusAnim2.SetBool("Blooming", true);
+            lotusAnim3.SetBool("Blooming", true);
+        //}
     }
 }

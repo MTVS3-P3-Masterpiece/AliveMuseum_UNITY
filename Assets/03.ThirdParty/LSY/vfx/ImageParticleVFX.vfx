@@ -19,7 +19,7 @@ MonoBehaviour:
       x: 913
       y: -1443
       width: 476
-      height: 2073
+      height: 2720
     contents:
     - model: {fileID: 8926484042661614608}
       id: 0

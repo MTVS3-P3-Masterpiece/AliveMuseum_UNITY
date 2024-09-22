@@ -14,7 +14,7 @@ public class Course2TextCommunication : MonoBehaviour
     {
         StartCoroutine(CommuteCourse2Text());
     }
-    IEnumerator CommuteCourse2Text()
+    public IEnumerator CommuteCourse2Text()
     {
         
         //FIXME : 실제 통신으로 변경 필요

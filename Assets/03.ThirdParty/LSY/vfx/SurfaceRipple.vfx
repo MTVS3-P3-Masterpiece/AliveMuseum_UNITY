@@ -40,7 +40,7 @@ MonoBehaviour:
     x: 275
     y: -1433
     width: 1552
-    height: 2799
+    height: 3014
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,7 +316,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 20
+      m_SerializableObject: 10
     m_Space: -1
   m_Property:
     name: Rate
@@ -1069,7 +1069,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.DirectionType, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"direction":{"x":0.0,"y":0.0,"z":1.0}}'
+      m_SerializableObject: '{"direction":{"x":1.0,"y":0.0,"z":-1.0}}'
     m_Space: 0
   m_Property:
     name: Direction
@@ -1590,7 +1590,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Texture3D, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":11700000,"guid":"4f45119ef6f14ac46a1651b53d18334d","type":2}}'
+      m_SerializableObject: '{"obj":{"fileID":11700000,"guid":"bce0c03626dc477439cdb03478b30ead","type":2}}'
     m_Space: -1
   m_Property:
     name: DistanceField
@@ -5789,7 +5789,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"78045b11e6e6d414e9c283ee7ac986d4","type":3}}'
+      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"d9cc0a4def448e349a64fd3997d37fa9","type":3}}'
     m_Space: -1
   m_Property:
     name: mainTexture
