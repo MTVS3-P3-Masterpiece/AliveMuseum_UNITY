@@ -11,8 +11,8 @@ public class MoveBoatCourse2 : MonoBehaviour
         _moveBoatRaw = FindObjectOfType<MoveBoatRaw>();
     }
 
-    public void StartCourse()
-    {
-        StartCoroutine(_moveBoatRaw.MoveBoatCurveRaw(points));
-    }
+    // public void StartCourse()
+    // {
+    //     StartCoroutine(_moveBoatRaw.MoveBoatCurveRaw(points));
+    // }
 }

@@ -12,7 +12,8 @@ public class MoveBoatRaw : MonoBehaviour
     private Vector3 direction;
     private Transform curTarget;
     private Coroutine moveCo;
-    
+
+    public GameObject boat;
     // public GameObject Course2InputCanvas;
     // public bool isResponseComplete = false;
     // public bool isBoatMoving = false;
@@ -79,13 +80,13 @@ public class MoveBoatRaw : MonoBehaviour
         // 이동 경로를 따라 자동으로 회전
     }
     */
-    public IEnumerator MoveBoatCurveRaw(List<Transform> positions)
+    public IEnumerator MoveBoatCurveRaw(List<Transform> positions1, List<Transform> positions2)
     {
         // 목표 위치 배열 생성
-        Vector3[] waypoints = new Vector3[positions.Count];
-        for (int i = 0; i < positions.Count; i++)
+        Vector3[] waypoints = new Vector3[positions1.Count];
+        for (int i = 0; i < positions1.Count; i++)
         {
-            waypoints[i] = positions[i].position;
+            waypoints[i] = positions1[i].position;
         }
 
         // 경로를 따라 이동하며 동시에 회전
@@ -95,10 +96,20 @@ public class MoveBoatRaw : MonoBehaviour
             .SetEase(Ease.OutQuad)
             .SetLookAt(0.01f)
             .WaitForCompletion();
+        waypoints = new Vector3[positions2.Count];
+        for (int i = 0; i < positions2.Count; i++)
+        {
+            waypoints[i] = positions2[i].position;
+        }
+        yield return transform.DOPath(waypoints, 10, PathType.CubicBezier)
+            .SetEase(Ease.OutQuad)
+            .SetLookAt(0.01f)
+            .WaitForCompletion();
     }
 
     public IEnumerator MoveBoatStraightRaw(Transform targetPos)
     {
+        boat.transform.rotation = Quaternion.Euler(0, 90, 0);
         while (transform.position != targetPos.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos.position, speed * Time.deltaTime);
