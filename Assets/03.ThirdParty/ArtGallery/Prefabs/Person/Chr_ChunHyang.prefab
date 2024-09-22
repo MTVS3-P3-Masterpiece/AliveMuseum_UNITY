@@ -64,13 +64,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'Bip001 R Foot'\n\tTransform 'Bip001 R Hand'\n\tTransform
-    'Bip001 R Finger1'\n\tTransform 'Bip001 L Finger11'\n\tTransform 'Bip001 R Finger11'\n\tTransform
-    'Bip001 L Finger3'\n\tTransform 'Bip001 R Toe0'\n\tTransform 'Bip001 Spine1'\n\tTransform
-    'Bip001 L Finger2'\n\tTransform 'Bip001 L Finger12'\n\tand more ...\n\tFrom animation
-    clip 'Walking'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -115,6 +109,8 @@ MonoBehaviour:
   cameraTransform: {fileID: 0}
   nicknameText: {fileID: 7996033875032543975}
   camera: {fileID: 0}
+  nCC: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!143 &-8886607054649714138
 CharacterController:
   m_ObjectHideFlags: 0
@@ -8151,7 +8147,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Kevin
+  m_text: ChunHyang
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
