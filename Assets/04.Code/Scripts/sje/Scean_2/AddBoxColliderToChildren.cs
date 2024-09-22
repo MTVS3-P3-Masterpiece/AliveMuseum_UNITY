@@ -6,27 +6,23 @@ public class AddBoxColliderToChildren : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            // 자식의 스케일 값을 확인
             Vector3 localScale = child.localScale;
 
-            // 음수 스케일을 양수로 변경
+
             if (localScale.x < 0 || localScale.y < 0 || localScale.z < 0)
             {
-                // 음수 값을 절대값으로 변경
                 localScale.x = Mathf.Abs(localScale.x);
                 localScale.y = Mathf.Abs(localScale.y);
                 localScale.z = Mathf.Abs(localScale.z);
-
-                // 스케일을 양수로 설정
+                
                 child.localScale = localScale;
             }
 
-            // BoxCollider가 없다면 추가
+
             if (child.gameObject.GetComponent<BoxCollider>() == null)
             {
                 BoxCollider boxCollider = child.gameObject.AddComponent<BoxCollider>();
-
-                // 콜라이더 크기를 양수로 강제 설정
+                
                 Vector3 colliderSize = boxCollider.size;
                 colliderSize.x = Mathf.Abs(colliderSize.x);
                 colliderSize.y = Mathf.Abs(colliderSize.y);
