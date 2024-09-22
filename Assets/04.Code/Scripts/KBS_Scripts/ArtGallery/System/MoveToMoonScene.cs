@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,7 +16,7 @@ public class MoveToMoonScene : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Enter");
-            introImage.gameObject.SetActive(true);
+            StartCoroutine(ImageController());
         }
     }
 
@@ -32,17 +33,24 @@ public class MoveToMoonScene : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private IEnumerator ImageController()
+    {
+        introImage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        introImage.gameObject.SetActive(false);
+    }
+
+  /*  private void OnTriggerExit(Collider other)
     {
         Debug.Log("asdfg");
         if (other.gameObject.CompareTag("Player"))
         {
             introImage.gameObject.SetActive(false);
         }
-    }
+    } */
 
     public void TransitionToNextScene()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
     }
 }
