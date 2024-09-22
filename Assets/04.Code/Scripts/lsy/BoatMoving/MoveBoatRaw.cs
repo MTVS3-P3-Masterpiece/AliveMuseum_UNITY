@@ -45,12 +45,15 @@ public class MoveBoatRaw : MonoBehaviour
     public IEnumerator MoveBoatCurveRaw(List<Transform> positions1, List<Transform> positions2)
     {
         // 목표 위치 배열 생성
-        Vector3[] waypoints = new Vector3[positions1.Count];
+        Vector3[] waypoints = new Vector3[positions1.Count + positions2.Count];
         for (int i = 0; i < positions1.Count; i++)
         {
             waypoints[i] = positions1[i].position;
         }
-
+        for (int i = 0; i < positions2.Count; i++)
+        {
+            waypoints[i + positions1.Count] = positions2[i].position;
+        }
         // 경로를 따라 이동하며 동시에 회전
         //isBoatMoving = true;
         
@@ -58,15 +61,15 @@ public class MoveBoatRaw : MonoBehaviour
             .SetEase(Ease.OutQuad)
             .SetLookAt(0.01f)
             .WaitForCompletion();
-        waypoints = new Vector3[positions2.Count];
-        for (int i = 0; i < positions2.Count; i++)
-        {
-            waypoints[i] = positions2[i].position;
-        }
-        yield return transform.DOPath(waypoints, 10, PathType.CubicBezier)
-            .SetEase(Ease.OutQuad)
-            .SetLookAt(0.01f)
-            .WaitForCompletion();
+        // waypoints = new Vector3[positions2.Count];
+        // for (int i = 0; i < positions2.Count; i++)
+        // {
+        //     waypoints[i] = positions2[i].position;
+        // }
+        // yield return transform.DOPath(waypoints, 10, PathType.CubicBezier)
+        //     .SetEase(Ease.OutQuad)
+        //     .SetLookAt(0.01f)
+        //     .WaitForCompletion();
     }
 
     public IEnumerator MoveBoatStraightRaw(Transform targetPos)

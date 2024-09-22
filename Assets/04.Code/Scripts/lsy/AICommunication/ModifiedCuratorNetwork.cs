@@ -3,22 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
 
-public class CuratorNetwork : MonoBehaviour
+public class ModifiedCuratorNetwork : MonoBehaviour
 {
     //private NetworkData networkData;
 
     public CuratorRequestData curatorRequestData;
     public CuratorResponseData curatorResponseData;
 
-    public TMP_Text reqtext;
-    public Text result;
-
     public int questionCnt = 0;
+
     //public string msg;
     
     private void Start()
@@ -36,8 +32,6 @@ public class CuratorNetwork : MonoBehaviour
     
     public IEnumerator ReqCurator()
     {
-        questionCnt += 1;
-        SetCuratorRequestData(reqtext.text);
         List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
         formData.Add(new MultipartFormDataSection("chat", curatorRequestData.chat));
         /* for real */
@@ -56,11 +50,11 @@ public class CuratorNetwork : MonoBehaviour
         {
             curatorResponseData = JsonConvert.DeserializeObject<CuratorResponseData>(resultText);
             Debug.Log("curatorResponseData : " + curatorResponseData.chatResult);
-            result.text = curatorResponseData.chatResult;
+            questionCnt += 1;
         }
         catch (Exception e)
         {
-            Debug.Log("Failed to parse response: " + e.Message);
+            Debug.LogError("Failed to parse response: " + e.Message);
         }
     }
 

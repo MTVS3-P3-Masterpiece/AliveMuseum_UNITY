@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Level/Scenes/ArtRoom/Prototype_ArtRoom_Wolhajeongin.unity
     guid: 51b56ee1d2f40574ea69603f1a1d5d9a
+  - enabled: 1
+    path: Assets/01.Level/Scenes/TestScene/lsy/Alpha_ExperienceRoom_test3.unity
+    guid: fa68a6978dd6a074f97e0cea293a9130
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

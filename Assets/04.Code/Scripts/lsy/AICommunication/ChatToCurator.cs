@@ -11,13 +11,13 @@ public class ChatToCurator : MonoBehaviour
     //public Course2TextCommunication _Course2TextCommunication;
     //public Canvas chatbotCanvas;
     public GameObject chatbotCanvas;
-    private MoveBoatRaw _moveBoatRaw;
+    public MoveBoatRaw _moveBoatRaw;
 
     public CuratorNetwork _curatorNetwork;
 
     private void Start()
     {
-        _curatorNetwork = FindObjectOfType<CuratorNetwork>();
+        //_curatorNetwork = FindObjectOfType<CuratorNetwork>();
         
         if (_curatorNetwork == null)
         {

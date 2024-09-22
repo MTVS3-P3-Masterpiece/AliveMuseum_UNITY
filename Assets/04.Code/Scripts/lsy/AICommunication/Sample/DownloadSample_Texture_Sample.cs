@@ -33,7 +33,9 @@ public class DownloadSample_Texture_Sample : MonoBehaviour
     {
         //StartCoroutine(UpdateTextureProcess(url));
         StartCoroutine(UpdateTextureProcess(NetworkData.baseUrl + NetworkData.downloadImageAPI +
-                                            getImagePathNetwork.imageGenResponseData.generated_images[curIndex]));
+                                            getImagePathNetwork.imageGenResponseData.generated_images[0]));
+        StartCoroutine(UpdateTextureProcess(NetworkData.baseUrl + NetworkData.downloadImageAPI +
+                                            getImagePathNetwork.imageGenResponseData.generated_images[1]));
 
     }
     public void Next()
@@ -103,7 +105,7 @@ public class DownloadSample_Texture_Sample : MonoBehaviour
                 var sprite = Sprite.Create(tex, new Rect(0f, 0f, tex.width, tex.height), new Vector2(0.5f, 0.5f));
                 sprite.name = tex.name;
                 _image.sprite = sprite;
-                Debug.Log("sprite : "+sprite);
+                Debug.Log("sprite : "+sprite+" "+ sprite.texture.width+" "+sprite.texture.height);
             }, p);
         _image.DOKill();
         _image.DOFade(1f, 0.1f);
