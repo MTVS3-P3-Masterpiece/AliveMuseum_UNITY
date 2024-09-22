@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using Fusion;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MoonPosition1 : NetworkBehaviour
 {
     public Vector3 teleportPosition = new Vector3(-14f, 1.5f, -78.95f);
     public Vector3 teleportPositionInMuseum = new Vector3(4, 1, 4);
-
+    private string sceneName = "Prototype_ArtRoom_Wolhajeongin";
+    public Material originSkybox;
 
     public override void FixedUpdateNetwork()
     {
@@ -25,6 +27,9 @@ public class MoonPosition1 : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             StartCoroutine(TeleportToMuseum());
+            SceneManager.UnloadSceneAsync(sceneName);
+            RenderSettings.skybox = originSkybox;
+            RenderSettings.ambientLight = new Color(190f / 255f, 191f / 255f,194f / 255f);
         }
     }
     
