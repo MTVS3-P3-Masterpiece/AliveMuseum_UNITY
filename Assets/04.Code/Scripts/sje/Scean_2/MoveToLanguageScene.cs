@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class MoveToLanguageScene : MonoBehaviour
 {
 
-    //PlayerMove playerScript;
+   // PlayerMove playerScript;
     GameObject player;
     CamRotate camRotate;
 
@@ -24,7 +24,7 @@ public class MoveToLanguageScene : MonoBehaviour
             player = GameObject.FindWithTag("Player");
         }
         player = GameObject.Find("Player");
-        //playerScript = player.GetComponent<PlayerMove>();
+      //  playerScript = player.GetComponent<PlayerMove>();
         camRotate = Camera.main.GetComponent<CamRotate>();
         
        
@@ -38,7 +38,7 @@ public class MoveToLanguageScene : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 ChatText.SetActive(true);
-                //playerScript.enabled = false;
+              //  playerScript.enabled = false;
                 chatOpen = true;
                 //followPlayer = true;  
                 //interaction.SetActive(false);
@@ -49,7 +49,7 @@ public class MoveToLanguageScene : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             ChatText.SetActive(false);
-            //playerScript.enabled = true;
+         //   playerScript.enabled = true;
             chatOpen = false;
             camRotate.enabled = true;
         }

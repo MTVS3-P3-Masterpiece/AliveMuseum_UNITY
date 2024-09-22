@@ -1,5 +1,6 @@
 using System.Collections;
 using Fusion;
+using Fusion.Addons.SimpleKCC;
 using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -22,14 +23,16 @@ public class PlayerManager : NetworkBehaviour
     public TMP_Text nicknameText;
     public Camera camera;
     public static PlayerManager Instance;
+    public NetworkCharacterController nCC;
+    public Animator animator;
 
    
     
     void Awake()
     {
         cc = GetComponent<CharacterController>();
-        //anim = GetComponentInChildren<Animator>();
-        
+        animator = GetComponentInChildren<Animator>();
+
     }
 
     public override void Spawned()
@@ -41,6 +44,7 @@ public class PlayerManager : NetworkBehaviour
             camera = Camera.main;
             //camera.GetComponent<ThirdPersonCamera>().player = transform; 
             camera.GetComponent<FirstPersonCamera>().player =  transform;
+            
         }
     }
 
@@ -63,36 +67,10 @@ public class PlayerManager : NetworkBehaviour
         Vector3 dir = new Vector3(h, 0, v).normalized;
 
         Quaternion cameraRotationY = Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, 0);
-        Vector3 move = cameraRotationY * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * moveSpeed;
-
-        move *= Runner.DeltaTime * moveSpeed;
-
-        cc.Move(move);
-
-    }
-
-    public void DamageAction(int damage)
-    {
-        hp -= damage;
+        Vector3 move = cameraRotationY * dir * Runner.DeltaTime * moveSpeed;
         
-        if (hp > 0)
-        {
-            StartCoroutine(PlayHitEffect());
-        }
-    }
-
-    IEnumerator PlayHitEffect()
-    {
-        hitEffect.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
-        hitEffect.SetActive(false);
+        nCC.Move(move);
         
-    }
-
-    private void CameraPosition()
-    {
-        Vector3 cameraPosition = cameraTransform.localPosition;
-        cameraTransform.localPosition = cameraPosition;
     }
     
 }
