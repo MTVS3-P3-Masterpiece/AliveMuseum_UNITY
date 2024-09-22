@@ -73,20 +73,5 @@ public class PlayerMovement : NetworkBehaviour
         {
             _velocity.y += JumpForce;
         }
-        
-
-       /* if (move != Vector3.zero)
-        {
-           transform.rotation = Quaternion.Euler(0, Camera.transform.rotation.eulerAngles.y,0);
-        } */
-       
-      /* if (moveDirection.magnitude > 0)
-       {
-           // 이동 방향으로 캐릭터 회전, 카메라의 방향을 반영
-           Quaternion targetRotation = Quaternion.LookRotation(cameraRotationY * moveDirection);
-           transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Runner.DeltaTime * 10f);  // 회전을 부드럽게
-       }
-
-        _jumpPressed = false; */
     }
 }

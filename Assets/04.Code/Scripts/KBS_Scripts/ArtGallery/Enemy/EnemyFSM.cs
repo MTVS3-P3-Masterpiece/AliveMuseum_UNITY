@@ -16,7 +16,7 @@ public class EnemyFSM : MonoBehaviour
     public float moveDistance = 10f;
     private Vector3 _originPos;
     private Quaternion _originRot;
-    private Transform player;
+    public Transform player;
 
     private CharacterController cc;
     private NavMeshAgent smith;
@@ -25,8 +25,9 @@ public class EnemyFSM : MonoBehaviour
     {
         enemyState = EnemyState.Idle;
 
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindWithTag("Player").transform;
         cc = GetComponent<CharacterController>();
+        smith = GetComponent<NavMeshAgent>();
 
         _originPos = transform.position;
         _originRot = transform.rotation;
@@ -54,6 +55,7 @@ public class EnemyFSM : MonoBehaviour
         if (Vector3.Distance(transform.position, player.position) < findDistance)
         {
             enemyState = EnemyState.Move;
+            Debug.Log("이동");
         }
     }
 
@@ -62,6 +64,13 @@ public class EnemyFSM : MonoBehaviour
         if (Vector3.Distance(transform.position, _originPos) > moveDistance)
         {
             enemyState = EnemyState.Return;
+            Debug.Log("복귀");
+        }
+        else
+        {
+            smith.isStopped = true;
+            smith.ResetPath();
+            smith.SetDestination(player.position);
         }
     }
 

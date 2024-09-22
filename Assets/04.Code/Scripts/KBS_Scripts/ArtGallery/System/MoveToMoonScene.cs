@@ -11,8 +11,10 @@ public class MoveToMoonScene : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Enter");
             introImage.gameObject.SetActive(true);
         }
     }
@@ -20,6 +22,7 @@ public class MoveToMoonScene : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log("stay");
         if (other.gameObject.CompareTag("Player"))
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -31,6 +34,7 @@ public class MoveToMoonScene : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("asdfg");
         if (other.gameObject.CompareTag("Player"))
         {
             introImage.gameObject.SetActive(false);
@@ -39,12 +43,6 @@ public class MoveToMoonScene : MonoBehaviour
 
     public void TransitionToNextScene()
     {
-        SpawnPosition spawnPosition = FindObjectOfType<SpawnPosition>();
-        if (spawnPosition != null)
-        {
-            spawnPosition.desirePosition = playerPosition;
-        }
-
         SceneManager.LoadScene(sceneName);
     }
 }

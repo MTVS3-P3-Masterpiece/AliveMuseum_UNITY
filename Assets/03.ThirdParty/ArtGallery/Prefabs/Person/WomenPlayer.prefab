@@ -251,9 +251,9 @@ GameObject:
   - component: {fileID: 78318563817371200}
   - component: {fileID: 176964344113235738}
   - component: {fileID: 1993711898176826704}
-  - component: {fileID: 8344140306568702718}
   - component: {fileID: 7602241011113205065}
   - component: {fileID: 7545838237702416482}
+  - component: {fileID: 1114830389740675157}
   m_Layer: 0
   m_Name: WomenPlayer
   m_TagString: Player
@@ -345,6 +345,7 @@ MonoBehaviour:
   nicknameText: {fileID: 3904123183848680436}
   camera: {fileID: 0}
   nCC: {fileID: 7545838237702416482}
+  animator: {fileID: 0}
 --- !u!114 &176964344113235738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +365,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 78318563817371200}
   - {fileID: 7545838237702416482}
+  - {fileID: 1114830389740675157}
 --- !u!114 &1993711898176826704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,19 +378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8535a6bc996e2c140bc2bae4af43c629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8344140306568702718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7439677781413868086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7661df8def1d54a4296b283408dc69bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  desirePosition: {x: 30, y: 1.5, z: 35}
 --- !u!143 &7602241011113205065
 CharacterController:
   m_ObjectHideFlags: 0
@@ -430,8 +419,21 @@ MonoBehaviour:
   jumpImpulse: 8
   acceleration: 10
   braking: 10
-  maxSpeed: 2
+  maxSpeed: 3.5
   rotationSpeed: 15
+--- !u!114 &1114830389740675157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7439677781413868086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a16be18b156b1945b5dcaad4ea685cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPosition: {x: -14, y: 1.5, z: -78.95}
 --- !u!1001 &9217212867619941452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -490,13 +492,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 4a797c14a357df04e9f7b4634be251e3, type: 2}
     - target: {fileID: 5866666021909216657, guid: 585c36ac818056e43a519865ca8ac899, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'Bip001 R Foot'\n\tTransform 'Bip001 R Hand'\n\tTransform
-        'Bip001 R Finger1'\n\tTransform 'Bip001 L Finger11'\n\tTransform 'Bip001
-        R Finger11'\n\tTransform 'Bip001 L Finger3'\n\tTransform 'Bip001 R Toe0'\n\tTransform
-        'Bip001 Spine1'\n\tTransform 'Bip001 L Finger2'\n\tTransform 'Bip001 L Finger12'\n\tand
-        more ...\n\tFrom animation clip 'Walking'"
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

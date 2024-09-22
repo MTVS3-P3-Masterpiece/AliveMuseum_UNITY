@@ -251,9 +251,9 @@ GameObject:
   - component: {fileID: 78318563817371200}
   - component: {fileID: 176964344113235738}
   - component: {fileID: 1993711898176826704}
-  - component: {fileID: 8344140306568702718}
   - component: {fileID: 7602241011113205065}
   - component: {fileID: 7545838237702416482}
+  - component: {fileID: 851922822000191590}
   m_Layer: 0
   m_Name: ManPlayer
   m_TagString: Player
@@ -365,6 +365,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 78318563817371200}
   - {fileID: 7545838237702416482}
+  - {fileID: 851922822000191590}
 --- !u!114 &1993711898176826704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,19 +378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8535a6bc996e2c140bc2bae4af43c629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8344140306568702718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7439677781413868086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7661df8def1d54a4296b283408dc69bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  desirePosition: {x: 30, y: 1.5, z: 35}
 --- !u!143 &7602241011113205065
 CharacterController:
   m_ObjectHideFlags: 0
@@ -433,6 +421,19 @@ MonoBehaviour:
   braking: 10
   maxSpeed: 2
   rotationSpeed: 15
+--- !u!114 &851922822000191590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7439677781413868086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 477993149522aa0438fea8d795731fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPosition: {x: -55.5, y: 1.5, z: -95.4}
 --- !u!1001 &1560733627700346236
 PrefabInstance:
   m_ObjectHideFlags: 0

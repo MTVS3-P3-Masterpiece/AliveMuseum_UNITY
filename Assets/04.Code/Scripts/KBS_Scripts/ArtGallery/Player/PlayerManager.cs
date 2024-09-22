@@ -70,8 +70,6 @@ public class PlayerManager : NetworkBehaviour
         Vector3 move = cameraRotationY * dir * Runner.DeltaTime * moveSpeed;
         
         nCC.Move(move);
-
-       // animator.SetFloat("IsWalking" , dir.magnitude);
         
     }
     
