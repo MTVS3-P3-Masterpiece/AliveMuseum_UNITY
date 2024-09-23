@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class CheckInteraction : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class CheckInteraction : MonoBehaviour
 
     #endregion
 
+    public GameObject user;
     void Awake()
     {
         _camera = Camera.main;

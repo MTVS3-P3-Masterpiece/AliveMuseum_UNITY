@@ -6,6 +6,7 @@ public class CenterFlame : MonoBehaviour
    private AudioSource myAudio;
    private bool musicStart = false;
    private NoteManager noteManager;
+   public GameObject FinishUI;
    private void Start()
    {
       myAudio = GetComponent<AudioSource>();
@@ -26,6 +27,7 @@ public class CenterFlame : MonoBehaviour
    {
       yield return new WaitForSeconds(myAudio.clip.length);
       noteManager.RemoveNote();
+      FinishUI.SetActive(true);
 
    }
 }
