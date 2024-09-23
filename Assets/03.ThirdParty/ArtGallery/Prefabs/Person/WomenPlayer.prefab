@@ -434,6 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportPosition: {x: -14, y: 1.5, z: -78.95}
+  teleportPositionInMuseum: {x: 4, y: 1, z: 4}
 --- !u!1001 &9217212867619941452
 PrefabInstance:
   m_ObjectHideFlags: 0
