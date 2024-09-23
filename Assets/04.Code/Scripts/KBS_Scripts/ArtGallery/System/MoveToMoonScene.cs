@@ -10,6 +10,7 @@ public class MoveToMoonScene : MonoBehaviour
     public Vector3 playerPosition = new Vector3(11.825f, 1.5f, 35f);
     public Image introImage;
     public Material mySkyBox;
+    public Button introButton;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,23 +23,17 @@ public class MoveToMoonScene : MonoBehaviour
     }
 
 
-    private void OnTriggerStay(Collider other)
+    public void OnEnterClickButton()
     {
-        Debug.Log("stay");
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                TransitionToNextScene();
-            }
-        }
+        TransitionToNextScene();
     }
 
     private IEnumerator ImageController()
     {
-        introImage.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        introImage.gameObject.SetActive(false);
+        introButton.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        introButton.gameObject.SetActive(false);
+        
     }
 
     /*  private void OnTriggerExit(Collider other)
