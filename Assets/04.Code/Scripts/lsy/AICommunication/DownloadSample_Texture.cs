@@ -14,13 +14,23 @@ public class DownloadSample_Texture : MonoBehaviour
     public List<Image> images;
     //private TMP_Text _text;
 
-    public GetImagePathNetwork getImagePathNetwork;
+    public ModifiedGetImagePathNetwork _modifiedGetImagePathNetwork;
     //public NetworkData networkData;
     public int curIndex = 0;
     
     //public string url;
     private int _currentIndex;
 
+    public void Start()
+    {
+        _modifiedGetImagePathNetwork = FindObjectOfType<ModifiedGetImagePathNetwork>();
+        if (_modifiedGetImagePathNetwork == null)
+        {
+            Debug.LogError("DownloadSample_Texture : _modifiedGetImagePathNetwork is null");
+        }
+
+        StartDownload();
+    }
     private void Awake()
     {
         //_image = GetComponent<Image>();
@@ -88,7 +98,7 @@ public class DownloadSample_Texture : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             string url = NetworkData.baseUrl + NetworkData.downloadImageAPI +
-                         getImagePathNetwork.imageGenResponseData.generated_images[i];
+                         _modifiedGetImagePathNetwork.imageGenResponseData.generated_images[i];
             images[i].DOFade(1f, 0.1f);
 
             var p = new Progress<float>(
@@ -112,45 +122,4 @@ public class DownloadSample_Texture : MonoBehaviour
             images[i].DOFade(1f, 0.1f);
         }
     }
-    
-    
-    // for post
-    // public IEnumerator DownloadImageWithPost(string url, string postData, Action<Texture2D> onComplete,
-    //     IProgress<float> progress = null)
-    // {
-    //     using var req = new UnityWebRequest(url, "POST");
-    //     byte[] postDataBytes = System.Text.Encoding.UTF8.GetBytes(postData);
-    //     req.uploadHandler = new UploadHandlerRaw(postDataBytes);
-    //     req.downloadHandler = new DownloadHandlerBuffer();
-    //
-    //     // Content-Type 설정 (서버에서 요구하는 경우 설정)
-    //     req.SetRequestHeader("Content-Type", "application/json");
-    //
-    //     if (progress != null)
-    //     {
-    //         var op = req.SendWebRequest();
-    //         while (!op.isDone)
-    //         {
-    //             progress.Report(op.progress);
-    //             yield return null;
-    //         }
-    //         progress.Report(1f);
-    //     }
-    //     else
-    //     {
-    //         yield return req.SendWebRequest();
-    //     }
-    //
-    //     if (req.result != UnityWebRequest.Result.Success)
-    //     {
-    //         Debug.LogError("DownloadImageWithPost failed: " + req.error);
-    //         yield break;
-    //     }
-    //
-    //     var tex = new Texture2D(2, 2);
-    //     tex.LoadImage(req.downloadHandler.data);
-    //
-    //     onComplete?.Invoke(tex);
-    // }
-
 }

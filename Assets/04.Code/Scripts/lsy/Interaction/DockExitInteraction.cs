@@ -15,16 +15,17 @@ public class DockExitInteraction : MonoBehaviour, IInteractable
     }
     public void Interact()
     {
-        moveBoatCurve.isBoatMoving = false;
+        //moveBoatCurve.isBoatMoving = false;
+        //childObjectUser.transform.position = parentObject.transform.position;
+        //childObjectUser.transform.position = parentObject.transform.position;
         childObjectUser.transform.SetParent(parentObject.transform);
-        //childObjectUser.transform.position = Vector3.zero;
-        
         //childObjectUser.transform.localPosition = Vector3.zero;
-        childObjectUser.transform.localRotation = Quaternion.identity;
-        childObjectUser.transform.localScale = Vector3.one;
+        // childObjectUser.transform.localPosition = Vector3.zero;
+        // childObjectUser.transform.localRotation = Quaternion.identity;
+        // childObjectUser.transform.localScale = Vector3.one;
         
         Debug.Log("DockInteraction : active");
-        _cameraMove.SetCurObjectToFollowUser();
+       // _cameraMove.SetCurObjectToFollowUser();
         _userMove.enabled = true;
         
     }

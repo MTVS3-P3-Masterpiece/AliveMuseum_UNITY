@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/04.Code/Scripts/lsy/BoatMoving/Prototype.meta
+guid: 1eb1fa96595d8b34b96b652dfdd64982
+folderAsset: yes
+DefaultImporter:
+========
 guid: f4b413b5ce4f20d488e9fe7cf207a21d
 TextScriptImporter:
+>>>>>>>> dev:Assets/Photon/FusionAddons/SimpleKCC/release_history.txt.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

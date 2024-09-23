@@ -43,7 +43,7 @@ public class TalkingToChange : MonoBehaviour
         }
         
         player = GameObject.Find("Player");
-        //playerScript = player.GetComponent<PlayerMove>();
+            //playerScript = player.GetComponent<PlayerMove>();
         camRotate = Camera.main.GetComponent<CamRotate>();
     }
 

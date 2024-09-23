@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Adobe.meta
+guid: 834e823f2b3ee9e4aac72657ebde0e93
+========
 guid: 2d5c779f624cb3244b6b08fd6398b321
+>>>>>>>> dev:Assets/Photon/FusionAddons/SimpleKCC.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
