@@ -27,7 +27,7 @@ public class MoveToLobby : MonoBehaviour
     void Update()
     {
         
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(sceneToLoad);  // 지정된 씬으로 전환
         }
