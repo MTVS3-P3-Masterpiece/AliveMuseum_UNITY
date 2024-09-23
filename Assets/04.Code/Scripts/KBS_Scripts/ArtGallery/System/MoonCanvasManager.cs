@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class MoonCanvasManager : MonoBehaviour
 {
     public Image BG;
+    public Image EndingBG;
     public TMP_Text guideText;
     
     
@@ -22,5 +23,10 @@ public class MoonCanvasManager : MonoBehaviour
             guideText.gameObject.SetActive(false);
             BG.gameObject.SetActive(false);
         }
+    }
+
+    public void GameEndingImageController()
+    {
+        EndingBG.gameObject.SetActive(true);
     }
 }
