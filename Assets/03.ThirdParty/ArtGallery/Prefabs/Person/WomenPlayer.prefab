@@ -435,8 +435,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportPosition: {x: -14, y: 1.5, z: -78.95}
-  teleportPositionInMuseum: {x: 4, y: 1, z: 4}
+  teleportPositionInMuseum: {x: -13.727217, y: 1.080001, z: -4.642803}
   originSkybox: {fileID: 2100000, guid: 7e1e5781d39549148abcbf66c428df00, type: 2}
+  endingImage: {fileID: 0}
 --- !u!136 &2111077224095256983
 CapsuleCollider:
   m_ObjectHideFlags: 0
