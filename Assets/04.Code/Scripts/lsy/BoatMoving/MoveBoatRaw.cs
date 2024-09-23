@@ -27,11 +27,14 @@ public class MoveBoatRaw : MonoBehaviour
 
     public GameObject chatbotPanel;
     
-    public IEnumerator Start()
+    public void Start()
     {
         _course2TextCommunication = FindObjectOfType<Course2TextCommunication>();
         _curatorNetwork = FindObjectOfType<CuratorNetwork>();
-        
+    }
+
+    public IEnumerator Move()
+    {
         yield return StartCoroutine(MoveBoatStraightRaw(targetPos1));
         
         //Course2 
