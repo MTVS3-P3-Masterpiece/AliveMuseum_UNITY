@@ -26,7 +26,7 @@ public class DockExitInteraction : MonoBehaviour, IInteractable
         
         Debug.Log("DockInteraction : active");
        // _cameraMove.SetCurObjectToFollowUser();
-        _userMove.enabled = true;
+        //_userMove.enabled = true;
         
     }
 }
