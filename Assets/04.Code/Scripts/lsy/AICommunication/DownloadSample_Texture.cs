@@ -23,6 +23,8 @@ public class DownloadSample_Texture : MonoBehaviour
 
     public GameObject LoadingUI;
     public MoveBoatRaw _moveBoatRaw;
+    public GenImageController _GenImageController1;
+    public GenImageController _GenImageController2;
     public IEnumerator Start()
     {
         _modifiedGetImagePathNetwork = FindObjectOfType<ModifiedGetImagePathNetwork>();
@@ -34,6 +36,8 @@ public class DownloadSample_Texture : MonoBehaviour
         yield return StartCoroutine(UpdateTextureProcess());
         LoadingUI.SetActive(false);
         yield return new WaitForSeconds(3f);
+        StartCoroutine(_GenImageController1.VfxControl());
+        StartCoroutine(_GenImageController2.VfxControl());
         yield return StartCoroutine(_moveBoatRaw.Move());
 
     }
@@ -41,7 +45,7 @@ public class DownloadSample_Texture : MonoBehaviour
     public IEnumerator UpdateTextureProcess()
     {
         Debug.Log("UpdateTextureProcess");
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
             string url = NetworkData.baseUrl + NetworkData.downloadImageAPI +
                          _modifiedGetImagePathNetwork.imageGenResponseData.generated_images[i];

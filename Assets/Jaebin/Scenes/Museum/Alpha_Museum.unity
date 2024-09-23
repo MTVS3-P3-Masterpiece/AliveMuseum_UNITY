@@ -6499,14 +6499,14 @@ PrefabInstance:
     - target: {fileID: 5386006522999376280, guid: e2574b364aa75b14aa4fa82fc40212e2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2059327513}
     - target: {fileID: 5386006522999376280, guid: e2574b364aa75b14aa4fa82fc40212e2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PressEnter
+      value: GetCuratorResult
       objectReference: {fileID: 0}
     - target: {fileID: 5386006522999376280, guid: e2574b364aa75b14aa4fa82fc40212e2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ChatBotAct, Assembly-CSharp
+      value: CuratorNetwork, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5604053838012834605, guid: e2574b364aa75b14aa4fa82fc40212e2, type: 3}
       propertyPath: m_IsActive
@@ -7937,6 +7937,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5618621969686098683, guid: dff215afddf20bb4b91542c81258aa59, type: 3}
       propertyPath: text
+      value: 
+      objectReference: {fileID: 1679422567}
+    - target: {fileID: 5618621969686098683, guid: dff215afddf20bb4b91542c81258aa59, type: 3}
+      propertyPath: result
+      value: 
+      objectReference: {fileID: 1679422568}
+    - target: {fileID: 5618621969686098683, guid: dff215afddf20bb4b91542c81258aa59, type: 3}
+      propertyPath: reqtext
       value: 
       objectReference: {fileID: 1679422567}
     - target: {fileID: 6809401229995526124, guid: dff215afddf20bb4b91542c81258aa59, type: 3}

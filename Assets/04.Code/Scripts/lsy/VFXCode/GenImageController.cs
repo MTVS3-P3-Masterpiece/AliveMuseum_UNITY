@@ -21,10 +21,10 @@ public class GenImageController : MonoBehaviour
         vfx.SetFloat("ParticleSize", vfxSizeValue);
         vfx.SetFloat("Turbulence", vfxTurbulenceValue);
 
-        StartCoroutine(VfxControl());
+        //StartCoroutine(VfxControl());
     }
 
-    private IEnumerator VfxControl()
+    public IEnumerator VfxControl()
     {
         yield return orgImage.DOFade(0f, 3f);
         yield return DOTween.To(GetVFXSizeValue, SetVFXSizeValue, 1f, 3f);

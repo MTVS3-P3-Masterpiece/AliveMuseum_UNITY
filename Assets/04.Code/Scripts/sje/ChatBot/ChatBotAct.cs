@@ -71,7 +71,7 @@ public class ChatBotAct : MonoBehaviour
     {
         if (enterOk == true)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 ChatText.SetActive(true);
                 //playerScript.enabled = false;
@@ -102,7 +102,7 @@ public class ChatBotAct : MonoBehaviour
             ChatText.SetActive(false);
             //playerScript.enabled = true;
             chatOpen = false;
-            camRotate.enabled = true;
+            //camRotate.enabled = true;
         }
     }
     

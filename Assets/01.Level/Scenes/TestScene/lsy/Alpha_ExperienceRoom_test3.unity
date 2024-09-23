@@ -6803,6 +6803,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1014747245835964261, guid: dff215afddf20bb4b91542c81258aa59, type: 3}
+      propertyPath: _GenImageController1
+      value: 
+      objectReference: {fileID: 2027390548}
+    - target: {fileID: 1014747245835964261, guid: dff215afddf20bb4b91542c81258aa59, type: 3}
+      propertyPath: _GenImageController2
+      value: 
+      objectReference: {fileID: 453989225}
+    - target: {fileID: 1014747245835964261, guid: dff215afddf20bb4b91542c81258aa59, type: 3}
       propertyPath: 'images.Array.data[0]'
       value: 
       objectReference: {fileID: 1812088653}
