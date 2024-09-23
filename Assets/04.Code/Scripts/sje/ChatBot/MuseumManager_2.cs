@@ -19,14 +19,14 @@ public class MuseumManager_2 : MonoBehaviour
     private GameObject player;
     public GameObject gameLabel;
     private Text gameText;
-    PlayerMove playerScript;
+    //PlayerMove playerScript;
     CamRotate camRotate;
    
     void Start()
     {
 
         player = GameObject.Find("Player");
-        playerScript = player.GetComponent<PlayerMove>();
+        //playerScript = player.GetComponent<PlayerMove>();
         camRotate = Camera.main.GetComponent<CamRotate>();
     }
     
@@ -47,7 +47,7 @@ public class MuseumManager_2 : MonoBehaviour
     {
         museumOption.SetActive(false);
         Time.timeScale = 1f;
-        playerScript.enabled = true;
+        //playerScript.enabled = true;
         camRotate.enabled = true;
     }
     
