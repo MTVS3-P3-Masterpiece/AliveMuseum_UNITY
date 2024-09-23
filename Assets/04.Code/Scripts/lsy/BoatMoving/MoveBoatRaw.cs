@@ -26,6 +26,7 @@ public class MoveBoatRaw : MonoBehaviour
     public Animator lotusAnim3;
 
     public GameObject chatbotPanel;
+    public FogController _fogController;
     
     public void Start()
     {
@@ -37,10 +38,12 @@ public class MoveBoatRaw : MonoBehaviour
     {
         yield return StartCoroutine(MoveBoatStraightRaw(targetPos1));
         
-        //Course2 
+        //Course2
+        _fogController.SetCourse2Fog();
         chatbotPanel.SetActive(true);
         yield return new WaitUntil(() => isComplete);
         //yield return StartCoroutine(_course2TextCommunication.CommuteCourse2Text());
+        _fogController.SetCourse3_1Fog();
         StartAnim();
         yield return StartCoroutine(MoveBoatCurveRaw(targetPos2, targetPos3));
     }

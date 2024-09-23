@@ -2,26 +2,25 @@ using UnityEngine;
 
 public class FogController : MonoBehaviour
 {
-    [SerializeField]
-    private float course1Density = 0.5f;
+
+    public Camera _mainCamera;
+    [SerializeField] private float course1Density;
     [SerializeField]
     private Color course1Color;
     
-    [SerializeField]
-    private float course2Density = 0.01f;
+
+    [SerializeField] private float course2Density;
     [SerializeField]
     private Color course2Color;
-    
-    [SerializeField]
-    private float course3_1Density = 0.01f;
+
+    [SerializeField] private float course3_1Density;
     [SerializeField]
     private Color course3_1Color;
 
-    [SerializeField]
-    private float course3_2Density = 0.01f;
+    [SerializeField] private float course3_2Density;
     [SerializeField]
     private Color course3_2Color;
-
+    
     public void SetCourse1Fog()
     {
         RenderSettings.fogColor = course1Color;
@@ -29,7 +28,7 @@ public class FogController : MonoBehaviour
     }
     public void SetCourse2Fog()
     {
-        Debug.Log("FogController : SetCourse2Fog");
+        _mainCamera.clearFlags = CameraClearFlags.Skybox;
         RenderSettings.fogColor = course2Color;
         RenderSettings.fogDensity = course2Density;
     }

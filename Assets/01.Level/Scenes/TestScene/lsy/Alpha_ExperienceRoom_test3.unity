@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.025
+  m_FogDensity: 0.5
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -1098,6 +1098,7 @@ MonoBehaviour:
   lotusAnim2: {fileID: 1645074611}
   lotusAnim3: {fileID: 1607282557}
   chatbotPanel: {fileID: 7647428919201935174}
+  _fogController: {fileID: 651091349}
 --- !u!4 &354193274
 Transform:
   m_ObjectHideFlags: 0
@@ -1788,13 +1789,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4156ea89224e4468e0f0a14bb0664f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 1945877871}
   course1Density: 0.5
   course1Color: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
   course2Density: 0.01
-  course2Color: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 0}
-  course3_1Density: 0.01
+  course2Color: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 0}
+  course3_1Density: 0.0005
   course3_1Color: {r: 1, g: 0.91531783, b: 0.62578607, a: 0}
-  course3_2Density: 0.01
+  course3_2Density: 0.025
   course3_2Color: {r: 0.58630973, g: 0.632139, b: 0.7610062, a: 0}
 --- !u!4 &651091350
 Transform:
@@ -5389,7 +5391,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1945877872}
   - component: {fileID: 1945877871}
-  - component: {fileID: 1945877870}
   - component: {fileID: 1945877869}
   - component: {fileID: 1945877868}
   m_Layer: 0
@@ -5458,14 +5459,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1945877870
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945877867}
-  m_Enabled: 1
 --- !u!20 &1945877871
 Camera:
   m_ObjectHideFlags: 0
@@ -5475,7 +5468,7 @@ Camera:
   m_GameObject: {fileID: 1945877867}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.20784314, g: 0.20784314, b: 0.20784314, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
