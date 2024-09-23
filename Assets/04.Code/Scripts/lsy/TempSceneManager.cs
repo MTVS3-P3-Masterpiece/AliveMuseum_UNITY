@@ -5,11 +5,8 @@ public class TempSceneManager : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SceneManager.LoadScene("Prototype_ArtRoom_Wolhajeongin");
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SceneManager.LoadScene("3_Hall_Hangle");
         }
