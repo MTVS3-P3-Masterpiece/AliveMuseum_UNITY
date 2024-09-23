@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 7602241011113205065}
   - component: {fileID: 7545838237702416482}
   - component: {fileID: 1114830389740675157}
-  - component: {fileID: -7935512363926898762}
+  - component: {fileID: 2111077224095256983}
   m_Layer: 0
   m_Name: WomenPlayer
   m_TagString: Player
@@ -367,7 +367,6 @@ MonoBehaviour:
   - {fileID: 78318563817371200}
   - {fileID: 7545838237702416482}
   - {fileID: 1114830389740675157}
-  - {fileID: -7935512363926898762}
 --- !u!114 &1993711898176826704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,19 +437,29 @@ MonoBehaviour:
   teleportPosition: {x: -14, y: 1.5, z: -78.95}
   teleportPositionInMuseum: {x: 4, y: 1, z: 4}
   originSkybox: {fileID: 2100000, guid: 7e1e5781d39549148abcbf66c428df00, type: 2}
---- !u!114 &-7935512363926898762
-MonoBehaviour:
+--- !u!136 &2111077224095256983
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7439677781413868086}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7170cca9fc8da2a46bdcf509c6453f42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoonEndingScene: {fileID: 4323762574004234064, guid: 581c2638ab1c7854580f7f11e64f1158, type: 3}
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &9217212867619941452
 PrefabInstance:
   m_ObjectHideFlags: 0

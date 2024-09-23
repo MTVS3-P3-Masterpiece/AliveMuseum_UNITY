@@ -11,6 +11,7 @@ public class MoonPosition1 : NetworkBehaviour
     public Vector3 teleportPositionInMuseum = new Vector3(4, 1, 4);
     private string sceneName = "Prototype_ArtRoom_Wolhajeongin";
     public Material originSkybox;
+    public Image endingImage;
 
     public override void FixedUpdateNetwork()
     {
@@ -30,6 +31,7 @@ public class MoonPosition1 : NetworkBehaviour
             SceneManager.UnloadSceneAsync(sceneName);
             RenderSettings.skybox = originSkybox;
             RenderSettings.ambientLight = new Color(190f / 255f, 191f / 255f,194f / 255f);
+            
         }
     }
     

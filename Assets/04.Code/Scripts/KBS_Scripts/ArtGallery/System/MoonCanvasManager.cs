@@ -24,9 +24,5 @@ public class MoonCanvasManager : MonoBehaviour
             BG.gameObject.SetActive(false);
         }
     }
-
-    public void GameEndingImageController()
-    {
-        EndingBG.gameObject.SetActive(true);
-    }
+    
 }
