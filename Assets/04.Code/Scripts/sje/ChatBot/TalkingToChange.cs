@@ -11,7 +11,7 @@ public class TalkingToChange : MonoBehaviour
     private bool followPlayer = false;  
     private bool isChatBotVisible = true; 
 
-    PlayerMove playerScript;
+    //PlayerMove playerScript;
     GameObject player;  
     CamRotate camRotate;
     
@@ -43,7 +43,7 @@ public class TalkingToChange : MonoBehaviour
         }
         
         player = GameObject.Find("Player");
-        playerScript = player.GetComponent<PlayerMove>();
+        //playerScript = player.GetComponent<PlayerMove>();
         camRotate = Camera.main.GetComponent<CamRotate>();
     }
 
@@ -55,7 +55,7 @@ public class TalkingToChange : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 ChatText.SetActive(true);
-                playerScript.enabled = false;
+                //playerScript.enabled = false;
                 chatOpen = true;
                 followPlayer = true;  
                 interaction.SetActive(false);
@@ -72,7 +72,7 @@ public class TalkingToChange : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             ChatText.SetActive(false);
-            playerScript.enabled = true;
+            //playerScript.enabled = true;
             chatOpen = false;
             camRotate.enabled = true;
         }
