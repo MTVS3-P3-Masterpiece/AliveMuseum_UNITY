@@ -38,7 +38,7 @@
 
         void Update()
         {
-            if (enterOk && Input.GetKeyDown(KeyCode.E))
+            if (enterOk && Input.GetKeyDown(KeyCode.Q))
             {
                 if (anim != null && m_State == EnemyState.Idle)  
                 {

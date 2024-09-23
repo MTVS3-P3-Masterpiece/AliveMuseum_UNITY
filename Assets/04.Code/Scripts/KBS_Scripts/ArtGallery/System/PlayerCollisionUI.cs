@@ -29,9 +29,6 @@ public class PlayerCollisionUI : NetworkBehaviour
 
     private void ShowUI()
     {
-        if (networkObject.HasInputAuthority)
-        {
-            MoonEndingScene.gameObject.SetActive(true);
-        }
+        MoonEndingScene.gameObject.SetActive(true);
     }
 }
