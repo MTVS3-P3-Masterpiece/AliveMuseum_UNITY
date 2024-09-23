@@ -6983,6 +6983,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7453999621636160608, guid: 97af441a7a0321e44906adf83f095573, type: 3}
+      propertyPath: viewPos
+      value: 
+      objectReference: {fileID: 1552733342}
+    - target: {fileID: 7453999621636160608, guid: 97af441a7a0321e44906adf83f095573, type: 3}
       propertyPath: ChatText
       value: 
       objectReference: {fileID: 1332438086}
@@ -7213,6 +7217,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1551743527}
   m_Mesh: {fileID: 4300002, guid: 06f0bacc5dc7abb4bb2e9066b01f8df4, type: 3}
+--- !u!1 &1552733342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6201635588939857936, guid: 97af441a7a0321e44906adf83f095573, type: 3}
+  m_PrefabInstance: {fileID: 1514535999}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1560364492
 GameObject:
   m_ObjectHideFlags: 0
