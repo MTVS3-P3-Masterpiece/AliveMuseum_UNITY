@@ -21,6 +21,7 @@ public class MoonEndingController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Player");
             if (Input.GetKeyDown(KeyCode.G))
             {
                 endingImage.gameObject.SetActive(true);

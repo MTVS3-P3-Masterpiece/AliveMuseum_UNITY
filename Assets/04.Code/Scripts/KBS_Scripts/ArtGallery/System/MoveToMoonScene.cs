@@ -15,7 +15,6 @@ public class MoveToMoonScene : NetworkBehaviour
     public Button introButton;
     public Light directionalLight;
     
-    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -24,26 +23,12 @@ public class MoveToMoonScene : NetworkBehaviour
         }
     } 
     
-   public override void FixedUpdateNetwork()
-   {
-      
-   }
-
     public void OnEnterClickButton()
     {
         TransitionToNextScene();
         introButton.gameObject.SetActive(false);
     }
     
-     /*private void OnTriggerExit(Collider other)
-      {
-          Debug.Log("asdfg");
-          if (other.gameObject.CompareTag("Player"))
-          {
-              introButton.gameObject.SetActive(false);
-          }
-      }  */
-
     public void TransitionToNextScene()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -73,5 +58,4 @@ public class MoveToMoonScene : NetworkBehaviour
         yield return new WaitForSeconds(5f);
         introButton.gameObject.SetActive(false);
     }
-    
 }
