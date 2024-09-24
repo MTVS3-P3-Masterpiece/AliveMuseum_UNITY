@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ArtInfoTrigger : MonoBehaviour
 {
-    private Transform player;
+    public Transform player;
     public Button artInfoButton;
     public Button closeButton;
     public Image infoImage;
@@ -17,7 +17,7 @@ public class ArtInfoTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 2f)
+        if (Vector3.Distance(transform.position, player.transform.position) < 3f)
         {
             artInfoButton.gameObject.SetActive(true);
         }
@@ -30,12 +30,12 @@ public class ArtInfoTrigger : MonoBehaviour
     public void InfoButtonOnClick()
     {
         infoImage.gameObject.SetActive(true);
-        artInfoButton.gameObject.SetActive(false);
         closeButton.gameObject.SetActive(true);
     }
 
     public void CloseButtonOnClick()
     {
+        infoImage.gameObject.SetActive(false);
         closeButton.gameObject.SetActive(false);
     }
 }
