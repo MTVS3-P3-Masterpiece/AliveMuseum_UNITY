@@ -31,7 +31,6 @@ public class MoonPosition1 : NetworkBehaviour
             SceneManager.UnloadSceneAsync(sceneName);
             RenderSettings.skybox = originSkybox;
             RenderSettings.ambientLight = new Color(190f / 255f, 191f / 255f,194f / 255f);
-            
         }
     }
     
