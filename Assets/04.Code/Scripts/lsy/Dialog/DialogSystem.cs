@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,6 +12,8 @@ public class DialogSystem : MonoBehaviour
     private bool isFirst = true;
     private int currentDialogIndex = -1;
     private int currentSpeakerIndex = 0;
+    private float typingSpeed = 0.1f;
+    private bool isTypingEffect = false;
 
     private void Awake()
     {
@@ -41,6 +44,16 @@ public class DialogSystem : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if (isTypingEffect == true)
+            {
+                isTypingEffect = false;
+                
+                StopCoroutine("OnTypingText");
+                speakers[currentSpeakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
+                speakers[currentSpeakerIndex].objectArrow.SetActive(true);
+
+                return false;
+            }
             if (dialogs.Length > currentDialogIndex + 1)
             {
                 SetNextDialog();
@@ -62,12 +75,22 @@ public class DialogSystem : MonoBehaviour
 
     private void SetNextDialog()
     {
+        // 이전 화자의 대화 관련 오브젝트 비활성화
         SetActiveObjects(speakers[currentSpeakerIndex], false);
+        
+        // 다음 대사를 진행하도록
         currentDialogIndex++;
+        
+        // 현재 화자 순번 설정
         currentSpeakerIndex = dialogs[currentDialogIndex].speakerIndex;
+        
+        // 현재 화자의 대화 관련 오브젝트 활성화
         SetActiveObjects(speakers[currentSpeakerIndex], true);
+        // 현재 화자 이름 텍스트 설정
         speakers[currentSpeakerIndex].textName.text = dialogs[currentDialogIndex].name;
-        speakers[currentSpeakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
+        // 현재 화자의 대사 텍스트 설정
+        //speakers[currentSpeakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
+        StartCoroutine("OnTypingText");
     }
 
     private void SetActiveObjects(Speaker speaker, bool visible)
@@ -82,7 +105,26 @@ public class DialogSystem : MonoBehaviour
         //캐릭터 알파 값 변경
         Color color = speaker.spriteRenderer.color;
         color.a = visible == true ? 1 : 0.2f;
-        speaker.spriteRenderer.color = color;U
+        speaker.spriteRenderer.color = color;
+    }
+
+    private IEnumerator OnTypingText()
+    {
+        int index = 0;
+
+        isTypingEffect = true;
+        
+        // 텍스트 한글자씩 타이핑치듯 재생 
+        while (index <= dialogs[currentDialogIndex].dialogue.Length)
+        {
+            speakers[currentSpeakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue.Substring(0, index);
+            index++;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+
+        isTypingEffect = false;
+        
+        speakers[currentSpeakerIndex].objectArrow.SetActive(true);
     }
 }
 [System.Serializable]
