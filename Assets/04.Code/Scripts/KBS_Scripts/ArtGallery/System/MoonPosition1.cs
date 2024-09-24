@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 public class MoonPosition1 : NetworkBehaviour
 {
-    public Vector3 teleportPosition = new Vector3(-14f, 1.5f, -78.95f);
+    public Vector3 teleportPositionToMoonScene = new Vector3(-14f, 1.5f, -78.95f);
     public Vector3 teleportPositionInMuseum = new Vector3(4, 1, 4);
     private string sceneName = "Prototype_ArtRoom_Wolhajeongin";
     public Material originSkybox;
-    public Image endingImage;
+    public Light directionalLight;
 
     public override void FixedUpdateNetwork()
     {
@@ -29,8 +29,11 @@ public class MoonPosition1 : NetworkBehaviour
         {
             StartCoroutine(TeleportToMuseum());
             SceneManager.UnloadSceneAsync(sceneName);
+            
             RenderSettings.skybox = originSkybox;
             RenderSettings.ambientLight = new Color(190f / 255f, 191f / 255f,194f / 255f);
+            directionalLight.colorTemperature = 6570f;
+            directionalLight.intensity = 1.0f;
         }
     }
     
@@ -39,7 +42,7 @@ public class MoonPosition1 : NetworkBehaviour
         var characterController = GetComponent<NetworkCharacterController>();
         if (characterController != null)
         {
-            characterController.Teleport(teleportPosition, Quaternion.identity);
+            characterController.Teleport(teleportPositionToMoonScene, Quaternion.identity);
         }
 
         yield return null;

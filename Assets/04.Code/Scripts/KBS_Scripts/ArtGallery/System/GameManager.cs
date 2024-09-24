@@ -14,6 +14,7 @@ public class GameManager : SimulationBehaviour
     public Button manButton;
     public Button womenButton;
     public Image BG;
+    public Image selcettext;
     private NetworkObject _spawnedPlayer;
 
     public static GameManager Instance;
@@ -29,13 +30,10 @@ public class GameManager : SimulationBehaviour
     {
         StartCoroutine(Process());
         
-       //runnerController.Runner.Spawn(playerPrefab, new Vector3(0, 1, 0), quaternion.identity);
-
-       //StartCoroutine(SpawnPlayer(RunnerController.Runner));
        womenButton.gameObject.SetActive(false);
        manButton.gameObject.SetActive(false);
        BG.gameObject.SetActive(false);
-       
+       selcettext.gameObject.SetActive(false);
     }
 
     private IEnumerator Process()
