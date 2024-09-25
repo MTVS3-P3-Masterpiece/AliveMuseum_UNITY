@@ -22,16 +22,6 @@ public class MoonPosition1 : NetworkBehaviour
             return;
         }
         
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            StartCoroutine(TeleportToMuseum());
-            SceneManager.UnloadSceneAsync(MoonsceneName);
-            
-            RenderSettings.skybox = originSkybox;
-            RenderSettings.ambientLight = new Color(190f / 255f, 191f / 255f,194f / 255f);
-            directionalLight.colorTemperature = 6570f;
-            directionalLight.intensity = 1.0f;
-        }
     }
 
     
@@ -58,15 +48,19 @@ public class MoonPosition1 : NetworkBehaviour
     }
     
 
-    private IEnumerator TeleportToMuseum()
+    public void TeleportToMuseum()
     {
         var characterController = GetComponent<NetworkCharacterController>();
         if (characterController != null)
         {
             characterController.Teleport(teleportPositionInMuseum, Quaternion.identity);
         }
-
-        yield return null;
+        
+        SceneManager.UnloadSceneAsync(MoonsceneName);
+            
+        RenderSettings.skybox = originSkybox;
+        RenderSettings.ambientLight = new Color(190f / 255f, 191f / 255f,194f / 255f);
+        directionalLight.colorTemperature = 6570f;
+        directionalLight.intensity = 1.0f;
     }
-    
 }

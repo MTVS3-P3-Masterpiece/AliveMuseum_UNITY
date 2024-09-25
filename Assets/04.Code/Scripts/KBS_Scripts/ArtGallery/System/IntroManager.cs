@@ -17,7 +17,6 @@ public class IntroManager : MonoBehaviour
     public Canvas mainCanvas;
     public float fadeDuration = 1f;
     public AudioSource bgmAudioSource;
-    public AudioSource clickAudioSource;
 
     private static NetworkRunner Runner;
     public GameObject panel;
@@ -31,11 +30,13 @@ public class IntroManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKey)
+        if (Mathf.Approximately(metaLogoCanvas.alpha , 1))
         {
-            panel.gameObject.SetActive(true);
-            pressAnyKeyImage.gameObject.SetActive(false);
-            clickAudioSource.Play();
+            if (Input.anyKey)
+            {
+                panel.gameObject.SetActive(true);
+                pressAnyKeyImage.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -62,13 +63,13 @@ public class IntroManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         mainCanvas.gameObject.SetActive(true);
         bgmAudioSource.Play();
+        
     }
     
 
     public void CreateRoom()
     {
         CreatRoom(roomNumberInputField.text);
-        clickAudioSource.Play();
     }
 
     private void CreatRoom(string roomName)
