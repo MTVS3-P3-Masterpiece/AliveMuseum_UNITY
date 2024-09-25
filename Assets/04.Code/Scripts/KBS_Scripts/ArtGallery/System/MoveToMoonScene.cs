@@ -1,50 +1,34 @@
 using System;
 using System.Collections;
+using Fusion;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MoveToMoonScene : MonoBehaviour
+public class MoveToMoonScene : NetworkBehaviour
 {
     private string sceneName = "Prototype_ArtRoom_Wolhajeongin";
-    public Vector3 playerPosition = new Vector3(11.825f, 1.5f, 35f);
-    public Image introImage;
+    private Vector3 playerPosition = new Vector3(11.825f, 1.5f, 35f);
+    
     public Material mySkyBox;
     public Button introButton;
-
+    public Light directionalLight;
+    
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Enter");
-            StartCoroutine(ImageController());
+            StartCoroutine(ButtonSetActive());
         }
-    }
-
-
+    } 
+    
     public void OnEnterClickButton()
     {
         TransitionToNextScene();
-    }
-
-    private IEnumerator ImageController()
-    {
-        introButton.gameObject.SetActive(true);
-        yield return new WaitForSeconds(3f);
         introButton.gameObject.SetActive(false);
-        
     }
-
-    /*  private void OnTriggerExit(Collider other)
-      {
-          Debug.Log("asdfg");
-          if (other.gameObject.CompareTag("Player"))
-          {
-              introImage.gameObject.SetActive(false);
-          }
-      } */
-
+    
     public void TransitionToNextScene()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -56,9 +40,22 @@ public class MoveToMoonScene : MonoBehaviour
     {
         if (scene.name == sceneName)
         {
-            RenderSettings.ambientLight = Color.gray;
+            RenderSettings.ambientLight = new Color(16f / 255f, 16f / 255f,16f / 255f);
             RenderSettings.skybox = mySkyBox;
+            RenderSettings.fog = true;
+            RenderSettings.fogColor = Color.gray;
+            RenderSettings.fogMode = FogMode.ExponentialSquared;
+            RenderSettings.fogDensity = 0.03f;
+          //  directionalLight.colorTemperature = 13726f;
+           // directionalLight.intensity = 0.2f;
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
-    } 
+    }
+
+    IEnumerator ButtonSetActive()
+    {
+        introButton.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        introButton.gameObject.SetActive(false);
+    }
 }
