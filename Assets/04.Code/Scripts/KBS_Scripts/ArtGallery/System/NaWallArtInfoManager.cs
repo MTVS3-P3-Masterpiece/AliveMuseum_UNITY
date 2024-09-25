@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MiInDoArtInfoTrigger : MonoBehaviour
+
+public class NaWallArtInfoManager : MonoBehaviour
 {
     public Transform player;
     public Button artInfoButton;
@@ -42,3 +43,4 @@ public class MiInDoArtInfoTrigger : MonoBehaviour
         closeButton.gameObject.SetActive(false);
     }
 }
+

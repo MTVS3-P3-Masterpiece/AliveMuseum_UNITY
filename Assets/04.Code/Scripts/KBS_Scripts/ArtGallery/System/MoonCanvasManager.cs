@@ -8,30 +8,37 @@ public class MoonCanvasManager : MonoBehaviour
     public Image BG;
     public Image EndingBG;
     public TMP_Text waitText;
-    public TMP_Text pressTText;
+    public Button pressTextButton;
+    private MoonPosition1 MP1;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        MP1 = FindObjectOfType<MoonPosition1>();
         StartCoroutine(TextChanger());
+        
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            BG.gameObject.SetActive(false);
-        }
-    }
+    
 
     IEnumerator TextChanger()
     {
         waitText.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         waitText.gameObject.SetActive(false);
-        pressTText.gameObject.SetActive(true);
+        pressTextButton.gameObject.SetActive(true);
+    }
+
+    public void IntroSceneManagerButtonOnClick()
+    {
+        BG.gameObject.SetActive(false);
+    }
+
+    public void CharacterTeleportButtonOnClickInMoonScene()
+    {
+        MP1.TeleportToMoonScene();
     }
     
 }

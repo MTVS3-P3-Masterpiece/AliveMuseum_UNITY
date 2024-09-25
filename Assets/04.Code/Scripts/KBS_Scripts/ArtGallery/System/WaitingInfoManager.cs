@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MiInDoArtInfoTrigger : MonoBehaviour
+
+public class WaitingInfoManager : MonoBehaviour
 {
     public Transform player;
     public Button artInfoButton;
