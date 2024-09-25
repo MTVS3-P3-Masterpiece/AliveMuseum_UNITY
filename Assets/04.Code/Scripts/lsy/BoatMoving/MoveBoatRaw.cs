@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class MoveBoatRaw : MonoBehaviour
 {
@@ -21,9 +22,11 @@ public class MoveBoatRaw : MonoBehaviour
 
     public bool isComplete = false;
 
-    public Animator lotusAnim1;
-    public Animator lotusAnim2;
-    public Animator lotusAnim3;
+    public List<Animator> lotusAnims;
+    public List<VisualEffect> lotusVFX;
+    public List<GameObject> lotusObjects;
+    
+    
 
     public GameObject chatbotPanel;
     public FogController _fogController;
@@ -43,6 +46,7 @@ public class MoveBoatRaw : MonoBehaviour
         chatbotPanel.SetActive(true);
         yield return new WaitUntil(() => isComplete);
         //yield return StartCoroutine(_course2TextCommunication.CommuteCourse2Text());
+        // 감정 입력 통신 완료 시 실행
         _fogController.SetCourse3_1Fog();
         StartAnim();
         yield return StartCoroutine(MoveBoatCurveRaw(targetPos2, targetPos3));
@@ -90,11 +94,26 @@ public class MoveBoatRaw : MonoBehaviour
 
     public void StartAnim()
     {
+        int cnt = lotusAnims.Count;
         //if (_curatorNetwork.curatorResponseData.chatResult == "긍정")
         //{
-            lotusAnim1.SetBool("Blooming", true);
-            lotusAnim2.SetBool("Blooming", true);
-            lotusAnim3.SetBool("Blooming", true);
+        for (int i = 0; i < cnt; i++)
+        {
+            ShowPrefabWithScale(lotusObjects[i]);
+            lotusAnims[i].SetBool("Blooming", true);
+            lotusVFX[i].Play();
+        }
         //}
+    }
+
+    public void ShowPrefabWithScale(GameObject targetObject)
+    {
+        Vector3 targetScale = new Vector3(0.1f, 0.1f, 0.1f);
+        // 오브젝트 활성화
+        targetObject.SetActive(true);
+        targetObject.transform.localScale = Vector3.zero;
+
+        // 스케일을 (1, 1, 1)로 서서히 증가시키기 (scaleDuration 동안)
+        targetObject.transform.DOScale(targetScale, 3f).SetEase(Ease.OutBack);
     }
 }
