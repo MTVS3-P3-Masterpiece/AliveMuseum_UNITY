@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MuseumManager_2 : MonoBehaviour
+public class MuseumManager_3 : MonoBehaviour
 {
     
     public enum MuseumState

@@ -47,9 +47,9 @@ public class TalkingToChange : MonoBehaviour
         
         player = GameObject.Find("Player");
         //playerScript = player.GetComponent<PlayerMove>();
-        _playerManager = player.GetComponent<PlayerManager>();
-        firstPersonCamera = Camera.main.GetComponent<FirstPersonCamera>();
-        characterController = player.GetComponent<CharacterController>();  
+        //_playerManager = player.GetComponent<PlayerManager>();
+        //firstPersonCamera = Camera.main.GetComponent<FirstPersonCamera>();
+        //characterController = player.GetComponent<CharacterController>();  
         mNetworkCharacterController = player.GetComponent<NetworkCharacterController>();  
         
         runner = FindObjectOfType<NetworkRunner>(); // NetworkRunner 가져오기

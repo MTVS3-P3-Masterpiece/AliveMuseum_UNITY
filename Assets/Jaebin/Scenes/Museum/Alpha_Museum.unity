@@ -1889,8 +1889,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MuseumManager2, Assembly-CSharp
+      - m_Target: {fileID: 2145259975}
+        m_TargetAssemblyTypeName: MuseumManager_2, Assembly-CSharp
         m_MethodName: CloseOptionWindow
         m_Mode: 1
         m_Arguments:
@@ -5137,6 +5137,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7864679472050733192, guid: 8614d4cf9c0e86d40b74c85f9d141ee9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864679472050733192, guid: 8614d4cf9c0e86d40b74c85f9d141ee9, type: 3}
       propertyPath: museumOption
       value: 
       objectReference: {fileID: 0}
@@ -5163,7 +5167,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1095303488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4910b38830750bc4bb1c53b33e0c958e, type: 3}
+  m_Script: {fileID: 11500000, guid: d380b581a814f884cbb0f83d82a7e5e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mState: 0
@@ -8361,14 +8365,14 @@ PrefabInstance:
     - target: {fileID: 494586856796285721, guid: e2574b364aa75b14aa4fa82fc40212e2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2145259975}
+      objectReference: {fileID: 1095303489}
     - target: {fileID: 494586856796285721, guid: e2574b364aa75b14aa4fa82fc40212e2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CloseOptionWindow
       objectReference: {fileID: 0}
     - target: {fileID: 494586856796285721, guid: e2574b364aa75b14aa4fa82fc40212e2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MuseumManager_2, Assembly-CSharp
+      value: MuseumManager_3, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 757864715089166740, guid: e2574b364aa75b14aa4fa82fc40212e2, type: 3}
       propertyPath: m_AnchoredPosition.y
