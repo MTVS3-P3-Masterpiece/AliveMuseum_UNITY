@@ -46,8 +46,8 @@ public class MoveToMoonScene : NetworkBehaviour
             RenderSettings.fogColor = Color.gray;
             RenderSettings.fogMode = FogMode.ExponentialSquared;
             RenderSettings.fogDensity = 0.03f;
-            directionalLight.colorTemperature = 13726f;
-            directionalLight.intensity = 0.2f;
+          //  directionalLight.colorTemperature = 13726f;
+           // directionalLight.intensity = 0.2f;
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
