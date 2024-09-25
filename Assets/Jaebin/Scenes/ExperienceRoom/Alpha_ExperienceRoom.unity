@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtScore: {fileID: 371865503}
+  totalScoreTxt: {fileID: 0}
   increaseScore: 10
   weight:
   - 1
@@ -956,6 +957,7 @@ MonoBehaviour:
   lotusAnim2: {fileID: 0}
   lotusAnim3: {fileID: 0}
   chatbotPanel: {fileID: 0}
+  _fogController: {fileID: 0}
 --- !u!4 &354193274
 Transform:
   m_ObjectHideFlags: 0
@@ -1312,11 +1314,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100857629566050541, guid: b1959c574ffdc554ca1d993b112e293f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.7666674
+      value: 4.77
       objectReference: {fileID: 0}
     - target: {fileID: 4100857629566050541, guid: b1959c574ffdc554ca1d993b112e293f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.2253346
+      value: 2.207
       objectReference: {fileID: 0}
     - target: {fileID: 4100857629566050541, guid: b1959c574ffdc554ca1d993b112e293f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1724,6 +1726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4156ea89224e4468e0f0a14bb0664f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 0}
   course1Density: 0.5
   course1Color: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
   course2Density: 0.01
