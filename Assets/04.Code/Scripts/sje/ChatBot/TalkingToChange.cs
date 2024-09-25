@@ -1,4 +1,5 @@
 using System.Collections;
+using Fusion;
 using UnityEngine;
 
 public class TalkingToChange : MonoBehaviour
@@ -12,9 +13,14 @@ public class TalkingToChange : MonoBehaviour
     private bool isChatBotVisible = true; 
 
     //PlayerMove playerScript;
+    private PlayerManager _playerManager;
     GameObject player;  
-    CamRotate camRotate;
+    //CamRotate camRotate;  
+    private FirstPersonCamera firstPersonCamera;
+    private CharacterController characterController;  
+    private NetworkCharacterController mNetworkCharacterController;  
     
+    NetworkRunner runner;  // Fusion의 NetworkRunner
 
 
     [SerializeField]
@@ -34,17 +40,27 @@ public class TalkingToChange : MonoBehaviour
  
     void Start()
     {
-     
- 
-        
         if (player == null)
         {
             player = GameObject.FindWithTag("Player");
         }
         
         player = GameObject.Find("Player");
-            //playerScript = player.GetComponent<PlayerMove>();
-        camRotate = Camera.main.GetComponent<CamRotate>();
+        //playerScript = player.GetComponent<PlayerMove>();
+        //_playerManager = player.GetComponent<PlayerManager>();
+        //firstPersonCamera = Camera.main.GetComponent<FirstPersonCamera>();
+        //characterController = player.GetComponent<CharacterController>();  
+        mNetworkCharacterController = player.GetComponent<NetworkCharacterController>();  
+        
+        runner = FindObjectOfType<NetworkRunner>(); // NetworkRunner 가져오기
+        
+        
+        if (runner == null)
+        {
+            Debug.LogError("NetworkRunner not found!");
+        }
+
+        
     }
 
 
@@ -56,10 +72,24 @@ public class TalkingToChange : MonoBehaviour
             {
                 ChatText.SetActive(true);
                 //playerScript.enabled = false;
+                _playerManager.enabled = false;
                 chatOpen = true;
                 followPlayer = true;  
                 interaction.SetActive(false);
-
+                firstPersonCamera.enabled = false;
+                characterController.enabled = false;  
+                mNetworkCharacterController.enabled = false;  
+                
+                runner.ProvideInput = false;
+                
+                if (mNetworkCharacterController != null)
+                {
+                    mNetworkCharacterController.Velocity = Vector3.zero;
+                }
+                
+                // Cursor.lockState = CursorLockMode.None;  
+                // Cursor.visible = true;
+                
             }
         }
 
@@ -69,12 +99,23 @@ public class TalkingToChange : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        //if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && chatOpen)
         {
             ChatText.SetActive(false);
             //playerScript.enabled = true;
+            _playerManager.enabled = true;
+            
             chatOpen = false;
-            camRotate.enabled = true;
+            firstPersonCamera.enabled = true;
+            characterController.enabled = true;  
+            mNetworkCharacterController.enabled = true;  
+            
+            runner.ProvideInput = true;
+            
+            // Cursor.lockState = CursorLockMode.Locked;  
+            // Cursor.visible = false;
+            
         }
     }
     

@@ -27,7 +27,7 @@ public class MuseumManager_2 : MonoBehaviour
 
         player = GameObject.Find("Player");
         //playerScript = player.GetComponent<PlayerMove>();
-        camRotate = Camera.main.GetComponent<CamRotate>();
+        //camRotate = Camera.main.GetComponent<CamRotate>();
     }
     
     IEnumerator ReadyToStart()
@@ -48,7 +48,7 @@ public class MuseumManager_2 : MonoBehaviour
         museumOption.SetActive(false);
         Time.timeScale = 1f;
         //playerScript.enabled = true;
-        camRotate.enabled = true;
+        //camRotate.enabled = true;
     }
     
     public void MoveToKorean()
