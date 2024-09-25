@@ -30,11 +30,13 @@ public class IntroManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKey)
+        if (Mathf.Approximately(metaLogoCanvas.alpha , 1))
         {
-            panel.gameObject.SetActive(true);
-            pressAnyKeyImage.gameObject.SetActive(false);
-            
+            if (Input.anyKey)
+            {
+                panel.gameObject.SetActive(true);
+                pressAnyKeyImage.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -61,6 +63,7 @@ public class IntroManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         mainCanvas.gameObject.SetActive(true);
         bgmAudioSource.Play();
+        
     }
     
 

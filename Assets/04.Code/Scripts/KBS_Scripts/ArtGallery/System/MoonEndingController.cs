@@ -6,17 +6,7 @@ using UnityEngine.UI;
 public class MoonEndingController : MonoBehaviour
 {
     public Image endingImage;
-    public AudioSource audioSource;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(0))
-        {
-            endingImage.gameObject.SetActive(false);
-            audioSource.Stop();
-        }
-    }
-
+    
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -28,4 +18,5 @@ public class MoonEndingController : MonoBehaviour
             }
         }
     }
+    
 }
