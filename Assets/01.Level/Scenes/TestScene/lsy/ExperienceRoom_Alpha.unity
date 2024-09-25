@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtScore: {fileID: 371865503}
+  totalScoreTxt: {fileID: 0}
   increaseScore: 10
   weight:
   - 1
@@ -943,6 +944,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boat: {fileID: 354193272}
+  targetPos1: {fileID: 0}
+  targetPos2: []
+  targetPos3: []
+  isComplete: 0
+  lotusAnim1: {fileID: 0}
+  lotusAnim2: {fileID: 0}
+  lotusAnim3: {fileID: 0}
+  chatbotPanel: {fileID: 0}
+  _fogController: {fileID: 0}
 --- !u!4 &354193274
 Transform:
   m_ObjectHideFlags: 0
@@ -3058,6 +3068,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1259585783
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 827900843db6698409fbca7ffcb2dc90, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -90.791176
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 827900843db6698409fbca7ffcb2dc90, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 827900843db6698409fbca7ffcb2dc90, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -19.361748
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 827900843db6698409fbca7ffcb2dc90, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 827900843db6698409fbca7ffcb2dc90, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 827900843db6698409fbca7ffcb2dc90, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 827900843db6698409fbca7ffcb2dc90, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 827900843db6698409fbca7ffcb2dc90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 827900843db6698409fbca7ffcb2dc90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 827900843db6698409fbca7ffcb2dc90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 827900843db6698409fbca7ffcb2dc90, type: 3}
+      propertyPath: m_Name
+      value: crane
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 827900843db6698409fbca7ffcb2dc90, type: 3}
 --- !u!114 &1264947834 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3208616674765012666, guid: 419c782b1ef6c8e48902da067d6ed063, type: 3}
@@ -6263,3 +6330,4 @@ SceneRoots:
   - {fileID: 1861882926}
   - {fileID: 821717440}
   - {fileID: 1455330665}
+  - {fileID: 1259585783}
