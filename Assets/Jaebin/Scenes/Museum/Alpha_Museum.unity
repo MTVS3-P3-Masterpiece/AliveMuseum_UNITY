@@ -4564,6 +4564,7 @@ MonoBehaviour:
   manButton: {fileID: 130515263}
   womenButton: {fileID: 359004310}
   BG: {fileID: 596101578}
+  selcettext: {fileID: 0}
   countdown: 3
 --- !u!4 &841373966
 Transform:
@@ -4992,6 +4993,7 @@ MonoBehaviour:
   manButton: {fileID: 130515263}
   womenButton: {fileID: 359004310}
   BG: {fileID: 596101578}
+  selcettext: {fileID: 0}
   countdown: 3
 --- !u!4 &930805422
 Transform:
@@ -11413,6 +11415,7 @@ MonoBehaviour:
   mState: 0
   museumOption: {fileID: 1332438086}
   gameLabel: {fileID: 0}
+  chineseCanvas: {fileID: 2059337826}
 --- !u!4 &543450653115952274 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5300395673734822075, guid: f40aa4bccc758e5448b2f82165c6c669, type: 3}
