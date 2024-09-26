@@ -5,11 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MoonPosition2 : NetworkBehaviour
 {
-    public Vector3 teleportPosition = new Vector3(-55.5f, 1.5f, -95.40f);
+    public Vector3 teleportPositionToMoonScene = new Vector3(-55.5f, 1.5f, -95.40f);
+    public Vector3 teleportPositionToWordScene = new Vector3(75f, 0f, 356f);
+    public Vector3 teleportPositionToExScene = new Vector3();
     public Vector3 teleportPositionInMuseum = new Vector3(4, 1, 4);
-    private string sceneName = "Prototype_ArtRoom_Wolhajeongin";
+    private string MoonsceneName = "Prototype_ArtRoom_Wolhajeongin";
+    private string WordSceneName = "3_Hall_Hangle";
+    private string ExSceneName = "";
     public Material originSkybox;
-
+    public Light directionalLight;
 
     public override void FixedUpdateNetwork()
     {
@@ -18,40 +22,51 @@ public class MoonPosition2 : NetworkBehaviour
             return;
         }
         
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            StartCoroutine(Teleport());
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            StartCoroutine(TeleportToMuseum());
-            SceneManager.UnloadSceneAsync(sceneName);
-            RenderSettings.skybox = originSkybox;
-            RenderSettings.ambientLight = new Color(190f / 255f, 191f / 255f,194f / 255f);
-        }
     }
+
     
-    private IEnumerator Teleport()
+    
+    public void TeleportToMoonScene()
     {
         var characterController = GetComponent<NetworkCharacterController>();
         if (characterController != null)
         {
-            characterController.Teleport(teleportPosition, Quaternion.identity);
+            characterController.Teleport(teleportPositionToMoonScene, Quaternion.identity);
+            
         }
+        
+    }
 
-        yield return null;
+    public void TeleportToWordScene()
+    {
+        var characterController = GetComponent<NetworkCharacterController>();
+        if (characterController != null)
+        {
+            characterController.Teleport(teleportPositionToWordScene, Quaternion.identity);
+            
+        }
+    }
+
+    public void TeleportToExScene()
+    {
+        
     }
     
-    private IEnumerator TeleportToMuseum()
+
+    public void TeleportToMuseumAtMoonScene()
     {
         var characterController = GetComponent<NetworkCharacterController>();
         if (characterController != null)
         {
             characterController.Teleport(teleportPositionInMuseum, Quaternion.identity);
         }
-
-        yield return null;
+        
+        SceneManager.UnloadSceneAsync(MoonsceneName);
+            
+        RenderSettings.skybox = originSkybox;
+        RenderSettings.ambientLight = new Color(61f / 255f, 61f / 255f,61f / 255f);
+        RenderSettings.fog = false;
+        directionalLight.colorTemperature = 14650;
+        directionalLight.intensity = 0.5f;
     }
-    
 }
