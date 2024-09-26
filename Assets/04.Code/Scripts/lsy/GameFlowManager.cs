@@ -21,7 +21,7 @@ public class GameFlowManager : MonoBehaviour
         StartCoroutine(_moveBoatRaw.MoveBoatStraightRaw(_moveBoatRaw.targetPos1));
         StartCoroutine(_downloadSampleTexture._GenImageController1.VfxControl());
         yield return StartCoroutine(_downloadSampleTexture._GenImageController2.VfxControl());
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         StartCoroutine(_fogController.StartBlending(_fogController.environments[1], 5f));
         chatbotPanel.SetActive(true);
         yield return new WaitUntil(() => isComplete);

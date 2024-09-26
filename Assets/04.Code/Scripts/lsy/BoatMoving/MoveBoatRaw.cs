@@ -35,6 +35,10 @@ public class MoveBoatRaw : MonoBehaviour
     {
         _course2TextCommunication = FindObjectOfType<Course2TextCommunication>();
         _curatorNetwork = FindObjectOfType<CuratorNetwork>();
+        for (int i = 0; i < lotusVFX.Count; i++)
+        {
+            lotusVFX[i].Stop(); 
+        }
     }
 
     // public IEnumerator Move()
@@ -108,7 +112,7 @@ public class MoveBoatRaw : MonoBehaviour
 
     public void ShowPrefabWithScale(GameObject targetObject)
     {
-        Vector3 targetScale = new Vector3(0.1f, 0.1f, 0.1f);
+        Vector3 targetScale = new Vector3(0.5f, 0.5f, 0.5f);
         // 오브젝트 활성화
         targetObject.SetActive(true);
         targetObject.transform.localScale = Vector3.zero;
