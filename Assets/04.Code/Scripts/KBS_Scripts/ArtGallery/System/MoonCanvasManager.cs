@@ -10,6 +10,7 @@ public class MoonCanvasManager : MonoBehaviour
     public TMP_Text waitText;
     public Button pressTextButton;
     private MoonPosition1 MP1;
+    private MoonPosition2 MP2;
     public AudioSource moonSceneAudioSource;
     
     
@@ -17,6 +18,7 @@ public class MoonCanvasManager : MonoBehaviour
     void Start()
     {
         MP1 = FindObjectOfType<MoonPosition1>();
+        MP2 = FindObjectOfType<MoonPosition2>();
         StartCoroutine(TextChanger());
         
     }
@@ -40,6 +42,16 @@ public class MoonCanvasManager : MonoBehaviour
     public void CharacterTeleportButtonOnClickInMoonScene()
     {
         MP1.TeleportToMoonScene();
+    }
+
+    public void IntroSceneManagerButtonOnClick2()
+    {
+        BG.gameObject.SetActive(false);
+    }
+
+    public void CharacterTeleportButtonOnClickInMoonScene2()
+    {
+        MP2.TeleportToMoonScene();
     }
 
     public void EndingButtonOnClick()
