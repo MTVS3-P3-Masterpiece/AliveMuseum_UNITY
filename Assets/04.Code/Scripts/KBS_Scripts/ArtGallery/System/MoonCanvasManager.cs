@@ -44,7 +44,7 @@ public class MoonCanvasManager : MonoBehaviour
 
     public void EndingButtonOnClick()
     {
-        MP1.TeleportToMuseum();
+        MP1.TeleportToMuseumAtMoonScene();
         moonSceneAudioSource.Stop();
         EndingBG.gameObject.SetActive(false);
     }

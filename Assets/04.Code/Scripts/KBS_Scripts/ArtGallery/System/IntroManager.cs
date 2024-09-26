@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class IntroManager : MonoBehaviour
 {
-    private const string MainSceneName = "Alpha_Museum";
+    private const string MainSceneName = "Beta_Museum";
     
     public GameObject runnerPrefab;
     public TMP_InputField roomNumberInputField;

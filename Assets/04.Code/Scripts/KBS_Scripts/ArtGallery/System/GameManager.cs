@@ -14,8 +14,8 @@ public class GameManager : SimulationBehaviour
     public Button manButton;
     public Button womenButton;
     public Image BG;
-    public Image selcettext;
     private NetworkObject _spawnedPlayer;
+    public AudioSource ButtonClickAudioSource;
 
     public static GameManager Instance;
     public int countdown = 3;
@@ -33,7 +33,7 @@ public class GameManager : SimulationBehaviour
        womenButton.gameObject.SetActive(false);
        manButton.gameObject.SetActive(false);
        BG.gameObject.SetActive(false);
-       selcettext.gameObject.SetActive(false);
+       ButtonClickAudioSource.Play();
     }
 
     private IEnumerator Process()
