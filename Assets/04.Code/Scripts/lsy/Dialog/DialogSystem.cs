@@ -31,48 +31,54 @@ public class DialogSystem : MonoBehaviour
 
     public IEnumerator UpdateDialog()
     {
-        // 대사 분기가 시작될 때 1회만 호출
-        if(isFirst == true)
+        while (true)
         {
-            //초기화
-            Setup();
-            // 자동 재생으로 설정되어 있으면 첫 번재 대사 재생
-            if (isAutoStart) SetNextDialog();
-
-            isFirst = false;
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("Click");
-            if (isTypingEffect == true)
+            // 대사 분기가 시작될 때 1회만 호출
+            if (isFirst == true)
             {
-                isTypingEffect = false;
-                
-                StopCoroutine("OnTypingText");
-                speakers[currentSpeakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
-                speakers[currentSpeakerIndex].objectArrow.SetActive(true);
+                //초기화
+                Setup();
+                // 자동 재생으로 설정되어 있으면 첫 번재 대사 재생
+                if (isAutoStart) SetNextDialog();
 
-                //return false;
+                isFirst = false;
             }
-            if (dialogs.Length > currentDialogIndex + 1)
+
+            if (Input.GetMouseButtonDown(0))
             {
-                SetNextDialog();
-            }
-            else
-            {
-                for (int i = 0; i < speakers.Length; ++i)
+                Debug.Log("Click");
+                if (isTypingEffect == true)
                 {
-                    SetActiveObjects(speakers[i], false);
-                    //speakers[i].spriteRenderer.gameObject.SetActive(false);
+                    isTypingEffect = false;
+
+                    StopCoroutine("OnTypingText");
+                    speakers[currentSpeakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
+                    speakers[currentSpeakerIndex].objectArrow.SetActive(true);
+
+                    //return false;
                 }
 
-                //return true;
-            }
-        }
+                if (dialogs.Length > currentDialogIndex + 1)
+                {
+                    SetNextDialog();
+                }
+                else
+                {
+                    for (int i = 0; i < speakers.Length; ++i)
+                    {
+                        SetActiveObjects(speakers[i], false);
+                        //speakers[i].spriteRenderer.gameObject.SetActive(false);
+                    }
 
-        yield return null;
-        //return false;
+                    break;
+
+                    //return true;
+                }
+            }
+
+            yield return null;
+            //return false;
+        }
     }
 
     private void SetNextDialog()

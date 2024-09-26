@@ -11,8 +11,7 @@ public class FogController : MonoBehaviour
     public List<EnvironmentData> environments;
     private EnvironmentData curEnvironment;
     
-    private Material blendedSkybox;
-    public float blendDuration = 5f;  // 블렌딩 시간
+    //public float blendDuration = 20f;  // 블렌딩 시간
     private float blendTimer = 0f;  
     
     public Camera _mainCamera;
@@ -36,9 +35,12 @@ public class FogController : MonoBehaviour
 
     public void Start()
     {
-        blendedSkybox = new Material(Shader.Find("Skybox/Procedural"));
-
         // 초기 설정
+        environments[0].skyBoxMaterial.SetFloat("_Blend", 0f);
+        environments[1].skyBoxMaterial.SetFloat("_Blend", 0f);
+        environments[2].skyBoxMaterial.SetFloat("_Blend", 0f);
+        environments[3].skyBoxMaterial.SetFloat("_Blend", 0f);
+        
         RenderSettings.skybox = environments[0].skyBoxMaterial;
         RenderSettings.fogColor = environments[0].fogColor;
         RenderSettings.fogDensity = environments[0].fogDensity;
@@ -70,17 +72,19 @@ public class FogController : MonoBehaviour
         RenderSettings.fogDensity = course3_2Density;
     }
 
-    public IEnumerator StartBlending(EnvironmentData targetEnvironment)
+    public IEnumerator StartBlending(EnvironmentData targetEnvironment, float blendDuration)
     {
-        blendTimer = 0;
+        blendTimer = 0f;
         while (true)
         {
             blendTimer += Time.deltaTime;
             float blendFactor = Mathf.Clamp01(blendTimer / blendDuration);
          
             //  스카이박스 블렌딩
-            blendedSkybox.Lerp(curEnvironment.skyBoxMaterial ,targetEnvironment.skyBoxMaterial, blendFactor);
-            RenderSettings.skybox = blendedSkybox;
+            targetEnvironment.skyBoxMaterial.SetFloat("_Blend", blendFactor);
+            RenderSettings.skybox = targetEnvironment.skyBoxMaterial;
+            //blendedSkybox.Lerp(curEnvironment.skyBoxMaterial ,targetEnvironment.skyBoxMaterial, blendFactor);
+            //RenderSettings.skybox = blendedSkybox;
 
             // Volume 블렌딩
             curEnvironment.volume.weight = Mathf.Lerp(1f, 0f, blendFactor);
@@ -94,10 +98,11 @@ public class FogController : MonoBehaviour
 
             if (blendFactor >= 1f)
             {
+                curEnvironment = targetEnvironment;
                 break;
             }
+            yield return null;
         }
-        yield return null;
     }
     
     
