@@ -25,6 +25,7 @@ public class PlayerManager : NetworkBehaviour
     public static PlayerManager Instance;
     public NetworkCharacterController nCC;
     public Animator animator;
+    public bool isTapKeyPressed = false;
 
    
     
@@ -66,7 +67,30 @@ public class PlayerManager : NetworkBehaviour
 
         Vector3 dir = new Vector3(h, 0, v).normalized;
 
-        Quaternion cameraRotationY = Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, 0);
+
+        Quaternion cameraRotationY;
+        
+        if (Input.GetKey(KeyCode.Tab))
+        {
+            isTapKeyPressed = true;
+            Debug.Log("Tap");
+        }
+        else
+        {
+            isTapKeyPressed = false;
+        }
+        
+        if (isTapKeyPressed)
+        {
+            cameraRotationY = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+            
+        }
+        else
+        {
+            
+            cameraRotationY = Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, 0);
+        }
+        
         Vector3 move = cameraRotationY * dir * Runner.DeltaTime * moveSpeed;
         
         nCC.Move(move);
