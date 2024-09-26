@@ -197,8 +197,8 @@ public class ObjectInteraction : MonoBehaviour
             float alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
             foreach (Material mat in materials)
             {
-                Color color = mat.color;
-                mat.color = new Color(color.r, color.g, color.b, alpha);
+               // Color color = mat.color;
+                //mat.color = new Color(color.r, color.g, color.b, alpha);
             }
             yield return null;
         }
