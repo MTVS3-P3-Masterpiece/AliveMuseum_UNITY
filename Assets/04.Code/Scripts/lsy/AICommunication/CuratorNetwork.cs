@@ -16,7 +16,7 @@ public class CuratorNetwork : MonoBehaviour
     public CuratorResponseData curatorResponseData;
 
     public TMP_Text reqtext;
-    public Text result;
+    public TMP_Text result;
 
     public int questionCnt = 0;
     //public string msg;

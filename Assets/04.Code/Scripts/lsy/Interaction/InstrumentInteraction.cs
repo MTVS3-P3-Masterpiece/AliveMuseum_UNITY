@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InstrumentInteraction : MonoBehaviour, IInteractable
 {
+    public Button introButton;
     public GameObject RhythmUI;
     public void Start()
     {
@@ -10,6 +13,14 @@ public class InstrumentInteraction : MonoBehaviour, IInteractable
         // _userMove = GameObject.FindWithTag("Player").GetComponent<UserMove>();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("User"))
+        {
+            StartCoroutine(ButtonSetActive());
+        }
+    }
+    
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -21,5 +32,17 @@ public class InstrumentInteraction : MonoBehaviour, IInteractable
     {
         RhythmUI.SetActive(true);
 
+    }
+    
+    IEnumerator ButtonSetActive()
+    {
+        introButton.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        introButton.gameObject.SetActive(false);
+    }
+
+    public void ClickRhythmButton()
+    {
+        RhythmUI.SetActive(true);
     }
 }

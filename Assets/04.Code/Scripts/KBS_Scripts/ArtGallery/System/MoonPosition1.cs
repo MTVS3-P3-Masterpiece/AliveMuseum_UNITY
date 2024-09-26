@@ -18,6 +18,10 @@ public class MoonPosition1 : NetworkBehaviour
     public Light directionalLight;
     public GameObject dirLightObject;
 
+    public void Start()
+    {
+        dirLightObject = GameObject.FindWithTag("OrgDirLight");
+    }
     public override void FixedUpdateNetwork()
     {
         if (HasStateAuthority == false)
@@ -77,6 +81,7 @@ public class MoonPosition1 : NetworkBehaviour
     
     public void TeleportToMuseumAtWordScene()
     {
+        dirLightObject.SetActive(true);
         var characterController = GetComponent<NetworkCharacterController>();
         if (characterController != null)
         {

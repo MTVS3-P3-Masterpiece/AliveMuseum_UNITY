@@ -19,7 +19,6 @@ public class MoveFromExToLobby : MonoBehaviour
     
     public void ClickMoveTolobby()
     {
-        directionalLight.SetActive(true);
         MP1.TeleportToMuseumAtExScene();
         
     }

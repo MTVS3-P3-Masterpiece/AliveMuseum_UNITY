@@ -5,23 +5,27 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class RecordImageNetwork : MonoBehaviour
 {
     public RecordRequestData recordRequestData;
     public RecordResponseData recordResponseData;
-    public Image image;
-    private void Start()
+    public Material recordMaterial;
+    public TMP_Text recordText;
+
+    public TMP_Text InputUIText;
+
+    public void Start()
     {
         recordRequestData = new RecordRequestData();
-        recordRequestData.text = "뱃놀이에서 여유로운 분위기를 느낄 수 있었어";
-        recordResponseData = new RecordResponseData();
-        
-        StartCoroutine(ReqRecordImage());
-
-
+        recordText = GameObject.FindGameObjectWithTag("RecordText").GetComponent<TMP_Text>();
     }
-
+    public void StartReqRecordIamge()
+    {
+        SetRequestText(InputUIText.text);
+        StartCoroutine(ReqRecordImage());
+    }
     public IEnumerator ReqRecordImage()
     {
         List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
@@ -42,11 +46,12 @@ public class RecordImageNetwork : MonoBehaviour
         var tex = DownloadHandlerTexture.GetContent(req);
         if (string.IsNullOrEmpty(tex.name))
             tex.name = "recording";
-        var sprite = Sprite.Create(tex, new Rect(0f, 0f, tex.width, tex.height), new Vector2(0.5f, 0.5f));
-        sprite.name = tex.name;
-        image.sprite = sprite;
-        image.DOKill();
-        image.DOFade(1f, 0.1f);
+        recordMaterial.mainTexture = tex; 
+    }
 
+    public void SetRequestText(string txt)
+    {
+        recordRequestData.text = txt;
+        recordText.text = txt;
     }
 }

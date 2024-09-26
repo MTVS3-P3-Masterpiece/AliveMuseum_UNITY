@@ -8,6 +8,7 @@ TagManager:
   - Note
   - Vassal
   - OrgDirLight
+  - RecordText
   layers:
   - Default
   - TransparentFX
