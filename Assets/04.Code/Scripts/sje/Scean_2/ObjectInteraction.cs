@@ -119,7 +119,7 @@ public class ObjectInteraction : MonoBehaviour
     public KeyCode interactionKey = KeyCode.E;  
     public float fadeDuration = 5.0f; 
 
-    private GameObject player;  // 플레이어 오브젝트를 태그로 찾기 위한 변수
+    private GameObject player;   
     private Material[] materials;
     private bool isFading = false;
 
@@ -128,7 +128,7 @@ public class ObjectInteraction : MonoBehaviour
         // 플레이어 오브젝트를 태그로 찾기
         player = GameObject.FindWithTag("Player");
 
-        // secondParentObject의 자식 렌더러들을 찾아서 머티리얼 설정
+       
         Renderer[] renderers = secondParentObject.GetComponentsInChildren<Renderer>();
         materials = new Material[renderers.Length];
 
@@ -149,7 +149,7 @@ public class ObjectInteraction : MonoBehaviour
 
     void Update()
     {
-        // 태그로 플레이어를 찾고 나서 동작
+        
         if (player == null)
         {
             player = GameObject.FindWithTag("Player");
@@ -157,10 +157,10 @@ public class ObjectInteraction : MonoBehaviour
 
         if (player != null && secondParentObject != null && !isFading)
         {
-            // firstObject(자기 자신)의 위치와 플레이어의 거리를 계산
+           
             float distance = Vector3.Distance(transform.position, player.transform.position);
 
-            // 상호작용 거리 내에 플레이어가 있고, 상호작용 키를 눌렀을 때
+           
             if (distance <= interactionDistance && Input.GetKeyDown(interactionKey))
             {
                 StartCoroutine(FadeOutCoroutine());

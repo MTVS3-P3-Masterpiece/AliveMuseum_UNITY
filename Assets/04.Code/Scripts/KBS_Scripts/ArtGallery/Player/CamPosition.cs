@@ -14,6 +14,4 @@ public class CamPosition : NetworkBehaviour
            // camera.GetComponent<ThirdPersonCamera>().target = transform;
         }
     }
-
-    
 }

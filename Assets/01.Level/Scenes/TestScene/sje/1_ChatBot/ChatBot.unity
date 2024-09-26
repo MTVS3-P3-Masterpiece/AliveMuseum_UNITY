@@ -430,6 +430,11 @@ MonoBehaviour:
   hp: 20
   hpSlider: {fileID: 0}
   hitEffect: {fileID: 0}
+  cameraTransform: {fileID: 0}
+  nicknameText: {fileID: 0}
+  camera: {fileID: 0}
+  nCC: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1 &471844933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,10 +1570,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e7383eef72489408754d6f03928440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewPos: {fileID: 0}
   interaction: {fileID: 362272301}
   ChatText: {fileID: 1663007474}
-  smoothTime: 0.3
+  textChat: {fileID: 0}
+  _curatorNetwork: {fileID: 0}
 --- !u!136 &1445849588
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2075,6 +2080,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b666adb06911c1f4dbc21bcc6e3adcf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: -45
+  max: 85
+  mouseSensitivity: 100
+  playerBody: {fileID: 0}
   rotSpeed: 200
 --- !u!1 &1807015638
 GameObject:

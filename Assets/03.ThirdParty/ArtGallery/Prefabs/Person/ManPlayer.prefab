@@ -337,16 +337,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpPower: 5
-  isJumping: 1
-  hp: 20
-  hpSlider: {fileID: 0}
-  hitEffect: {fileID: 0}
   cameraTransform: {fileID: 0}
   nicknameText: {fileID: 3904123183848680436}
   camera: {fileID: 0}
   nCC: {fileID: 7545838237702416482}
   animator: {fileID: 0}
+  isTapKeyPressed: 0
 --- !u!114 &176964344113235738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,6 +363,7 @@ MonoBehaviour:
   - {fileID: 78318563817371200}
   - {fileID: 7545838237702416482}
   - {fileID: 851922822000191590}
+  - {fileID: 8391576801542414996}
 --- !u!114 &1993711898176826704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,10 +512,61 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0718f375d6c21fa40b59755f63cd3e1f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3528029447730070549}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0718f375d6c21fa40b59755f63cd3e1f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8391576801542414996}
   m_SourcePrefab: {fileID: 100100000, guid: 0718f375d6c21fa40b59755f63cd3e1f, type: 3}
 --- !u!4 &1306729482042251927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0718f375d6c21fa40b59755f63cd3e1f, type: 3}
   m_PrefabInstance: {fileID: 1560733627700346236}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1831204897594851373 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0718f375d6c21fa40b59755f63cd3e1f, type: 3}
+  m_PrefabInstance: {fileID: 1560733627700346236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3528029447730070549
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831204897594851373}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 68b415da4025248499ce7305bd1b4b5e, type: 3}
+  m_Controller: {fileID: 9100000, guid: 1f4acd8c524113743842dfcf77628bd2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8391576801542414996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831204897594851373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 3528029447730070549}
+  TotalWords: 0
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 00000000
+  TriggerHashes: 00000000

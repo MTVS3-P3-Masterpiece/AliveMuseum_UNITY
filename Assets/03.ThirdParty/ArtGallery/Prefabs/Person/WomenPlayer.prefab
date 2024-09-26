@@ -336,11 +336,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpPower: 5
-  isJumping: 1
-  hp: 20
-  hpSlider: {fileID: 0}
-  hitEffect: {fileID: 0}
   cameraTransform: {fileID: 0}
   nicknameText: {fileID: 3904123183848680436}
   camera: {fileID: 0}
@@ -367,6 +362,7 @@ MonoBehaviour:
   - {fileID: 78318563817371200}
   - {fileID: 7545838237702416482}
   - {fileID: 1114830389740675157}
+  - {fileID: 6312410298196265492}
 --- !u!114 &1993711898176826704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,8 +500,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 585c36ac818056e43a519865ca8ac899, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6312410298196265492}
   m_SourcePrefab: {fileID: 100100000, guid: 585c36ac818056e43a519865ca8ac899, type: 3}
+--- !u!95 &3350831974169563613 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 585c36ac818056e43a519865ca8ac899, type: 3}
+  m_PrefabInstance: {fileID: 9217212867619941452}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8298858221496979741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 585c36ac818056e43a519865ca8ac899, type: 3}
+  m_PrefabInstance: {fileID: 9217212867619941452}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6312410298196265492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298858221496979741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 3350831974169563613}
+  TotalWords: 1
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 000000002b1a167c79406955166615569245c3b920e23b685928a8ce
+  TriggerHashes: 00000000e98e9e7d
 --- !u!4 &8674116749179227047 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 585c36ac818056e43a519865ca8ac899, type: 3}

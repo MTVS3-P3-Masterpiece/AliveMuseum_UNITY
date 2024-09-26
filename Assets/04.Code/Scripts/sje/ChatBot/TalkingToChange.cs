@@ -8,7 +8,7 @@ public class TalkingToChange : MonoBehaviour
     public GameObject interaction;
     public GameObject ChatText;
     bool enterOk = false;
-    bool chatOpen = false;
+    bool chatOpen1 = false;
     private bool followPlayer = false;  
     private bool isChatBotVisible = true; 
 
@@ -46,20 +46,6 @@ public class TalkingToChange : MonoBehaviour
         }
         
         player = GameObject.Find("Player");
-        //playerScript = player.GetComponent<PlayerMove>();
-        //_playerManager = player.GetComponent<PlayerManager>();
-        //firstPersonCamera = Camera.main.GetComponent<FirstPersonCamera>();
-        //characterController = player.GetComponent<CharacterController>();  
-       // mNetworkCharacterController = player.GetComponent<NetworkCharacterController>();  
-        
-       /* runner = FindObjectOfType<NetworkRunner>(); // NetworkRunner 가져오기
-        
-        
-        if (runner == null)
-        {
-            Debug.LogError("NetworkRunner not found!");
-        } */
-
         
     }
 
@@ -71,24 +57,9 @@ public class TalkingToChange : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 ChatText.SetActive(true);
-                //playerScript.enabled = false;
-               // _playerManager.enabled = false;
-                chatOpen = true;
+                chatOpen1 = true;
                 followPlayer = true;  
                 interaction.SetActive(false);
-                //firstPersonCamera.enabled = false;
-                characterController.enabled = false;  
-                mNetworkCharacterController.enabled = false;  
-                
-                runner.ProvideInput = false;
-                
-                if (mNetworkCharacterController != null)
-                {
-                    mNetworkCharacterController.Velocity = Vector3.zero;
-                }
-                
-                // Cursor.lockState = CursorLockMode.None;  
-                // Cursor.visible = true;
                 
             }
         }
@@ -98,23 +69,15 @@ public class TalkingToChange : MonoBehaviour
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         }
-
-        //if (Input.GetKeyDown(KeyCode.X))
-        if (Input.GetKeyDown(KeyCode.X) && chatOpen)
+        
+        if (Input.GetKeyDown(KeyCode.X) && chatOpen1)
         {
             ChatText.SetActive(false);
-            //playerScript.enabled = true;
             _playerManager.enabled = true;
             
-            chatOpen = false;
+            chatOpen1 = false;
             firstPersonCamera.enabled = true;
-            characterController.enabled = true;  
-            mNetworkCharacterController.enabled = true;  
-            
-            runner.ProvideInput = true;
-            
-            // Cursor.lockState = CursorLockMode.Locked;  
-            // Cursor.visible = false;
+
             
         }
     }
