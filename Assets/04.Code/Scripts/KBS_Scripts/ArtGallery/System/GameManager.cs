@@ -14,7 +14,6 @@ public class GameManager : SimulationBehaviour
     public Button manButton;
     public Button womenButton;
     public Image BG;
-    public Image selcettext;
     private NetworkObject _spawnedPlayer;
 
     public static GameManager Instance;
@@ -33,7 +32,6 @@ public class GameManager : SimulationBehaviour
        womenButton.gameObject.SetActive(false);
        manButton.gameObject.SetActive(false);
        BG.gameObject.SetActive(false);
-       selcettext.gameObject.SetActive(false);
     }
 
     private IEnumerator Process()
