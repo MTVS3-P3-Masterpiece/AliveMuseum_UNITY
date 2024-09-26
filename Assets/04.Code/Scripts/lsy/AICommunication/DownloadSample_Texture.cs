@@ -21,11 +21,11 @@ public class DownloadSample_Texture : MonoBehaviour
     //public string url;
     private int _currentIndex;
 
-    public GameObject LoadingUI;
-    public MoveBoatRaw _moveBoatRaw;
+    //public GameObject LoadingUI;
+    //public MoveBoatRaw _moveBoatRaw;
     public GenImageController _GenImageController1;
     public GenImageController _GenImageController2;
-    public IEnumerator Start()
+    public void Start()
     {
         _modifiedGetImagePathNetwork = FindObjectOfType<ModifiedGetImagePathNetwork>();
         if (_modifiedGetImagePathNetwork == null)
@@ -33,12 +33,12 @@ public class DownloadSample_Texture : MonoBehaviour
             Debug.LogError("DownloadSample_Texture : _modifiedGetImagePathNetwork is null");
         }
 
-        yield return StartCoroutine(UpdateTextureProcess());
-        LoadingUI.SetActive(false);
-        yield return new WaitForSeconds(3f);
-        StartCoroutine(_GenImageController1.VfxControl());
-        StartCoroutine(_GenImageController2.VfxControl());
-        yield return StartCoroutine(_moveBoatRaw.Move());
+        //yield return StartCoroutine(UpdateTextureProcess());
+        //LoadingUI.SetActive(false);
+        //yield return new WaitForSeconds(3f);
+        //StartCoroutine(_GenImageController1.VfxControl());
+        //StartCoroutine(_GenImageController2.VfxControl());
+        //yield return StartCoroutine(_moveBoatRaw.Move());
 
     }
     

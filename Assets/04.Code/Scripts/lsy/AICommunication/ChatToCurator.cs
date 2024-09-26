@@ -11,7 +11,8 @@ public class ChatToCurator : MonoBehaviour
     //public Course2TextCommunication _Course2TextCommunication;
     //public Canvas chatbotCanvas;
     public GameObject chatbotCanvas;
-    public MoveBoatRaw _moveBoatRaw;
+    //public MoveBoatRaw _moveBoatRaw;
+    public GameFlowManager _gameFlowManager;
 
     public CuratorNetwork _curatorNetwork;
 
@@ -40,6 +41,6 @@ public class ChatToCurator : MonoBehaviour
         yield return StartCoroutine(_curatorNetwork.ReqCurator());
         Debug.Log("ChatToCurator : Response Text - " + _curatorNetwork.GetResponseText());
         displayField.text = "감정 키워드 : "+_curatorNetwork.GetResponseText();
-        _moveBoatRaw.isComplete = true;
+        _gameFlowManager.isComplete = true;
     }
 }

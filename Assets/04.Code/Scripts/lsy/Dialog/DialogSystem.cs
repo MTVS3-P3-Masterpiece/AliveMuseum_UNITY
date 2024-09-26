@@ -25,11 +25,11 @@ public class DialogSystem : MonoBehaviour
         for (int i = 0; i < speakers.Length; ++i)
         {
             SetActiveObjects(speakers[i], false);
-            speakers[i].spriteRenderer.gameObject.SetActive(true);
+            //speakers[i].spriteRenderer.gameObject.SetActive(true);
         }
     }
 
-    public bool UpdateDialog()
+    public IEnumerator UpdateDialog()
     {
         // 대사 분기가 시작될 때 1회만 호출
         if(isFirst == true)
@@ -44,6 +44,7 @@ public class DialogSystem : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Click");
             if (isTypingEffect == true)
             {
                 isTypingEffect = false;
@@ -52,7 +53,7 @@ public class DialogSystem : MonoBehaviour
                 speakers[currentSpeakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
                 speakers[currentSpeakerIndex].objectArrow.SetActive(true);
 
-                return false;
+                //return false;
             }
             if (dialogs.Length > currentDialogIndex + 1)
             {
@@ -63,14 +64,15 @@ public class DialogSystem : MonoBehaviour
                 for (int i = 0; i < speakers.Length; ++i)
                 {
                     SetActiveObjects(speakers[i], false);
-                    speakers[i].spriteRenderer.gameObject.SetActive(false);
+                    //speakers[i].spriteRenderer.gameObject.SetActive(false);
                 }
 
-                return true;
+                //return true;
             }
         }
 
-        return false;
+        yield return null;
+        //return false;
     }
 
     private void SetNextDialog()
@@ -103,9 +105,9 @@ public class DialogSystem : MonoBehaviour
         speaker.objectArrow.SetActive(false);
         
         //캐릭터 알파 값 변경
-        Color color = speaker.spriteRenderer.color;
-        color.a = visible == true ? 1 : 0.2f;
-        speaker.spriteRenderer.color = color;
+        //Color color = speaker.spriteRenderer.color;
+        //color.a = visible == true ? 1 : 0.2f;
+        //speaker.spriteRenderer.color = color;
     }
 
     private IEnumerator OnTypingText()
@@ -130,7 +132,7 @@ public class DialogSystem : MonoBehaviour
 [System.Serializable]
 public struct Speaker
 {
-    public SpriteRenderer spriteRenderer;
+    //public SpriteRenderer spriteRenderer;
     public Image imageDialog;
     public TMP_Text textName;
     public TMP_Text textDialogue;

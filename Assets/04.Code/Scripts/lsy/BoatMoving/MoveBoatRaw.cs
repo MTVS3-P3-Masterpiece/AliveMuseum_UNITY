@@ -20,7 +20,7 @@ public class MoveBoatRaw : MonoBehaviour
     
     private Course2TextCommunication _course2TextCommunication;
 
-    public bool isComplete = false;
+    //public bool isComplete = false;
 
     public List<Animator> lotusAnims;
     public List<VisualEffect> lotusVFX;
@@ -28,7 +28,7 @@ public class MoveBoatRaw : MonoBehaviour
     
     
 
-    public GameObject chatbotPanel;
+    //public GameObject chatbotPanel;
     public FogController _fogController;
     
     public void Start()
@@ -37,20 +37,20 @@ public class MoveBoatRaw : MonoBehaviour
         _curatorNetwork = FindObjectOfType<CuratorNetwork>();
     }
 
-    public IEnumerator Move()
-    {
-        yield return StartCoroutine(MoveBoatStraightRaw(targetPos1));
-        
-        //Course2
-        _fogController.SetCourse2Fog();
-        chatbotPanel.SetActive(true);
-        yield return new WaitUntil(() => isComplete);
-        //yield return StartCoroutine(_course2TextCommunication.CommuteCourse2Text());
-        // 감정 입력 통신 완료 시 실행
-        _fogController.SetCourse3_1Fog();
-        StartAnim();
-        yield return StartCoroutine(MoveBoatCurveRaw(targetPos2, targetPos3));
-    }
+    // public IEnumerator Move()
+    // {
+    //     //yield return StartCoroutine(MoveBoatStraightRaw(targetPos1));
+    //     
+    //     //Course2
+    //     //_fogController.SetCourse2Fog();
+    //     //chatbotPanel.SetActive(true);
+    //     //yield return new WaitUntil(() => isComplete);
+    //     //yield return StartCoroutine(_course2TextCommunication.CommuteCourse2Text());
+    //     // 감정 입력 통신 완료 시 실행
+    //     //_fogController.SetCourse3_1Fog();
+    //     //StartAnim();
+    //     //yield return StartCoroutine(MoveBoatCurveRaw(targetPos2, targetPos3));
+    // }
 
     public IEnumerator MoveBoatCurveRaw(List<Transform> positions1, List<Transform> positions2)
     {
