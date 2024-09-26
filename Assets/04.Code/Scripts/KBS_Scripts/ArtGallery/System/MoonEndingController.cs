@@ -24,6 +24,7 @@ public class MoonEndingController : MonoBehaviour
     
     private IEnumerator CanvasGroupController()
     {
+        outroCanvas.gameObject.SetActive(true);
         float elapsedTime = 0f;
 
         outroCanvas.alpha = 0;

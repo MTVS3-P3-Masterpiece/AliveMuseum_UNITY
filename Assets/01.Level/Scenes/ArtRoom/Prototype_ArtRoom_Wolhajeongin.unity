@@ -8848,7 +8848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endingImage: {fileID: 1549820477}
-  outroCanvas: {fileID: 0}
+  outroCanvas: {fileID: 1544679669}
   fadeDuration: 1
 --- !u!1 &1331071036
 GameObject:

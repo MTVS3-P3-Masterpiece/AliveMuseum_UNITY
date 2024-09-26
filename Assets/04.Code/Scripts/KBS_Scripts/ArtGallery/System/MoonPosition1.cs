@@ -67,6 +67,7 @@ public class MoonPosition1 : NetworkBehaviour
             
         RenderSettings.skybox = originSkybox;
         RenderSettings.ambientLight = new Color(61f / 255f, 61f / 255f,61f / 255f);
+        RenderSettings.fog = false;
         directionalLight.colorTemperature = 14650;
         directionalLight.intensity = 0.5f;
     }
