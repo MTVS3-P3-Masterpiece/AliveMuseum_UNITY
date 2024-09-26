@@ -12,27 +12,23 @@ public class PlayerManager : NetworkBehaviour
     private CharacterController cc;
     private float gravity = -20f;   
     private float yVelocity = 0;
-    public float jumpPower = 10f; 
-    public bool isJumping = false;
-    public int hp = 20;    
     private int maxHp = 20;
-    public Slider hpSlider;
-    public GameObject hitEffect; 
     //private Animator anim;
     public Transform cameraTransform;
     public TMP_Text nicknameText;
     public Camera camera;
     public static PlayerManager Instance;
     public NetworkCharacterController nCC;
-    public Animator animator;
+    public NetworkMecanimAnimator animator;
+    private Animator anim;
     public bool isTapKeyPressed = false;
 
-   
     
     void Awake()
     {
         cc = GetComponent<CharacterController>();
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponentInChildren<NetworkMecanimAnimator>();
+        anim = GetComponentInChildren<Animator>();
 
     }
 
@@ -67,6 +63,14 @@ public class PlayerManager : NetworkBehaviour
 
         Vector3 dir = new Vector3(h, 0, v).normalized;
 
+        if (Mathf.Approximately(h, 0f) && Mathf.Approximately(v, 0f))
+        {
+            animator.Animator.SetBool("IsWalking", false);
+        }
+        else
+        {
+            animator.Animator.SetBool("IsWalking", true);
+        }
 
         Quaternion cameraRotationY;
         
@@ -94,6 +98,11 @@ public class PlayerManager : NetworkBehaviour
         Vector3 move = cameraRotationY * dir * Runner.DeltaTime * moveSpeed;
         
         nCC.Move(move);
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            animator.Animator.SetTrigger("IsTalking");
+        }
         
     }
     

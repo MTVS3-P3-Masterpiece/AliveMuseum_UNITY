@@ -30,7 +30,5 @@ public class DialogTest : MonoBehaviour
         textCountDown.text = "The End";
 
         yield return new WaitForSeconds(2);
-        
-        UnityEditor.EditorApplication.ExitPlaymode();
     }
 }
