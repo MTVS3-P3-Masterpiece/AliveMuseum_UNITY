@@ -43,7 +43,7 @@
 
         void Update()
         {
-            if (enterOk && Input.GetKeyDown(KeyCode.E))
+            if (enterOk && Input.GetKeyDown(KeyCode.R))
             {
                 
                 if (anim != null && m_State != EnemyState.FormalBow)  
