@@ -1,36 +1,42 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MoveToLobby : MonoBehaviour
 {
-    public string sceneToLoad = "j_lobby";   
-    private bool playerInRange = false;       
-
     
-    private void OnTriggerEnter(Collider other)
+    public Canvas OutroCanvas;
+    private MoonPosition1 MP1;
+
+
+    private void Start()
+    {
+        MP1 = FindObjectOfType<MoonPosition1>();
+    }
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))  
         {
-            playerInRange = true;     
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                OutroCanvas.gameObject.SetActive(true);
+            }
         }
     }
 
-    
-    private void OnTriggerExit(Collider other)
+    public void EndingBittonOnClickInWordScene()
     {
-        if (other.CompareTag("Player")) 
-        {
-            playerInRange = false;    
-        }
+        MP1.TeleportToMuseumAtWordScene();
+        OutroCanvas.gameObject.SetActive(false);
     }
+    
 
     void Update()
     {
         
-        if (playerInRange && Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(sceneToLoad);  // 지정된 씬으로 전환
-        }
+        
         
         
         

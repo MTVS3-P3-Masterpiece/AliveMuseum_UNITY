@@ -63,4 +63,21 @@ public class MoonPosition1 : NetworkBehaviour
         directionalLight.colorTemperature = 6570f;
         directionalLight.intensity = 1.0f;
     }
+    
+    public void TeleportToMuseumAtWordScene()
+    {
+        var characterController = GetComponent<NetworkCharacterController>();
+        if (characterController != null)
+        {
+            characterController.Teleport(teleportPositionInMuseum, Quaternion.identity);
+        }
+        
+        SceneManager.UnloadSceneAsync( WordSceneName);
+            
+        RenderSettings.skybox = originSkybox;
+        RenderSettings.ambientLight = new Color(190f / 255f, 191f / 255f,194f / 255f);
+        directionalLight.colorTemperature = 6570f;
+        directionalLight.intensity = 1.0f;
+    }
+    
 }
