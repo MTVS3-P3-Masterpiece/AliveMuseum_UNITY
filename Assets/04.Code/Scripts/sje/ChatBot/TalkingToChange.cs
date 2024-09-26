@@ -50,15 +50,15 @@ public class TalkingToChange : MonoBehaviour
         //_playerManager = player.GetComponent<PlayerManager>();
         //firstPersonCamera = Camera.main.GetComponent<FirstPersonCamera>();
         //characterController = player.GetComponent<CharacterController>();  
-        mNetworkCharacterController = player.GetComponent<NetworkCharacterController>();  
+       // mNetworkCharacterController = player.GetComponent<NetworkCharacterController>();  
         
-        runner = FindObjectOfType<NetworkRunner>(); // NetworkRunner 가져오기
+       /* runner = FindObjectOfType<NetworkRunner>(); // NetworkRunner 가져오기
         
         
         if (runner == null)
         {
             Debug.LogError("NetworkRunner not found!");
-        }
+        } */
 
         
     }

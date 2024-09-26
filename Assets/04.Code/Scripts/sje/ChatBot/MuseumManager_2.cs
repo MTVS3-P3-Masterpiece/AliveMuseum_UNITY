@@ -19,6 +19,8 @@ public class MuseumManager_2 : MonoBehaviour
     private GameObject player;
     public GameObject gameLabel;
     private Text gameText;
+
+    public Canvas chineseCanvas;
     //PlayerMove playerScript;
     CamRotate camRotate;
    
@@ -53,7 +55,15 @@ public class MuseumManager_2 : MonoBehaviour
     
     public void MoveToKorean()
     {
-        SceneManager.LoadScene("3_Hall_Hangle");
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.LoadScene("3_Hall_Hangle", LoadSceneMode.Additive);
+        chineseCanvas.gameObject.SetActive(false);
+        
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
 }

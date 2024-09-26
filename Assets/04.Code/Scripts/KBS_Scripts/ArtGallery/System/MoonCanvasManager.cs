@@ -10,6 +10,7 @@ public class MoonCanvasManager : MonoBehaviour
     public TMP_Text waitText;
     public Button pressTextButton;
     private MoonPosition1 MP1;
+    public AudioSource moonSceneAudioSource;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,5 +41,11 @@ public class MoonCanvasManager : MonoBehaviour
     {
         MP1.TeleportToMoonScene();
     }
-    
+
+    public void EndingButtonOnClick()
+    {
+        MP1.TeleportToMuseum();
+        moonSceneAudioSource.Stop();
+        EndingBG.gameObject.SetActive(false);
+    }
 }

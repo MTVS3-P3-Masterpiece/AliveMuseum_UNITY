@@ -16,7 +16,7 @@ public class IntroManager : MonoBehaviour
     public CanvasGroup metaLogoCanvas;
     public Canvas mainCanvas;
     public float fadeDuration = 1f;
-    public AudioSource audioSource;
+    public AudioSource bgmAudioSource;
 
     private static NetworkRunner Runner;
     public GameObject panel;
@@ -30,10 +30,13 @@ public class IntroManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKey)
+        if (Mathf.Approximately(metaLogoCanvas.alpha , 1))
         {
-            panel.gameObject.SetActive(true);
-            pressAnyKeyImage.gameObject.SetActive(false);
+            if (Input.anyKey)
+            {
+                panel.gameObject.SetActive(true);
+                pressAnyKeyImage.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -59,7 +62,8 @@ public class IntroManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         mainCanvas.gameObject.SetActive(true);
-        audioSource.Play();
+        bgmAudioSource.Play();
+        
     }
     
 

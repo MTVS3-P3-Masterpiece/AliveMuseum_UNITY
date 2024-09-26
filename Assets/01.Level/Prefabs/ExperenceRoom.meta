@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/01.Level/Prefabs/ExperenceRoom.meta
 guid: 6c2badad2fb8c334e9f4d75afe33d036
 folderAsset: yes
+========
+guid: e2b152f1b7e8aa540a216ee9ddc30be6
+>>>>>>>> dev:Assets/Jaebin/Scenes/ExperienceRoom/Beta_ExperienceRoom_Negative.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

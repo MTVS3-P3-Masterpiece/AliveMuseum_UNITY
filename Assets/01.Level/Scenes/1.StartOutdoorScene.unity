@@ -2486,7 +2486,7 @@ MonoBehaviour:
   metaLogoCanvas: {fileID: 264697495}
   mainCanvas: {fileID: 2021176696}
   fadeDuration: 2
-  audioSource: {fileID: 1816517302}
+  bgmAudioSource: {fileID: 1816517302}
   panel: {fileID: 1322710386}
   pressAnyKeyImage: {fileID: 1264136829}
 --- !u!82 &1816517302
