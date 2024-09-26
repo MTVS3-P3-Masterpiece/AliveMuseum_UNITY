@@ -72,11 +72,11 @@ public class TalkingToChange : MonoBehaviour
             {
                 ChatText.SetActive(true);
                 //playerScript.enabled = false;
-                _playerManager.enabled = false;
+               // _playerManager.enabled = false;
                 chatOpen = true;
                 followPlayer = true;  
                 interaction.SetActive(false);
-                firstPersonCamera.enabled = false;
+                //firstPersonCamera.enabled = false;
                 characterController.enabled = false;  
                 mNetworkCharacterController.enabled = false;  
                 
