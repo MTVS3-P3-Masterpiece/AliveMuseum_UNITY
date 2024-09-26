@@ -48,7 +48,7 @@ public class CuratorNetwork : MonoBehaviour
         //     NetworkData.tempBaseUrl+NetworkData.curatorAPI, formData);
         yield return req.SendWebRequest();
         byte[] bytes = req.downloadHandler.data;
-        Debug.Log("CuratorNetwork : "+ req.downloadHandler.text);
+        Debug.Log("C    uratorNetwork : "+ req.downloadHandler.text);
         Debug.Log("CuratorNetowrk : " + bytes);
         string resultText = Encoding.UTF8.GetString(bytes);
         Debug.Log("CuratorNetwork : response - "+ curatorResponseData.chatResult);

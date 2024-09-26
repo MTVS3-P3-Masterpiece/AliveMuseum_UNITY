@@ -346,6 +346,7 @@ MonoBehaviour:
   camera: {fileID: 0}
   nCC: {fileID: 7545838237702416482}
   animator: {fileID: 0}
+  isTapKeyPressed: 0
 --- !u!114 &176964344113235738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,10 +436,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportPositionToMoonScene: {x: -14, y: 1.5, z: -78.95}
   teleportPositionToWordScene: {x: 75, y: 0, z: 356}
-  teleportPositionToExScene: {x: 0, y: 0, z: 0}
+  teleportPositionToExScene: {x: 500, y: 1, z: 500}
   teleportPositionInMuseum: {x: 4, y: 1, z: 4}
   originSkybox: {fileID: 2100000, guid: 2869c66e822baa941bb52b0e6ec3dfdf, type: 2}
   directionalLight: {fileID: 7269864743977678646, guid: 863d06d9dfa531248a7e9cc35861797f, type: 3}
+  dirLightObject: {fileID: 0}
 --- !u!1001 &9217212867619941452
 PrefabInstance:
   m_ObjectHideFlags: 0

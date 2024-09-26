@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6378228066717732229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8367894760473052724}
+  - component: {fileID: 7169995562751788585}
+  m_Layer: 0
+  m_Name: FogController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8367894760473052724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6378228066717732229}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7169995562751788585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6378228066717732229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4156ea89224e4468e0f0a14bb0664f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  environments:
+  - volume: {fileID: 0}
+    sceneLight: {fileID: 0}
+    skyBoxMaterial: {fileID: 2100000, guid: eac2ef371405749e0bd050b4c3272f16, type: 2}
+    fogColor: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 0}
+    fogDensity: 0.03
+    shadowColor: {r: 0.41960785, g: 0.47843137, b: 0.627451, a: 0}
+  - volume: {fileID: 0}
+    sceneLight: {fileID: 0}
+    skyBoxMaterial: {fileID: 2100000, guid: d8b9cd85ef773684e8bed8da81ea2a24, type: 2}
+    fogColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 0}
+    fogDensity: 0
+    shadowColor: {r: 0.41960785, g: 0.47843137, b: 0.627451, a: 0}
+  - volume: {fileID: 0}
+    sceneLight: {fileID: 0}
+    skyBoxMaterial: {fileID: 2100000, guid: 78b645960c0661143b2506fda3ef0468, type: 2}
+    fogColor: {r: 1, g: 0.7764706, b: 0.94509804, a: 0}
+    fogDensity: 0.001
+    shadowColor: {r: 1, g: 0.7764706, b: 0.94509804, a: 0}
+  - volume: {fileID: 0}
+    sceneLight: {fileID: 0}
+    skyBoxMaterial: {fileID: 2100000, guid: 00ec378f9e046ea4baf78126e830059a, type: 2}
+    fogColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
+    fogDensity: 0.015
+    shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  _mainCamera: {fileID: 0}
+  course1Density: 0.5
+  course1Color: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+  course2Density: 0.01
+  course2Color: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 0}
+  course3_1Density: 0.0005
+  course3_1Color: {r: 1, g: 0.91531783, b: 0.62578607, a: 0}
+  course3_2Density: 0.025
+  course3_2Color: {r: 0.58630973, g: 0.632139, b: 0.7610062, a: 0}

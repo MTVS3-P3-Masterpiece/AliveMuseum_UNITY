@@ -25,8 +25,8 @@ public class GameFlowManager : MonoBehaviour
         StartCoroutine(_fogController.StartBlending(_fogController.environments[1], 5f));
         chatbotPanel.SetActive(true);
         yield return new WaitUntil(() => isComplete);
-        StartCoroutine(_fogController.StartBlending(_fogController.environments[2], 5f));
-        _moveBoatRaw.StartAnim();
+        StartCoroutine(_fogController.StartBlending(_fogController.environments[3], 5f));
+        //_moveBoatRaw.StartAnim();
         yield return StartCoroutine(_moveBoatRaw.MoveBoatCurveRaw(_moveBoatRaw.targetPos2, _moveBoatRaw.targetPos3));
 
     }

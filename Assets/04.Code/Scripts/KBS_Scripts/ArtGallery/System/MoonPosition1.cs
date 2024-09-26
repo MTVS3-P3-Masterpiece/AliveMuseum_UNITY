@@ -9,13 +9,14 @@ public class MoonPosition1 : NetworkBehaviour
 {
     public Vector3 teleportPositionToMoonScene = new Vector3(-14f, 1.5f, -78.95f);
     public Vector3 teleportPositionToWordScene = new Vector3(75f, 0f, 356f);
-    public Vector3 teleportPositionToExScene = new Vector3();
+    public Vector3 teleportPositionToExScene = new Vector3(500f, 500f, 500f);
     public Vector3 teleportPositionInMuseum = new Vector3(4, 1, 4);
     private string MoonsceneName = "Prototype_ArtRoom_Wolhajeongin";
     private string WordSceneName = "3_Hall_Hangle";
-    private string ExSceneName = "";
+    private string ExSceneName = "Beta_ExperienceRoom_test";
     public Material originSkybox;
     public Light directionalLight;
+    public GameObject dirLightObject;
 
     public override void FixedUpdateNetwork()
     {
@@ -25,8 +26,6 @@ public class MoonPosition1 : NetworkBehaviour
         }
         
     }
-
-    
     
     public void TeleportToMoonScene()
     {
@@ -51,9 +50,13 @@ public class MoonPosition1 : NetworkBehaviour
 
     public void TeleportToExScene()
     {
-        
+        var characterController = GetComponent<NetworkCharacterController>();
+        if (characterController != null)
+        {
+            characterController.Teleport(teleportPositionToExScene, Quaternion.identity);
+
+        }
     }
-    
 
     public void TeleportToMuseumAtMoonScene()
     {
@@ -86,6 +89,24 @@ public class MoonPosition1 : NetworkBehaviour
         RenderSettings.ambientLight = new Color(190f / 255f, 191f / 255f,194f / 255f);
         directionalLight.colorTemperature = 6570f;
         directionalLight.intensity = 1.0f;
+    }
+    
+    public void TeleportToMuseumAtExScene()
+    {
+        var characterController = GetComponent<NetworkCharacterController>();
+        if (characterController != null)
+        {
+            characterController.Teleport(teleportPositionInMuseum, Quaternion.identity);
+        }
+        
+        SceneManager.UnloadSceneAsync(ExSceneName);
+            
+        RenderSettings.skybox = originSkybox;
+        RenderSettings.ambientLight = new Color(61f / 255f, 61f / 255f,61f / 255f);
+        RenderSettings.fog = false;
+        dirLightObject.SetActive(true);
+        // directionalLight.colorTemperature = 14650;
+        // directionalLight.intensity = 0.5f;
     }
     
 }

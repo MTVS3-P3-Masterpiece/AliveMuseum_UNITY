@@ -15,10 +15,10 @@ EditorBuildSettings:
     path: Assets/01.Level/Scenes/ArtRoom/Prototype_ArtRoom_Wolhajeongin.unity
     guid: 51b56ee1d2f40574ea69603f1a1d5d9a
   - enabled: 1
-    path: Assets/01.Level/Scenes/TestScene/lsy/Alpha/Alpha_ExperienceRoom_test3.unity
-    guid: fa68a6978dd6a074f97e0cea293a9130
-  - enabled: 1
     path: Assets/01.Level/Scenes/TestScene/sje/3_Hall_Hangle/3_Hall_Hangle.unity
     guid: be917e7a5a77bbb49a26adbbaf826986
+  - enabled: 1
+    path: Assets/01.Level/Scenes/TestScene/lsy/Beta_ExperienceRoom_test.unity
+    guid: 4a7c5d603f780434eb75581b90fb591c
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
