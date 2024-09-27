@@ -51,6 +51,7 @@ public class ModifiedGetImagePathNetwork : MonoBehaviour
         {
             imageGenResponseData = JsonConvert.DeserializeObject<ImageGenResponseData>(responseBody);
             Debug.Log("imageResponseData : " + imageGenResponseData.generated_images[0]);
+            Debug.Log("imageResponseData : " + imageGenResponseData.generated_images[1]);
         }
         catch (Exception e)
         {

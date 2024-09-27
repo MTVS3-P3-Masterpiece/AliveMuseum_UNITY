@@ -11,9 +11,16 @@ public class GameFlowManager : MonoBehaviour
     public GameObject chatbotPanel;
     
     public bool isComplete = false;
+
+    public AudioSource BgAudioSourceBasic;
+    public AudioSource BGWaveSource;
+    public AudioSource BGPositive;
+    public AudioSource BGNegative;
     
     private IEnumerator Start()
     {
+        BgAudioSourceBasic.Play();
+        BGWaveSource.Play();
         // Intro
         yield return StartCoroutine(RunParallelCoroutine(_downloadSampleTexture.UpdateTextureProcess(),
             dialogSystem01.UpdateDialog()));
@@ -25,8 +32,10 @@ public class GameFlowManager : MonoBehaviour
         StartCoroutine(_fogController.StartBlending(_fogController.environments[1], 5f));
         chatbotPanel.SetActive(true);
         yield return new WaitUntil(() => isComplete);
-        StartCoroutine(_fogController.StartBlending(_fogController.environments[3], 5f));
-        //_moveBoatRaw.StartAnim();
+        BgAudioSourceBasic.Stop();
+        BGPositive.Play();
+        StartCoroutine(_fogController.StartBlending(_fogController.environments[2], 5f));
+        _moveBoatRaw.StartAnim();
         yield return StartCoroutine(_moveBoatRaw.MoveBoatCurveRaw(_moveBoatRaw.targetPos2, _moveBoatRaw.targetPos3));
 
     }

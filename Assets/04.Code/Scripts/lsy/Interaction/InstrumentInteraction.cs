@@ -6,6 +6,10 @@ public class InstrumentInteraction : MonoBehaviour, IInteractable
 {
     public Button introButton;
     public GameObject RhythmUI;
+
+    public AudioSource buttonAudioSource;
+    public AudioSource negativeSource;
+    public AudioSource positiveSource;
     public void Start()
     {
         // _cameraMove = Camera.main.GetComponent<CameraMove>();
@@ -43,6 +47,9 @@ public class InstrumentInteraction : MonoBehaviour, IInteractable
 
     public void ClickRhythmButton()
     {
+        negativeSource.Stop();
+        positiveSource.Stop();
+        buttonAudioSource.Play();
         RhythmUI.SetActive(true);
     }
 }

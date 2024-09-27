@@ -25,7 +25,7 @@ public class DownloadSample_Texture : MonoBehaviour
     //public MoveBoatRaw _moveBoatRaw;
     public GenImageController _GenImageController1;
     public GenImageController _GenImageController2;
-    public void Start()
+    public void Awake()
     {
         _modifiedGetImagePathNetwork = FindObjectOfType<ModifiedGetImagePathNetwork>();
         if (_modifiedGetImagePathNetwork == null)
@@ -47,7 +47,7 @@ public class DownloadSample_Texture : MonoBehaviour
         Debug.Log("UpdateTextureProcess");
         for (int i = 0; i < 2; i++)
         {
-            string url = NetworkData.baseUrl + NetworkData.downloadImageAPI +
+            string url = "http://metaai2.iptime.org:64987" + "/download-image/" +
                          _modifiedGetImagePathNetwork.imageGenResponseData.generated_images[i];
             images[i].DOFade(1f, 0.1f);
 

@@ -95,7 +95,7 @@ public class DialogSystem : MonoBehaviour
         // 현재 화자의 대화 관련 오브젝트 활성화
         SetActiveObjects(speakers[currentSpeakerIndex], true);
         // 현재 화자 이름 텍스트 설정
-        speakers[currentSpeakerIndex].textName.text = dialogs[currentDialogIndex].name;
+        //speakers[currentSpeakerIndex].textName.text = dialogs[currentDialogIndex].name;
         // 현재 화자의 대사 텍스트 설정
         //speakers[currentSpeakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
         StartCoroutine("OnTypingText");
@@ -104,7 +104,7 @@ public class DialogSystem : MonoBehaviour
     private void SetActiveObjects(Speaker speaker, bool visible)
     {
         speaker.imageDialog.gameObject.SetActive(visible);
-        speaker.textName.gameObject.SetActive(visible);
+        //speaker.textName.gameObject.SetActive(visible);
         speaker.textDialogue.gameObject.SetActive(visible);
         
         // 화살표 대사 종료시만 활성화 false

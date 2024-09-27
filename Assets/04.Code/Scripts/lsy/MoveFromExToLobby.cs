@@ -10,7 +10,7 @@ public class MoveFromExToLobby : MonoBehaviour
     public GameObject playerObject;
     private MoonPosition1 MP1;
     private string ExSceneName = "Beta_ExperienceRoom_test";
-        
+
     private void Start()
     {
         MP1 = FindObjectOfType<MoonPosition1>();
