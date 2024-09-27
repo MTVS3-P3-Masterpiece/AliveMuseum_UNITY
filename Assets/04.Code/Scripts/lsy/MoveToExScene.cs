@@ -14,6 +14,8 @@ public class MoveToExScene : NetworkBehaviour
     public Button introButton;
     public GameObject orgDirLight;
     public MoonPosition1 MP1;
+    public AudioSource BGAudioSource;
+    public AudioSource ButtonAudioSource;
 
     
     private void OnTriggerEnter(Collider other)
@@ -28,6 +30,8 @@ public class MoveToExScene : NetworkBehaviour
     public void OnEnterClickButton()
     {
         MP1 = FindObjectOfType<MoonPosition1>();
+        BGAudioSource.Stop();
+        ButtonAudioSource.Play();
         MP1.TeleportToExScene();
         TransitionToNextScene();
         introButton.gameObject.SetActive(false);
