@@ -13663,6 +13663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   MouseSensitivity: 10
+  isTapKeyPressed: 0
 --- !u!1 &1600370767
 GameObject:
   m_ObjectHideFlags: 0
