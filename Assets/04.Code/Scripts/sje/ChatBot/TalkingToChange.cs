@@ -59,6 +59,7 @@ public class TalkingToChange : MonoBehaviour
                 ChatText.SetActive(true);
                 chatOpen1 = true;
                 followPlayer = true;  
+                //interaction.SetActive(true);
                 interaction.SetActive(false);
                 
             }
@@ -77,8 +78,7 @@ public class TalkingToChange : MonoBehaviour
             
             chatOpen1 = false;
             firstPersonCamera.enabled = true;
-
-            
+            interaction.SetActive(false);            
         }
     }
     
