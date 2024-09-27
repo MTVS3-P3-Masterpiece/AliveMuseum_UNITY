@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ public class ChatBotAct : MonoBehaviour
     bool chatOpen = false;
     private bool followPlayer = false;  
     private bool isChatBotVisible = true;
-    public Text textChat;
+    public TMP_Text textChat;
 
     PlayerManager playerScript;
     GameObject player;  
