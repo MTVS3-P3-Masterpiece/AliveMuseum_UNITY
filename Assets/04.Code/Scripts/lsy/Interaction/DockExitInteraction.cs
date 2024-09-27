@@ -3,7 +3,7 @@ using UnityEngine;
 public class DockExitInteraction : MonoBehaviour, IInteractable
 {
     private CameraMove _cameraMove;
-    private UserMove _userMove;
+    public UserMove _userMove;
     public GameObject parentObject;
     public GameObject childObjectUser;
     public MoveBoatCurve moveBoatCurve;
@@ -11,7 +11,7 @@ public class DockExitInteraction : MonoBehaviour, IInteractable
     {
         _cameraMove = Camera.main.GetComponent<CameraMove>();
         // FIXME : 실제 유저 이동 스크립트로 변경 필요
-        _userMove = GameObject.FindWithTag("Player").GetComponent<UserMove>();
+        //_userMove = GameObject.FindWithTag("Player").GetComponent<UserMove>();
     }
     public void Interact()
     {
@@ -19,6 +19,7 @@ public class DockExitInteraction : MonoBehaviour, IInteractable
         //childObjectUser.transform.position = parentObject.transform.position;
         //childObjectUser.transform.position = parentObject.transform.position;
         childObjectUser.transform.SetParent(parentObject.transform);
+        _userMove.enabled = true;
         //childObjectUser.transform.localPosition = Vector3.zero;
         // childObjectUser.transform.localPosition = Vector3.zero;
         // childObjectUser.transform.localRotation = Quaternion.identity;

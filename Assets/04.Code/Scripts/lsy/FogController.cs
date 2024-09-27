@@ -75,6 +75,7 @@ public class FogController : MonoBehaviour
     public IEnumerator StartBlending(EnvironmentData targetEnvironment, float blendDuration)
     {
         blendTimer = 0f;
+        
         while (true)
         {
             blendTimer += Time.deltaTime;
@@ -83,6 +84,7 @@ public class FogController : MonoBehaviour
             //  스카이박스 블렌딩
             targetEnvironment.skyBoxMaterial.SetFloat("_Blend", blendFactor);
             RenderSettings.skybox = targetEnvironment.skyBoxMaterial;
+            RenderSettings.skybox.SetFloat("_Rotation", 90f);
             //blendedSkybox.Lerp(curEnvironment.skyBoxMaterial ,targetEnvironment.skyBoxMaterial, blendFactor);
             //RenderSettings.skybox = blendedSkybox;
 
